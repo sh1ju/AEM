@@ -1,4 +1,4 @@
-# taylorsuniversity
+# Taylors University
 AEM implementation for Taylors University
 
 This repository contains Adobe Experience Manager 6.3 based implemenation code for Taylors University
