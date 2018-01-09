@@ -32,7 +32,7 @@
   <!-- Checks for Headers                                -->
   <!-- See http://checkstyle.sf.net/config_header.html   -->
   <module name="RegexpHeader">
-    <property name="header" value="^\/\* Copyright Aladdin Street \*\/"/>
+    <property name="header" value="^\/\* Copyright Taylors University \*\/"/>
   </module>
 
   <!-- Checks for suppressed audit events                                         -->
