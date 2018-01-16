@@ -1,0 +1,5 @@
+#base=js
+
+jquery.accordion.js
+jquery.waypoints.min.js
+slick/slick.min.js

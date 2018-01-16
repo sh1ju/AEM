@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page" lang="${page.language}"
+      data-sly-use.head="head.html"
+      data-sly-use.footer="footer.html">
+    <head data-sly-call="${head.head @ page = page}"></head>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700|Material+Icons" rel="stylesheet">
+    <body>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+     		data-sly-call="${clientlib.css @ categories='taylorsuniversity.main'}"/>
+     	<sly data-sly-include="body.html"></sly>
+        <sly data-sly-call="${footer.footer @ page = page}"></sly>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha384-bPV3mA2eo3edoq56VzcPBmG1N1QVUfjYMxVIJPPzyFJyFZ8GFfN7Npt06Zr23qts" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+		<script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
+		<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+     		data-sly-call="${clientlib.js @ categories='taylorsuniversity.main'}"/>
+    </body>
+</html>
