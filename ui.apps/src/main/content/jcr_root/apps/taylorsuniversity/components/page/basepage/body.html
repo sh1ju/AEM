@@ -17,11 +17,9 @@
 <body class="gef-ie9 landing">
 <!--<![endif]-->
 
-<sly data-sly-test.templateName="${pageProperties.cq:template}">
-	<div data-sly-test.mode="${templateName == '/apps/taylorsuniversity/templates/homepage' ? 'edit' : 'disabled'}">
-	      <div data-sly-resource="${ @path='header', resourceType='taylorsuniversity/components/content/header', wcmmode=mode}"></div>
-	</div>
-</sly>
+
+
+<div data-sly-resource="${ @path='header', resourceType='taylorsuniversity/components/content/header'}"></div>
 
  <!-- Placeholder for header component -->
 <sly data-sly-include="content.html"></sly>
