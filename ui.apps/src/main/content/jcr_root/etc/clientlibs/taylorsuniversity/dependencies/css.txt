@@ -1,0 +1,6 @@
+#base=css
+
+animate.css
+slick.css
+slick-theme.css
+font-awesome/font-awesome.min.css

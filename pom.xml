@@ -32,6 +32,18 @@
         <publish.crx.password>admin</publish.crx.password>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        
+        <!-- properties for DEV server author deployment -->
+		<dev.author.server.crx.host>LSCSVRDEVADOBE01</dev.author.server.crx.host>
+        <dev.author.server.crx.port>4502</dev.author.server.crx.port>
+        <dev.author.server.crx.username>root</dev.author.server.crx.username>
+        <dev.author.server.crx.password>P@ssw0rd</dev.author.server.crx.password>
+        
+        <!-- properties for DEV server publish deployment -->
+		<dev.publish.server.crx.host>LSCSVRDEVADOBE01</dev.publish.server.crx.host>
+        <dev.publish.server.crx.port>4503</dev.publish.server.crx.port>
+        <dev.publish.server.crx.username>root</dev.publish.server.crx.username>
+        <dev.publish.server.crx.password>P@ssw0rd</dev.publish.server.crx.password>
     </properties>
 
     <dependencyManagement>
