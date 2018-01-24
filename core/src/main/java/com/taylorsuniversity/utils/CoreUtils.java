@@ -2,10 +2,20 @@
 
 package com.taylorsuniversity.utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.Template;
 
 /**
  * The Class CoreUtil.
@@ -13,10 +23,10 @@ import com.day.cq.wcm.api.Page;
 public final class CoreUtils {
 
     /** The Constant LOG. */
-    public static final Logger LOG = LoggerFactory.getLogger(CoreUtils.class);
+    public static final Logger logger = LoggerFactory.getLogger(CoreUtils.class);
 
     /**
-     * Instantiates a new core util.
+     * Instantiates a new core utils.
      */
     private CoreUtils() {
 
@@ -35,5 +45,112 @@ public final class CoreUtils {
             parentPage = currentPage.getAbsoluteParent(absoluteLevel);
         }
         return parentPage;
+    }
+    
+    /**
+     * Gets the multi value property.
+     *
+     * @param <T> the generic type
+     * @param rootPage the root page
+     * @param property the property
+     * @param clazz the clazz
+     * @return the multi value property
+     */
+    public static <T> List<T> getMultiValueProperty(final Page rootPage, final String property, final Class<T> clazz) {
+        Resource multifieldResource = null;
+        List<T> modelBeanList = null;
+        if (null != rootPage) {
+            multifieldResource = rootPage.getContentResource(property);
+            logger.debug("Multifield resource is : {}", multifieldResource);
+            if (null != multifieldResource) {
+                modelBeanList = getNodeProperties(multifieldResource, clazz);
+            }
+        }
+        return modelBeanList;
+    }
+
+    /**
+     * Gets the node properties.
+     *
+     * @param <T> the generic type
+     * @param resource the resource
+     * @param clazz the clazz
+     * @return the node properties
+     */
+    public static <T> List<T> getNodeProperties(final Resource resource, final Class<T> clazz) {
+        List<T> modelBeanList = new ArrayList<>();
+        Iterator<Resource> childResources = resource.listChildren();
+
+        logger.debug("ChildResources is : {}", childResources);
+
+        while (childResources.hasNext()) {
+            Resource currentResource = childResources.next();
+            if (null != currentResource) {
+                T modelBean = currentResource.adaptTo(clazz);
+                modelBeanList.add(modelBean);
+            }
+        }
+        logger.debug("Following ChildResoures are added to the list : {}", modelBeanList);
+        return modelBeanList;
+    }
+
+
+    /**
+     * Gets the page by resource.
+     *
+     * @param resource the resource
+     * @return the page by resource
+     */
+    public static Page getPageByResource(final Resource resource) {
+        Page page = null;
+        if (null != resource) {
+            page = resource.adaptTo(Page.class);
+        }
+        return page;
+    }
+
+    /**
+     * Gets the multi value dropdown property.
+     *
+     * @param rootPage
+     *            the root page
+     * @param property
+     *            the property
+     * @return the multi value dropdown property
+     */
+    public static List<String> getMultiValueDropdownProperty(final Page rootPage, final String property) {
+        if (null != rootPage && StringUtils.isNotBlank(property)) {
+            ValueMap properties = rootPage.getProperties();
+            return Arrays.asList(properties.get(property, new String[] {}));
+        }
+        return Collections.emptyList();
+
+    }
+    
+    /**
+     * Gets the template name.
+     *
+     * @param resource the resource
+     * @return the template name
+     */
+    public static String getTemplateName(final Resource resource) {
+        Page page = null;
+        if (resource == null) {
+          return "";
+        }
+
+        page = resource.adaptTo(Page.class);
+        
+        if(page == null) {
+          return "";
+        }
+        
+        Template template = page.getTemplate();
+        
+        if(template == null) {
+          return "";
+        }
+        
+        return template.getName();
     }
 }
