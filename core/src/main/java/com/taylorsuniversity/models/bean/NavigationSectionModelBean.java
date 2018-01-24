@@ -9,7 +9,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 
 /**
- * The Class HeaderComponentModelBean.
+ * The Class NavigationSectionModelBean.
  */
 @Model(adaptables = Resource.class)
 public class NavigationSectionModelBean {
