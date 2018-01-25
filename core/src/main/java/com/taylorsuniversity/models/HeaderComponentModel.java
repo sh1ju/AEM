@@ -46,7 +46,7 @@ import com.day.cq.search.result.SearchResult;
 @Model(adaptables = Resource.class)
 public class HeaderComponentModel {
 
-  private Logger logger = LoggerFactory.getLogger(this.getClass());
+  private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
   @Inject
   private ResourceResolver resolver;
@@ -71,31 +71,31 @@ public class HeaderComponentModel {
    */
   @PostConstruct
   public void postConstruct() {
-    logger.error("Resolver is : {}", resolver);
+    LOGGER.error("Resolver is : {}", resolver);
     PageManager pageManager = resolver.adaptTo(PageManager.class);
-    logger.debug("PageManager is  : {}", pageManager);
+    LOGGER.debug("PageManager is  : {}", pageManager);
     Page currentPage = pageManager == null ? null : pageManager.getContainingPage(resource);
-    logger.debug("CurrentPage is : {}", currentPage);
+    LOGGER.debug("CurrentPage is : {}", currentPage);
     if(currentPage == null) {
-      logger.debug("currentPage is null");
+      LOGGER.debug("currentPage is null");
       return;
     }
     homePage = CoreUtils.getParentPage(currentPage, Constants.HOMEPAGE_LEVEL);
     if(homePage == null) {
-      logger.debug("HomePage is null. CurrentPage is : {}", currentPage.getPath());
+      LOGGER.debug("HomePage is null. CurrentPage is : {}", currentPage.getPath());
       return;
     }
-    logger.debug("HomePage is : {}", homePage.getPath());
+    LOGGER.debug("HomePage is : {}", homePage.getPath());
     Resource resource =
         resolver.getResource(homePage.getPath() + Constants.HEADER_COMPONENT_RELATIVE_PATH);
-    logger.debug("resource is :  {}", resource);
+    LOGGER.debug("resource is :  {}", resource);
     if (null == resource) {
-      logger.debug("resource in postConstruct is null");
+      LOGGER.debug("resource in postConstruct is null");
       return;
     }
     ValueMap valMap = resource.adaptTo(ValueMap.class);
     if (null == valMap) {
-      logger.debug("the value map in postConstruct for the resource is null");
+      LOGGER.debug("the value map in postConstruct for the resource is null");
       return;
     }
     headerComponentModelBean = new HeaderComponentModelBean();
@@ -120,7 +120,7 @@ public class HeaderComponentModel {
    * @return the navigation section icon bean list
    */
   public List<Page> getNavigationSectionModelBean() {
-    logger.debug("List of Navigation Sections are : {} ", navigationSectionModelBeanList);
+    LOGGER.debug("List of Navigation Sections are : {} ", navigationSectionModelBeanList);
     List<Page> sectionPages = new ArrayList<>();
     Iterator<NavigationSectionModelBean> navigationSectionModelBeanIterator =
         navigationSectionModelBeanList.iterator();
@@ -135,9 +135,9 @@ public class HeaderComponentModel {
         }
         
         PageManager pageManager = resolver.adaptTo(PageManager.class);
-        logger.debug("PageManager is  : {}", pageManager);
+        LOGGER.debug("PageManager is  : {}", pageManager);
         if (pageManager == null) {
-          logger.error("PageManager is null in getNavigationSectionModelBean ...");
+          LOGGER.error("PageManager is null in getNavigationSectionModelBean ...");
           return Collections.emptyList();
         }
         Page currentPage = pageManager.getPage(navigationSectionModelBean.getSectionPath());
@@ -145,27 +145,27 @@ public class HeaderComponentModel {
 
         String showCourseSearch = navigationSectionModelBean.getShowCourseSearch() != null
             ? navigationSectionModelBean.getShowCourseSearch() : "";
-        logger.debug("showCourseSearch before : {}", showCourseSearch);
+        LOGGER.debug("showCourseSearch before : {}", showCourseSearch);
         
         Resource contentResource = pageManager
             .getContainingPage(navigationSectionModelBean.getSectionPath()).getContentResource();
         Node node = contentResource.adaptTo(Node.class);
         if (node == null) {
-          logger.error("Node is null in getNavigationSectionModelBean ...");
+          LOGGER.error("Node is null in getNavigationSectionModelBean ...");
           return Collections.emptyList();
         }
-        logger.debug("Node path is : {}", node.getPath());
+        LOGGER.debug("Node path is : {}", node.getPath());
         node.setProperty(Constants.SHOW_COURSES_SEARCH, showCourseSearch);
-        logger.debug("showCourseSearch after : {}", node.getProperty(Constants.SHOW_COURSES_SEARCH));
+        LOGGER.debug("showCourseSearch after : {}", node.getProperty(Constants.SHOW_COURSES_SEARCH));
         Session session = resolver.adaptTo(Session.class);
         if (session == null) {
-          logger.error("Session is null in getNavigationSectionModelBean ...");
+          LOGGER.error("Session is null in getNavigationSectionModelBean ...");
           return Collections.emptyList();
         }
         session.save();
-        logger.debug("showCourseSearch is : {}", node.getProperty("showCourseSearch"));
+        LOGGER.debug("showCourseSearch is : {}", node.getProperty("showCourseSearch"));
       } catch (Exception e) {
-        logger.error(
+        LOGGER.error(
             "Error while getting the navigation section model bean in HeaderComponentModel : {}}",
             e);
       }
@@ -180,7 +180,7 @@ public class HeaderComponentModel {
    * @return the header component bean
    */
   public HeaderComponentModelBean getHeaderComponentModelBean() {
-    logger.debug("List of header components are : {} ", headerComponentModelBean);
+    LOGGER.debug("List of header components are : {} ", headerComponentModelBean);
     return headerComponentModelBean;
   }
 
@@ -190,7 +190,7 @@ public class HeaderComponentModel {
    * @return the home page content path
    */
   public String getHomePageContentPath() {
-    logger.debug("HomePage content path is : {}", homePage);
+    LOGGER.debug("HomePage content path is : {}", homePage);
     return homePage != null ? homePage.getPath() + "/jcr:content" : "";
   }
 
@@ -201,7 +201,7 @@ public class HeaderComponentModel {
    */
   public int getCurrentYear() {
     Calendar cal = Calendar.getInstance();
-    logger.debug("Current Year is : {} ", cal.get(Calendar.YEAR));
+    LOGGER.debug("Current Year is : {} ", cal.get(Calendar.YEAR));
     return cal.get(Calendar.YEAR);
   }
 
@@ -212,16 +212,16 @@ public class HeaderComponentModel {
    */
   public String getSearchSuggestJson() {
     
-    logger.debug("Get Search Suggest method invoked !!!");
+    LOGGER.debug("Get Search Suggest method invoked !!!");
     
     schoolAndCourseListJson = new ArrayList<>();
     
     PageManager pageManager = resolver.adaptTo(PageManager.class);
-    logger.debug("PageManager is : {}", pageManager);
+    LOGGER.debug("PageManager is : {}", pageManager);
     Page page = pageManager == null ? null : pageManager.getContainingPage(resource);
     
     if(page == null) {
-      logger.debug("Page is null");
+      LOGGER.debug("Page is null");
       return "";
     }
     
@@ -230,7 +230,7 @@ public class HeaderComponentModel {
     
     String schoolAndCoursesJson = schoolAndCourseListJson.toString();
     
-    logger.debug("Json list for school and courses is : {}", schoolAndCoursesJson);
+    LOGGER.debug("Json list for school and courses is : {}", schoolAndCoursesJson);
     
     return schoolAndCoursesJson;
   }
@@ -245,7 +245,7 @@ public class HeaderComponentModel {
     predicateMap.put(Constants.FIRST_PROPERTY_KEY, Constants.JCR_CONTENT_RESOURCE_TYPE);
     predicateMap.put(Constants.FIRST_PROPERTY_VALUE, templatePath);
 
-    logger.debug("Predicate map is : {}", predicateMap);
+    LOGGER.debug("Predicate map is : {}", predicateMap);
     
     List<String> searchResults = getSchoolAndCoursesSearchResults(predicateMap);
     
@@ -253,9 +253,9 @@ public class HeaderComponentModel {
       Iterator<String> itr = searchResults.iterator();
       while(itr.hasNext()) {
         String nextItem = itr.next();
-        logger.debug("Search result next item is : {} ", nextItem);
+        LOGGER.debug("Search result next item is : {} ", nextItem);
         PageManager pageManager = resolver.adaptTo(PageManager.class);
-        logger.debug("PageManager is : {}", pageManager);
+        LOGGER.debug("PageManager is : {}", pageManager);
         Page page = pageManager == null ? null
             : pageManager.getPage(nextItem);
         if(page == null) {
@@ -280,12 +280,12 @@ public class HeaderComponentModel {
         Query queryObj = this.queryBuilder.createQuery(
                 PredicateGroup.create(predicateMap), session);
         String searchQuery = queryObj.getPredicates().toString();
-        logger.debug("Search Query : {}", searchQuery);
+        LOGGER.debug("Search Query : {}", searchQuery);
   
         SearchResult searchResults = queryObj.getResult();
   
         if (searchResults != null) {
-            logger.debug("Total number of search matches are: "
+            LOGGER.debug("Total number of search matches are: "
                     + searchResults.getTotalMatches());
             final List<Hit> hitsList = searchResults.getHits();
             if (hitsList != null && !hitsList.isEmpty()) {
@@ -296,7 +296,7 @@ public class HeaderComponentModel {
             }
         }
     } catch (Exception e) {
-        logger.error("Exception at getWebToPrintSearchResults(): {}", e);
+        LOGGER.error("Exception at getWebToPrintSearchResults(): {}", e);
     }
     return pagePaths;
   
