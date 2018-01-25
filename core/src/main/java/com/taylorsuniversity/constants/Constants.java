@@ -40,8 +40,8 @@ public final class Constants {
     public static final String FIRST_PROPERTY_VALUE = "1_property.value";
 
     /** The Constant for school page template. */
-    public static final String SCHOOL_PAGE_TEMPLATE = "/apps/taylorsuniversity/components/page/homepage";
+    public static final String SCHOOL_PAGE_TEMPLATE = "/apps/taylorsuniversity/components/page/schoolpage";
     
     /** The Constant for courses page template. */
-    public static final String COURSES_PAGE_TEMPLATE = "/apps/taylorsuniversity/components/page/contentpage";
+    public static final String COURSES_PAGE_TEMPLATE = "/apps/taylorsuniversity/components/page/coursepage";
 }
