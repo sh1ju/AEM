@@ -23,7 +23,7 @@ import com.day.cq.wcm.api.Template;
 public final class CoreUtils {
 
     /** The Constant LOG. */
-    public static final Logger logger = LoggerFactory.getLogger(CoreUtils.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(CoreUtils.class);
 
     /**
      * Instantiates a new core utils.
@@ -61,7 +61,7 @@ public final class CoreUtils {
         List<T> modelBeanList = null;
         if (null != rootPage) {
             multifieldResource = rootPage.getContentResource(property);
-            logger.debug("Multifield resource is : {}", multifieldResource);
+            LOGGER.debug("Multifield resource is : {}", multifieldResource);
             if (null != multifieldResource) {
                 modelBeanList = getNodeProperties(multifieldResource, clazz);
             }
@@ -81,7 +81,7 @@ public final class CoreUtils {
         List<T> modelBeanList = new ArrayList<>();
         Iterator<Resource> childResources = resource.listChildren();
 
-        logger.debug("ChildResources is : {}", childResources);
+        LOGGER.debug("ChildResources is : {}", childResources);
 
         while (childResources.hasNext()) {
             Resource currentResource = childResources.next();
@@ -90,7 +90,7 @@ public final class CoreUtils {
                 modelBeanList.add(modelBean);
             }
         }
-        logger.debug("Following ChildResoures are added to the list : {}", modelBeanList);
+        LOGGER.debug("Following ChildResoures are added to the list : {}", modelBeanList);
         return modelBeanList;
     }
 
