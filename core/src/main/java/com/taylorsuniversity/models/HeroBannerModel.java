@@ -22,7 +22,7 @@ public class HeroBannerModel {
 
 	@Inject
 	@Optional
-	private String desktopAsset;
+	private String fileReference;
 
 	Logger LOGGER = LoggerFactory.getLogger(HeroBannerModel.class);
 	private String damType = "--";
@@ -30,9 +30,9 @@ public class HeroBannerModel {
 	@PostConstruct
 	protected void init() {
 
-		if (StringUtils.isNotBlank(desktopAsset)) {
+		if (StringUtils.isNotBlank(fileReference)) {
 
-			Resource resource = resourceResolver.resolve(desktopAsset);
+			Resource resource = resourceResolver.resolve(fileReference);
 			Asset asset = resource.adaptTo(Asset.class);
 
 			if (DamUtil.isImage(asset)) {
@@ -49,6 +49,7 @@ public class HeroBannerModel {
 	}
 
 	public String getDamType() {
+		LOGGER.debug("Dam type is : {}", damType);
 		return damType;
 	}
 

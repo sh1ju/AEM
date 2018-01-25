@@ -1,17 +1,16 @@
-<sly data-sly-use.hb="com.taylorsuniversity.models.HeroBannerModel"/>
 <sly data-sly-test="${!properties.title && wcmmode.edit}">
     <p class="cq-placeholder" data-emptytext="Hero Banner"></p>
 </sly>
 
+<sly data-sly-use.hb="com.taylorsuniversity.models.HeroBannerModel">
 
 <!--HTML snippet for video-->
 <sly data-sly-test="${properties.title && hb.damType=='video'}">  
 <div class="cover-container banner-video red-blend no-hover-mobile position-relative"
 	style="background-image: url('${properties.imageReference @ context='styleString'}');">
-    
-	<video poster="${properties.desktopAsset}"
+	<video poster="${properties.fileReference  @ context='uri'}"
 		class="banner-video d-none d-lg-block" id="_banner-video" playsinline autoplay muted loop>
-		<source src="${properties.desktopAsset}" type="video/mp4">
+		<source src="${properties.fileReference @ context='uri'}" type="video/mp4">
 	</video>
 
 	<div class="hearo-banner-content t-m text-white">
@@ -34,7 +33,7 @@
 
 <!--HTML snippet for image-->
 <sly data-sly-test="${properties.title && hb.damType=='image'}">  
-    <div class="cover-container d-flex align-items-end t-p  red-blend-no-hover" style="background-image: url('${properties.desktopAsset @ context='styleString'}');">
+    <div class="cover-container d-flex align-items-end t-p  red-blend-no-hover" style="background-image: url('${properties.fileReference @ context='styleString'}');">
 	<div class="hearo-banner-content align-self-end text-white">
 		<h1>${properties.title}</h1>
 		<div class="d-flex flex-column">
@@ -51,6 +50,7 @@
 		</div>
 	</div>
 </div>
+</sly>
 </sly>
 
 

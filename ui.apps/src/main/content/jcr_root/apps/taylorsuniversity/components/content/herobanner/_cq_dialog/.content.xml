@@ -32,13 +32,13 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <desktopasset
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
                                                 allowUpload="{Boolean}false"
                                                 autoStart="{Boolean}true"
                                                 class="cq-droptarget"
                                                 fieldLabel="Desktop Image/Video"
-                                                fileNameParameter="./desktopAsset"
-                                                fileReferenceParameter="./desktopAsset"
+                                                fileNameParameter="./fileName"
+                                                fileReferenceParameter="./fileReference"
                                                 mimeTypes="[image,video]"
                                                 multiple="{Boolean}false"
                                                 name="./desktopAsset"
@@ -48,7 +48,7 @@
                                                 rootPath="/content/dam"/>
                                             <mobileimage
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
                                                 allowUpload="{Boolean}false"
                                                 autoStart="{Boolean}false"
                                                 class="cq-droptarget"
