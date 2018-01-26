@@ -49,7 +49,7 @@ public class HeroBannerModel {
 				}
 			}
 		} else {
-			LOGGER.debug("Found desktop asset variable as empty or null");
+			LOGGER.debug("Found desktop asset variable as null, empty or invalid");
 		}
 	}
 

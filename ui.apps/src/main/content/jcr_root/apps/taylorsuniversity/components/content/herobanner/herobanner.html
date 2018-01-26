@@ -4,7 +4,7 @@
 
 <sly data-sly-use.hb="com.taylorsuniversity.models.HeroBannerModel">
 
-<!--HTML snippet for video-->
+<!--Conditional HTML snippet for video-->
 <sly data-sly-test="${properties.title && hb.damType=='video'}">  
 <div class="cover-container banner-video red-blend no-hover-mobile position-relative"
 	style="background-image: url('${properties.imageReference @ context='styleString'}');">
@@ -17,13 +17,13 @@
 	<div class="hearo-banner-content t-m text-white">
 </sly>
     
-<!--HTML snippet for image-->  
+<!--Conditional HTML snippet for image-->  
 <sly data-sly-test="${properties.title && hb.damType=='image'}">  
     <div class="cover-container d-flex align-items-end t-p  red-blend-no-hover" style="background-image: url('${properties.fileReference @ context='styleString'}');">
 	<div class="hearo-banner-content align-self-end text-white">
 </sly>
         
- <!--HTML Snippet common for both image and video-->   
+ <!--Common HTML Snippet for both image and video-->   
 		<h1>${properties.title}</h1>
 		<div class="d-flex flex-column">
 			<a class="btn btn-simple btn-red btn-standard-w  mb-3" 

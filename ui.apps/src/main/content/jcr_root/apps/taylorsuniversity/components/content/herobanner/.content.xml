@@ -3,4 +3,4 @@
     jcr:description="This component enables the user to configure hero banner for a page"
     jcr:primaryType="cq:Component"
     jcr:title="Hero Banner"
-    componentGroup="Taylors Content"/>
+    componentGroup=".hidden"/>
