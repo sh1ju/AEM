@@ -40,19 +40,17 @@ public class SightlyUtilsModel {
 
 	private String link = "--";
 
-	@PostConstruct
-	protected void init() {
-
+	/*
+	 * Helper method for link checker
+	 */
+	public String getLink() {
+		
 		if (StringUtils.isNotBlank(linkTarget)) {
 			LOGGER.debug("Link Target is : {}", linkTarget);
 			link = CoreUtils.getQualifiedLink(resolver, linkTarget);
-
 		} else {
 			LOGGER.debug("Link entered is invalid");
 		}
-	}
-
-	public String getLink() {
 		LOGGER.debug("Link being sent is : {}", link);
 		return link;
 	}
