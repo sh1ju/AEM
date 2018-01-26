@@ -31,17 +31,22 @@ public class HeroBannerModel {
 	protected void init() {
 
 		if (StringUtils.isNotBlank(fileReference)) {
-
-			Resource resource = resourceResolver.resolve(fileReference);
-			Asset asset = resource.adaptTo(Asset.class);
-
-			if (DamUtil.isImage(asset)) {
-				damType = "image";
-				LOGGER.debug("Found image at: {}", asset.getPath());
-			}
-			if (DamUtil.isVideo(asset)) {
-				damType = "video";
-				LOGGER.debug("Found video at: {}", asset.getPath());
+			Resource resource = resourceResolver.getResource(fileReference);
+			
+			if(StringUtils.isNotBlank(resource.toString())){
+				Asset asset = resource.adaptTo(Asset.class);
+				
+				if(StringUtils.isNotBlank(asset.toString())) {
+					
+					if (DamUtil.isImage(asset)) {
+						damType = "image";
+						LOGGER.debug("Found image at: {}", asset.getPath());
+					}
+					if (DamUtil.isVideo(asset)) {
+						damType = "video";
+						LOGGER.debug("Found video at: {}", asset.getPath());
+					}
+				}
 			}
 		} else {
 			LOGGER.debug("Found desktop asset variable as empty or null");
