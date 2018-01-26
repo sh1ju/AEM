@@ -44,4 +44,13 @@ public final class Constants {
     
     /** The Constant for courses page template. */
     public static final String COURSES_PAGE_TEMPLATE = "/apps/taylorsuniversity/components/page/coursepage";
+		
+	/** The Constant for appending .html extension to in-site pages. */
+    public static final String HTML_EXTN = ".html";
+    
+    /** The Constant for content path */
+    public static final String CONTENT_ROOT = "/content";
+    
+    /** The Constant for DAM path */
+    public static final String DAM_ROOT = "/content/dam/taylorsuniversity";
 }
