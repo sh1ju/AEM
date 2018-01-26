@@ -10,12 +10,14 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.Template;
+import com.taylorsuniversity.constants.Constants;
 
 /**
  * The Class CoreUtil.
@@ -153,4 +155,30 @@ public final class CoreUtils {
         
         return template.getName();
     }
+
+    /**
+    * Intercepts the linkUrl builds it appropriately. 
+    * Internal url's will be appended with the appropriate extension. 
+    * External url's will undergo no modification.
+    *
+    * @param resolver
+    *           resource resolver
+    * @param linkUrl
+    *            the authored link
+    * @return a mapped link consistent with the ResourceResolver mappings
+    */
+    public static String getQualifiedLink(final ResourceResolver resolver, final String linkUrl) {
+    	String url = StringUtils.EMPTY;
+    	if (StringUtils.isNotBlank(linkUrl) && linkUrl.startsWith(Constants.CONTENT_ROOT)
+    			&& !linkUrl.contains(Constants.HTML_EXTN) && !linkUrl.startsWith(Constants.DAM_ROOT)) {
+    		int paramIndex = linkUrl.indexOf('?');
+    		if (paramIndex > -1) {
+    			url = resolver.map(linkUrl.substring(0, paramIndex)).concat(Constants.HTML_EXTN)
+    					.concat(linkUrl.substring(paramIndex));
+    		} else
+    			url = resolver.map(linkUrl).concat(Constants.HTML_EXTN);
+    	}
+    	return StringUtils.isNotEmpty(url) ? url : linkUrl;
+    }
+    
 }
