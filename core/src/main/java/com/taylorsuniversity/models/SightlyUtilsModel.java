@@ -54,15 +54,4 @@ public class SightlyUtilsModel {
 		LOGGER.debug("Link being sent is : {}", link);
 		return link;
 	}
-
-	public String getHomePagePath() {
-		LOGGER.debug("Resolver is : {}", resolver);
-		PageManager pageManager = resolver.adaptTo(PageManager.class);
-		LOGGER.debug("PageManager is : {}", pageManager);
-		Page currentPage = pageManager == null ? null : pageManager.getContainingPage(resource);
-		LOGGER.debug("CurrentPage is : {}", currentPage);
-		Page homePage = CoreUtils.getParentPage(currentPage, Constants.HOMEPAGE_LEVEL);
-		LOGGER.debug("HomePage is : {}", homePage);
-		return homePage != null ? homePage.toString() : "";
-	}
 }

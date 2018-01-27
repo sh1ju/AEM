@@ -18,15 +18,16 @@
 <!--<![endif]-->
 
 
-
+<!-- Header Component -->
 <sly data-sly-test.templateName="${pageProperties.cq:template}">
 	<div data-sly-test.mode="${templateName == '/apps/taylorsuniversity/templates/homepage' ? 'edit' : 'disabled'}">
 	      <div data-sly-resource="${ @path='header', resourceType='taylorsuniversity/components/content/header', wcmmode=mode}"></div>
 	</div>
 </sly>
 
- <!-- Placeholder for header component -->
+<!-- Content for the page. ex:- parsys -->
 <sly data-sly-include="content.html"></sly>
+
 <!-- Placeholder for footer component -->
 
 

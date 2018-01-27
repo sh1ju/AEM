@@ -193,6 +193,26 @@ public class HeaderComponentModel {
     LOGGER.debug("HomePage content path is : {}", homePage);
     return homePage != null ? homePage.getPath() + "/jcr:content" : "";
   }
+  
+  /**
+   * Gets the home page path.
+   *
+   * @return the home page path
+   */
+  public String getHomePagePath() {
+    LOGGER.debug("Resolver is : {}", resolver);
+    PageManager pageManager = resolver.adaptTo(PageManager.class);
+    LOGGER.debug("Page Manager is : {}", pageManager);
+    Page currentPage = pageManager == null ? null : pageManager.getContainingPage(resource);
+    LOGGER.debug("Current Page is : {}", currentPage);
+    Page homePage = CoreUtils.getParentPage(currentPage, Constants.HOMEPAGE_LEVEL);
+    LOGGER.debug("HomePage is : {}", homePage);
+    if(homePage == null) {
+      return "";
+    }
+    LOGGER.debug("HomePagePath is : {}", homePage.getPath());
+    return homePage.getPath();
+  }
 
   /**
    * Gets the current year.
