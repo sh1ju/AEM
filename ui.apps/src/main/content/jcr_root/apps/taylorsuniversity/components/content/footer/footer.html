@@ -1,0 +1,37 @@
+<sly data-sly-test="${wcmmode.edit}">
+    <p class="cq-placeholder" data-emptytext="Footer"></p>
+</sly>
+<sly data-sly-use.fm="com.taylorsuniversity.models.FooterModel"/>
+
+<section class="container-fluid">
+	<div class="footer-accordion bg-black t-p row" data-sly-use.model="com.taylorsuniversity.models.FooterModel">
+        <sly data-sly-list.keyName="${model.getFooterLinksMap}" data-sly-test="${model.getFooterLinksMap}">
+	    <div class="accordion-item col-12 col-lg">
+		<button class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary">
+            ${keyName}<i class="d-lg-none t-icon-down white"></i>
+        </button>
+		<ul class="text-white" data-sly-test="${model.getFooterLinksMap[keyName]}" data-sly-list.key="${model.getFooterLinksMap[keyName]}">
+		    <li><a href="${key.pageLinkItem}">${key.pageLinkItem}</a></li>
+		</ul>
+	    </div>
+        </sly>
+	   
+        <sly data-sly-test="${fm.socialItems}">
+        <div class="col-12 col-lg">
+		<div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary">${properties.socialTitle}</div>
+        <div class="w-100 d-flex justify-content-start" data-sly-list.soc="${fm.socialItems}" >
+		    <a class="mr-2" href="${soc.socialLink}" target="_blank"><img src="${soc.socialIcon}" alt="${soc.socialText}"></a>
+		</div> 
+	    </div>
+        </sly>
+
+	</div>
+</section>
+<img class="back-to-top-btn action-btn position-fixed" data-action="back-to-top" height="60" width="60" src="assets/img/back-to-top.png" alt="">
+<section class="container-fluid">
+	<div class="row ">
+	    <div class="t-px bg-red t-display-1 text-white py-3 w-100 t-display-3">
+		<span>Copyright © 2017 Taylor's University. All rights reserved.</span>
+	    </div>
+	</div>
+</section>
