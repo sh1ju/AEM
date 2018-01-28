@@ -9,7 +9,6 @@ public class TileListingModelBean {
 	private String titleLinkTypeItem;
 	private String descriptionItem;
 	
-	
 	public TileListingModelBean(String imageItem, String altTextItem, String titleItem, String titleLinkItem,
 			String titleLinkTypeItem, String descriptionItem) {
 		super();
