@@ -14,20 +14,24 @@ import org.apache.sling.models.annotations.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 
-import com.taylorsuniversity.models.bean.TileListingBean;
+import com.taylorsuniversity.models.bean.TileListingModelBean;
+import com.taylorsuniversity.utils.CoreUtils;
 
 @SuppressWarnings("deprecation")
 @Model(adaptables = Resource.class)
 public class TileListingModel {
 
-	Logger LOG = LoggerFactory.getLogger(TileListingModel.class);
+	@Inject
+	ResourceResolver resolver;
 
 	@Inject
 	@Optional
 	private String[] tileListing;
-	
-	private List<TileListingBean> tileListingItems = null;
+
+	private List<TileListingModelBean> tileListingItems = null;
+	Logger LOGGER = LoggerFactory.getLogger(TileListingModel.class);
 
 	@PostConstruct
 	protected void init() {
@@ -37,25 +41,27 @@ public class TileListingModel {
 
 	private void tileListingProps() {
 		if (ArrayUtils.isNotEmpty(tileListing)) {
-			tileListingItems = new ArrayList<TileListingBean>();
+			tileListingItems = new ArrayList<TileListingModelBean>();
 			for (String tl : tileListing) {
 				try {
 					JSONObject jsonObject = new JSONObject(tl);
-					tileListingItems.add(new TileListingBean (
+					tileListingItems.add(new TileListingModelBean(
 							jsonObject.getString("image"),
-							jsonObject.getString("altText"),
+							jsonObject.getString("altText"), 
 							jsonObject.getString("title"),
-							jsonObject.getString("titleLink"),
+							CoreUtils.getQualifiedLink(resolver, jsonObject.getString("titleLink")),
+							String.valueOf(CoreUtils.isInternalLink(jsonObject.getString("titleLink"))),
 							jsonObject.getString("description")));
-					
+
 				} catch (JSONException e) {
-					LOG.error(e.getMessage());
-				}	
+					LOGGER.error(e.getMessage());
+				}
 			}
 		}
 	}
-	
-	public List<TileListingBean> getTileListingItems() {
+
+	public List<TileListingModelBean> getTileListingItems() {
+		LOGGER.debug("Tile Listing items are : {}", tileListingItems);
 		return tileListingItems;
 	}
 

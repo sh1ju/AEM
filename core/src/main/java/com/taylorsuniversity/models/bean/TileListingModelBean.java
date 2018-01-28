@@ -1,20 +1,23 @@
 package com.taylorsuniversity.models.bean;
 
-public class TileListingBean {
+public class TileListingModelBean {
 	
-	private final String imageItem;
-	private final String altTextItem;
-	private final String titleItem;
-	private final String titleLinkItem;
-	private final String descriptionItem;
+	private String imageItem;
+	private String altTextItem;
+	private String titleItem;
+	private String titleLinkItem;
+	private String titleLinkTypeItem;
+	private String descriptionItem;
 	
-	public TileListingBean(String imageItem, String altTextItem, String titleItem, String titleLinkItem,
-			String descriptionItem) {
+	
+	public TileListingModelBean(String imageItem, String altTextItem, String titleItem, String titleLinkItem,
+			String titleLinkTypeItem, String descriptionItem) {
 		super();
 		this.imageItem = imageItem;
 		this.altTextItem = altTextItem;
 		this.titleItem = titleItem;
 		this.titleLinkItem = titleLinkItem;
+		this.titleLinkTypeItem = titleLinkTypeItem;
 		this.descriptionItem = descriptionItem;
 	}
 	
@@ -29,6 +32,10 @@ public class TileListingBean {
 	}
 	public String getTitleLinkItem() {
 		return titleLinkItem;
+	}
+	
+	public String getTitleLinkTypeItem() {
+		return titleLinkTypeItem;
 	}
 	public String getDescriptionItem() {
 		return descriptionItem;
