@@ -20,6 +20,7 @@ import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 
+import com.day.cq.wcm.api.Page;
 import com.taylorsuniversity.models.bean.FooterModelBean;
 import com.taylorsuniversity.models.bean.FooterModelLinksBean;
 import com.taylorsuniversity.utils.CoreUtils;
@@ -69,10 +70,11 @@ public class FooterModel {
 							footerLinksPages = new ArrayList<>();
 							for (int i = 0; i < jsonArrayPages.length(); i++) {
 								JSONObject points = jsonArrayPages.getJSONObject(i);
-
+								
 										
 								footerLinksPages.add(new FooterModelLinksBean(
-										CoreUtils.getQualifiedLink(resolver, points.getString("linkPath"))));
+										CoreUtils.getQualifiedLink(resolver, points.getString("linkPath")),
+										"HEllo"));
 							}
 							footerLinksMap.put(footerLinksTitle, footerLinksPages);
 						}

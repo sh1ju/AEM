@@ -13,6 +13,74 @@
             sling:resourceType="granite/ui/components/foundation/layouts/tabs"
             type="nav"/>
         <items jcr:primaryType="nt:unstructured">
+            <social
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Social Links"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <socialtitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                fieldDescription="Title of the social header"
+                                 fieldLabel="Social Title"
+                                name="./socialTitle"/>
+                           <paragraph
+                               jcr:primaryType="nt:unstructured"
+                               sling:resourceType="granite/ui/components/foundation/form/multifield"
+                               class="full-width"
+                               fieldDescription="Click '+' to add a new page"
+                               fieldLabel="Social Config">
+                               <field
+                                   jcr:primaryType="nt:unstructured"
+                                   sling:resourceType="granite/ui/components/foundation/form/fieldset"
+                                   acs-commons-nested=""
+                                   name="./social">
+                                   <layout
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                                       method="absolute"/>
+                                       <items jcr:primaryType="nt:unstructured">
+                                           <column
+                                               jcr:primaryType="nt:unstructured"
+                                               sling:resourceType="granite/ui/components/foundation/container">
+                                               <items jcr:primaryType="nt:unstructured">
+                                                   <socialicon
+                                                       jcr:primaryType="nt:unstructured"
+                                                       sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                       fieldDescription="Image of the social icon"
+                                                       fieldLabel="Social Icon"
+                                                       name="./socialIcon"
+                                                       rootPath="/content/dam/taylorsuniversity"/>
+                                                   <sociallink
+                                                       jcr:primaryType="nt:unstructured"
+                                                       sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                       fieldDescription="Link of the social icon. It will open in a new window if external link."
+                                                       fieldLabel="Social Link"
+                                                       name="./socialLink"
+                                                       rootPath="/content/taylorsuniversity"/>
+                                                   <socialtext
+                                                       jcr:primaryType="nt:unstructured"
+                                                       sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                       fieldDescription="Text of the social icon"
+                                                       fieldLabel="Social Text"
+                                                       name="./socialText"/>
+                                               </items>
+                                           </column>
+                                       </items>
+                               </field>
+                           </paragraph>
+                        </items>
+                    </column>
+                </items>
+            </social>
             <footerlinks
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Footer Links"

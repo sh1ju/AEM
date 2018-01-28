@@ -10,8 +10,9 @@
 		<button class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary">
             ${keyName}<i class="d-lg-none t-icon-down white"></i>
         </button>
+            
 		<ul class="text-white" data-sly-test="${model.getFooterLinksMap[keyName]}" data-sly-list.key="${model.getFooterLinksMap[keyName]}">
-		    <li><a href="${key.pageLinkItem}">${key.pageLinkItem}</a></li>
+		    <li><a href="${key.pageLinkItem}">${key.pageNameItem}</a></li>
 		</ul>
 	    </div>
         </sly>
