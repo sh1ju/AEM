@@ -38,6 +38,7 @@ public class FooterModel {
 	@Inject
 	private PageManager pageManager;
 	
+	
 	@Inject
 	@Optional
 	private String[] social;
@@ -46,12 +47,14 @@ public class FooterModel {
 	@Optional
 	private String[] footerLinks;
 
+	/*
+	 * Initializing variable to be used
+	 */
 	private List<FooterModelBean> socialItems = null;
-	
-	String footerLinksTitle;
-	List<FooterModelLinksBean> footerLinksPages;
+	private List<FooterModelLinksBean> footerLinksPages = null;
 	private LinkedHashMap<String, List<FooterModelLinksBean>> footerLinksMap = null;
 	private Page page;
+	private String footerLinksTitle;
 	private String linkName;
 
 	@PostConstruct
