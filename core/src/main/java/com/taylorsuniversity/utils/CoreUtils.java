@@ -181,4 +181,17 @@ public final class CoreUtils {
     	return StringUtils.isNotEmpty(url) ? url : linkUrl;
     }
     
+    
+    /**
+     * Intercepts the linkUrl and checks if external or internal 
+     * @param linkUrl: the authored link			
+     * @return boolean
+     */
+     public static boolean isInternalLink(final String linkUrl) {
+     	if (StringUtils.isNotBlank(linkUrl) && linkUrl.startsWith(Constants.CONTENT_ROOT)) {
+     		return true;
+     	}
+     	return false;
+     }
+    
 }

@@ -61,8 +61,10 @@ public class FooterModel {
 		footerLinkProps();
 	}
 
+	@SuppressWarnings("deprecation")
 	private void footerLinkProps() {
-		LOGGER.info("links" + footerLinks);
+		
+		LOGGER.info("Footer Links are" + footerLinks);
 		if (null != footerLinks) {
 			this.footerLinksMap = new LinkedHashMap<String, List<FooterModelLinksBean>>();
 			for (String footerLinksJsonString : footerLinks) {
@@ -73,7 +75,7 @@ public class FooterModel {
 					if (StringUtils.isNotEmpty(footerLinksTitle)) {
 						if (StringUtils.isNotEmpty(jsonObjectTitle.getString("footerLinksPages"))) {
 							JSONArray jsonArrayPages = jsonObjectTitle.getJSONArray("footerLinksPages");
-							footerLinksPages = new ArrayList<>();
+							footerLinksPages = new ArrayList<FooterModelLinksBean>();
 							for (int i = 0; i < jsonArrayPages.length(); i++) {
 								JSONObject points = jsonArrayPages.getJSONObject(i);
 								LOGGER.info("Page link is " + points.getString("linkPath"));
@@ -93,7 +95,7 @@ public class FooterModel {
 							footerLinksMap.put(footerLinksTitle, footerLinksPages);
 						}
 					} else {
-						LOGGER.info("Paragraph map");
+						LOGGER.error("Error occured in accesing the foooterlinks");
 					}
 					
 				} catch (JSONException e) {
@@ -112,8 +114,10 @@ public class FooterModel {
 			for (String si : social) {
 				try {
 					JSONObject jsonObject = new JSONObject(si);
-					socialItems.add(new FooterModelBean(jsonObject.get("socialIcon").toString(),
-							jsonObject.get("socialLink").toString(), jsonObject.get("socialText").toString()));
+					socialItems.add(new FooterModelBean(
+							jsonObject.get("socialIcon").toString(),
+							jsonObject.get("socialLink").toString(), 
+							jsonObject.get("socialText").toString()));
 
 				} catch (JSONException e) {
 					LOGGER.error(e.getMessage());
