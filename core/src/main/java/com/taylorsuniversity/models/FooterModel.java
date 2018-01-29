@@ -21,9 +21,11 @@ import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.taylorsuniversity.models.bean.FooterModelBean;
 import com.taylorsuniversity.models.bean.FooterModelLinksBean;
 import com.taylorsuniversity.utils.CoreUtils;
+import com.taylorsuniversity.constants.Constants;
 
 @Model(adaptables = Resource.class)
 public class FooterModel {
@@ -32,6 +34,9 @@ public class FooterModel {
 	/** The Resolver. */
 	@Inject
 	private ResourceResolver resolver;
+	
+	@Inject
+	private PageManager pageManager;
 	
 	@Inject
 	@Optional
@@ -46,7 +51,8 @@ public class FooterModel {
 	String footerLinksTitle;
 	List<FooterModelLinksBean> footerLinksPages;
 	private LinkedHashMap<String, List<FooterModelLinksBean>> footerLinksMap = null;
-	
+	private Page page;
+	private String linkName;
 
 	@PostConstruct
 	protected void init() {
@@ -70,11 +76,19 @@ public class FooterModel {
 							footerLinksPages = new ArrayList<>();
 							for (int i = 0; i < jsonArrayPages.length(); i++) {
 								JSONObject points = jsonArrayPages.getJSONObject(i);
+								LOGGER.info("Page link is " + points.getString("linkPath"));
 								
-										
+								if(CoreUtils.isInternalLink(points.getString("linkPath"))) {
+									page = pageManager.getPage(points.getString("linkPath"));
+									linkName = page.getTitle();
+								}
+								else {
+									linkName = points.getString("linkPath");
+								}
+								
 								footerLinksPages.add(new FooterModelLinksBean(
 										CoreUtils.getQualifiedLink(resolver, points.getString("linkPath")),
-										"HEllo"));
+										linkName));
 							}
 							footerLinksMap.put(footerLinksTitle, footerLinksPages);
 						}
