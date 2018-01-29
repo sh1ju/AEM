@@ -181,7 +181,6 @@ public final class CoreUtils {
     	return StringUtils.isNotEmpty(url) ? url : linkUrl;
     }
     
-    
     /**
      * Intercepts the linkUrl and checks if external or internal 
      * @param linkUrl: the authored link			
@@ -193,5 +192,4 @@ public final class CoreUtils {
      	}
      	return false;
      }
-    
 }
