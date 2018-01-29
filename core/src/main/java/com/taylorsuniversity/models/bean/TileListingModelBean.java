@@ -1,42 +1,45 @@
 package com.taylorsuniversity.models.bean;
 
+import javax.inject.Inject;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.api.resource.ResourceResolver;
+import com.taylorsuniversity.utils.CoreUtils;
+
+@Model(adaptables = Resource.class)
 public class TileListingModelBean {
 	
-	private String imageItem;
-	private String altTextItem;
-	private String titleItem;
-	private String titleLinkItem;
-	private String titleLinkTypeItem;
-	private String descriptionItem;
+	@Inject
+	ResourceResolver resolver;
 	
-	public TileListingModelBean(String imageItem, String altTextItem, String titleItem, String titleLinkItem,
-			String titleLinkTypeItem, String descriptionItem) {
-		super();
-		this.imageItem = imageItem;
-		this.altTextItem = altTextItem;
-		this.titleItem = titleItem;
-		this.titleLinkItem = titleLinkItem;
-		this.titleLinkTypeItem = titleLinkTypeItem;
-		this.descriptionItem = descriptionItem;
+	@Inject
+	private String image;
+	@Inject
+	private String altText;
+	@Inject
+	private String title;
+	@Inject
+	private String titleLink;
+	@Inject
+	private String description;
+	
+	public String getImage() {
+		return image;
+	}
+	public String getAlt() {
+		return altText;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public String getTitleLink() {
+		return CoreUtils.getQualifiedLink(resolver, titleLink);
+	}
+	public String getTitleLinkType() {
+		return String.valueOf(CoreUtils.isInternalLink(titleLink));
+	}
+	public String getDescription() {
+		return description;
 	}
 	
-	public String getImageItem() {
-		return imageItem;
-	}
-	public String getAltTextItem() {
-		return altTextItem;
-	}
-	public String getTitleItem() {
-		return titleItem;
-	}
-	public String getTitleLinkItem() {
-		return titleLinkItem;
-	}
-	
-	public String getTitleLinkTypeItem() {
-		return titleLinkTypeItem;
-	}
-	public String getDescriptionItem() {
-		return descriptionItem;
-	}
 }

@@ -53,7 +53,4 @@ public final class Constants {
     
     /** The Constant for DAM path */
     public static final String DAM_ROOT = "/content/dam/taylorsuniversity";
-    
-    /** The Constant for Empty String */
-    public static final String EMPTY = "";
 }
