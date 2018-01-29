@@ -8,12 +8,11 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import com.taylorsuniversity.models.bean.TileListingModelBean;
 
-@Model(adaptables = SlingHttpServletRequest.class)
+@Model(adaptables = Resource.class)
 public class TileListingModel {
 
 	@Inject
@@ -39,12 +38,12 @@ public class TileListingModel {
 		        tileListingItems = new ArrayList<TileListingModelBean>();
 		        
 		        for (Resource tile : tileListing) {
-		        	LOGGER.debug("Tile items are : {}", tile);
+		        	LOGGER.debug("Tile items are :", tile);
 		        	tileListingItems.add(tile.adaptTo(TileListingModelBean.class));
 		        }
 		      }
 		    } catch (Exception exception) {
-		      LOGGER.error("Unable to parse the tile list ", exception);
+		    	LOGGER.error("Unable to parse the tile list ", exception);
 		    }
 	}
 
