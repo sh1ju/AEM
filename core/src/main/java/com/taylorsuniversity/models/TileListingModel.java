@@ -35,7 +35,7 @@ public class TileListingModel {
 		
 		 try {
 		      if (null != tileListing && !tileListing.isEmpty()) {
-		        tileListingItems = new ArrayList<TileListingModelBean>();
+		        tileListingItems = new ArrayList<>();
 		        
 		        for (Resource tile : tileListing) {
 		        	LOGGER.debug("Tile items are :", tile);
