@@ -1,6 +1,6 @@
 <sly
 	data-sly-use.header="com.taylorsuniversity.models.HeaderComponentModel">
-	<sly data-sly-test="${!header.headerComponentModelBean && wcmmode.edit}">
+	<sly data-sly-test="${wcmmode.edit}">
 	    <p class="cq-placeholder" data-emptytext="${component.cellName}"></p>
 	</sly>
 	<sly data-sly-test.headerComponent="${header.headerComponentModelBean}">
