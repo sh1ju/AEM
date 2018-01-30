@@ -98,7 +98,7 @@
                                 sling:resourceType="granite/ui/components/foundation/form/multifield"
                                 class="full-width"
                                 fieldDescription="Click '+' to add a new page"
-                                fieldLabel="Paragraph">
+                                fieldLabel="Footer Config">
                                 <field
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/fieldset"

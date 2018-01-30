@@ -1,6 +1,7 @@
 package com.taylorsuniversity.models;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -135,6 +136,17 @@ public class FooterModel {
 		}
 	}
 
+	/**
+	 * Gets the current year.
+	 *
+	 * @return the current year
+	 **/
+	public int getCurrentYear() {
+		Calendar cal = Calendar.getInstance();
+		LOGGER.debug("Current Year is : {} ", cal.get(Calendar.YEAR));
+		return cal.get(Calendar.YEAR);
+	}
+	
 	public List<FooterModelBean> getSocialItems() {
 		return socialItems;
 	}
