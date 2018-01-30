@@ -19,7 +19,11 @@
 
 
 
-<div data-sly-resource="${ @path='header', resourceType='taylorsuniversity/components/content/header'}"></div>
+<sly data-sly-test.templateName="${pageProperties.cq:template}">
+	<div data-sly-test.mode="${templateName == '/apps/taylorsuniversity/templates/homepage' ? 'edit' : 'disabled'}">
+	      <div data-sly-resource="${ @path='header', resourceType='taylorsuniversity/components/content/header', wcmmode=mode}"></div>
+	</div>
+</sly>
 
  <!-- Placeholder for header component -->
 <sly data-sly-include="content.html"></sly>

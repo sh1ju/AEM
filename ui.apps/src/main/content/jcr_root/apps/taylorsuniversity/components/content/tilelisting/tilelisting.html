@@ -1,0 +1,47 @@
+<sly data-sly-test="${wcmmode.edit}">
+<p class="cq-placeholder" data-emptytext="Tile Listing"></p>
+</sly>
+<sly data-sly-use.model="com.taylorsuniversity.models.TileListingModel"/>
+<!--Tiles Section 1-->
+<div class="row" data-sly-test="${properties.displayStyle == 'tiles' && model.tileListingItems}">
+    <div class="w-100 d-flex flex-row flex-wrap flex-lg-nowrap align-items-stretch no-gutters" data-sly-list.ti="${model.tileListingItems}"> 
+        <div class="image-with-tag col-12 col-lg">
+            <img class="img-fluid" src="${ti.image}" width="100%" height="auto" alt="${ti.alt}">
+            <a href="${ti.titleLink}" class="btn btn-simple btn-red" target="${ti.titleLinkType=='true'? '_self' : '_blank'}">
+				${ti.title}<i class="t-icon-right white ml-1"></i>
+            </a>
+            <p class="content pt-4">${ti.description}</p>
+        </div>
+    </div>
+</div>
+<!-- Stats Section: 4 items in a row-->
+<div class="row pb-5 t-px" data-sly-list.ti="${model.tileListingItems}" 
+    data-sly-test="${properties.displayStyle == 'stats' && model.tileListingItems.size == 4}">
+    <div class="col-6 col-lg" >
+        <div class="icon-percent-text d-flex flex-column flex-lg-row justify-content-center align-items-center justify-content-lg-start align-items-lg-start">
+            <div class="icon-container  py-2 px-3">
+				<img src="${ti.image}" class="icon-img" alt="${ti.alt}">
+            </div>
+            <div class="content text-center text-lg-left">
+				<h3 class="txt-primary">${ti.title}</h3>
+				<p>${ti.description}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Stats Section:3 items in a row-->
+<div class="container-fluid bg-gray-2" 
+     data-sly-test="${properties.displayStyle == 'stats' && model.tileListingItems.size == 3}">
+    <div class="row t-px t-py" data-sly-list.ti="${model.tileListingItems}">
+		<div class="col-md-4 d-flex align-items-center mb-sm-2 mt-sm-2">
+			<div class="course-stats">
+				<img class="course-details-stats-icon" src="${ti.image}" alt=${ti.alt}>
+				<div class="stats-desc">
+					<div>
+                        <strong class="txt-primary font-bold">${ti.title}</strong>
+					</div>${ti.description}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
