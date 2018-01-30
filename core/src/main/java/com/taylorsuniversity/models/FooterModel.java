@@ -105,7 +105,6 @@ public class FooterModel {
 					}
 					
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					LOGGER.error("Exception occured in FooterModel class: " + e.getMessage());
 					e.printStackTrace();
 				}
