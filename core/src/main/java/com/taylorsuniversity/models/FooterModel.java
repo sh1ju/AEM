@@ -11,15 +11,16 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.Optional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.Via;
+import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
@@ -27,24 +28,26 @@ import com.taylorsuniversity.models.bean.FooterModelBean;
 import com.taylorsuniversity.models.bean.FooterModelLinksBean;
 import com.taylorsuniversity.utils.CoreUtils;
 
-@SuppressWarnings("deprecation")
-@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public class FooterModel {
 	Logger LOGGER = LoggerFactory.getLogger(FooterModelBean.class);
 
 	/** The Resolver. */
-	@Inject
-	private ResourceResolver resolver;
+	@Self
+	private SlingHttpServletRequest request;
+	
 	
 	@Inject
 	private PageManager pageManager;
 	
 	@Inject
 	@Optional
+	@Via("resource")
 	private String[] social;
 	
 	@Inject
 	@Optional
+	@Via("resource")
 	private String[] footerLinks;
 
 	/*
@@ -59,7 +62,6 @@ public class FooterModel {
 
 	@PostConstruct
 	protected void init() {
-
 		socialProps();
 		footerLinkProps();
 	}
@@ -96,7 +98,7 @@ public class FooterModel {
 								}
 								
 								footerLinksPages.add(new FooterModelLinksBean(
-										CoreUtils.getQualifiedLink(resolver, pages.getString("linkPath")),
+										CoreUtils.getQualifiedLink(request.getResourceResolver(), pages.getString("linkPath")),
 										linkName));
 							}
 							footerLinksMap.put(footerLinksTitle, footerLinksPages);
