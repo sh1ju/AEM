@@ -1,5 +1,9 @@
 package com.taylorsuniversity.models.bean;
 
+/**
+ * @author prajput
+ *
+ */
 public class FooterModelLinksBean {
 	
 	private String pageLinkItem;
@@ -11,9 +15,15 @@ public class FooterModelLinksBean {
 		this.pageNameItem = pageName;
 	}
 	
+	/**
+	 * @return String
+	 */
 	public String getPageLinkItem() {
 		return pageLinkItem;
 	}
+	/**
+	 * @return String
+	 */
 	public String getPageNameItem() {
 		return pageNameItem;
 	}

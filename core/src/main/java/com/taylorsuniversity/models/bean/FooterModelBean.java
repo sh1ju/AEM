@@ -1,5 +1,9 @@
 package com.taylorsuniversity.models.bean;
 
+/**
+ * @author prajput
+ *
+ */
 public class FooterModelBean {
 	
 	private String socialIcon;
@@ -13,12 +17,22 @@ public class FooterModelBean {
 		this.socialText = socialText;
 	}
 	
+	
+	/**
+	 * @return String
+	 */
 	public String getSocialIcon() {
 		return socialIcon;
 	}
+	/**
+	 * @return String
+	 */
 	public String getSocialLink() {
 		return socialLink;
 	}
+	/**
+	 * @return String
+	 */
 	public String getSocialText() {
 		return socialText;
 	}

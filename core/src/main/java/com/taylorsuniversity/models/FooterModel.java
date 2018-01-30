@@ -28,9 +28,14 @@ import com.taylorsuniversity.models.bean.FooterModelBean;
 import com.taylorsuniversity.models.bean.FooterModelLinksBean;
 import com.taylorsuniversity.utils.CoreUtils;
 
+/**
+ * @author prajput
+ *
+ */
+@SuppressWarnings("deprecation")
 @Model(adaptables = SlingHttpServletRequest.class)
 public class FooterModel {
-	Logger LOGGER = LoggerFactory.getLogger(FooterModelBean.class);
+	Logger LOGGER = LoggerFactory.getLogger(FooterModel.class);
 
 	/** The Resolver. */
 	@Self
@@ -66,13 +71,15 @@ public class FooterModel {
 		footerLinkProps();
 	}
 
-	/*
-	 * Description: This method handles footer-links tab configuration
+	
+	/**
+	 * Reads the authored footer links properties and adds to bean
+	 * 
 	 */
 	private void footerLinkProps() {
 		
-		if (ArrayUtils.isNotEmpty(footerLinks)) {
-			this.footerLinksMap = new LinkedHashMap<String, List<FooterModelLinksBean>>();
+		if (null != footerLinks && ArrayUtils.isNotEmpty(footerLinks)) {
+			this.footerLinksMap = new LinkedHashMap<>();
 			for (String footerLinksJsonString : footerLinks) {
 				JSONObject jsonObjectTitle;
 				try {
@@ -116,14 +123,16 @@ public class FooterModel {
 		}
 	}
 
-	/*
-	 * Description: This method handles social-links tab configuration
+	/**
+	 * Reads the authored social properties and adds to bean
+	 * 
 	 */
 	private void socialProps() {
 		
-		if (ArrayUtils.isNotEmpty(social)) {
+		if (null != social && ArrayUtils.isNotEmpty(social)) {
 			socialItems = new ArrayList<>();
 			for (String si : social) {
+				LOGGER.debug("Social item is: : {}", si);
 				try {
 					JSONObject jsonObject = new JSONObject(si);
 					socialItems.add(new FooterModelBean(
@@ -149,10 +158,17 @@ public class FooterModel {
 		return cal.get(Calendar.YEAR);
 	}
 	
+	/**
+	 * @return List<FooterModelBean>
+	 */
 	public List<FooterModelBean> getSocialItems() {
 		return socialItems;
 	}
 
+	
+	/**
+	 * @return Map<String, List<FooterModelLinksBean>>
+	 */
 	public Map<String, List<FooterModelLinksBean>> getFooterLinksMap() {
 		return footerLinksMap;
 	}
