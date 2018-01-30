@@ -5,7 +5,6 @@ public class FooterModelLinksBean {
 	private String pageLinkItem;
 	private String pageNameItem;
 
-	
 	public FooterModelLinksBean(String pageLink, String pageName) {
 		super();
 		this.pageLinkItem = pageLink;
@@ -18,5 +17,4 @@ public class FooterModelLinksBean {
 	public String getPageNameItem() {
 		return pageNameItem;
 	}
-	
 }

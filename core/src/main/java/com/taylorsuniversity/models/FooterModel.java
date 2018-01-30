@@ -25,8 +25,8 @@ import com.day.cq.wcm.api.PageManager;
 import com.taylorsuniversity.models.bean.FooterModelBean;
 import com.taylorsuniversity.models.bean.FooterModelLinksBean;
 import com.taylorsuniversity.utils.CoreUtils;
-import com.taylorsuniversity.constants.Constants;
 
+@SuppressWarnings("deprecation")
 @Model(adaptables = Resource.class)
 public class FooterModel {
 	Logger LOGGER = LoggerFactory.getLogger(FooterModelBean.class);
@@ -37,7 +37,6 @@ public class FooterModel {
 	
 	@Inject
 	private PageManager pageManager;
-	
 	
 	@Inject
 	@Optional
@@ -64,35 +63,39 @@ public class FooterModel {
 		footerLinkProps();
 	}
 
-	@SuppressWarnings("deprecation")
+	/*
+	 * Description: This method handles footer-links tab configuration
+	 */
 	private void footerLinkProps() {
 		
-		LOGGER.info("Footer Links are" + footerLinks);
-		if (null != footerLinks) {
+		if (ArrayUtils.isNotEmpty(footerLinks)) {
 			this.footerLinksMap = new LinkedHashMap<String, List<FooterModelLinksBean>>();
 			for (String footerLinksJsonString : footerLinks) {
 				JSONObject jsonObjectTitle;
 				try {
 					jsonObjectTitle = new JSONObject(footerLinksJsonString);
 					footerLinksTitle = jsonObjectTitle.getString("footerLinksTitle") != null ? jsonObjectTitle.getString("footerLinksTitle") : "";
-					if (StringUtils.isNotEmpty(footerLinksTitle)) {
-						if (StringUtils.isNotEmpty(jsonObjectTitle.getString("footerLinksPages"))) {
+					LOGGER.debug("Footer Links title is: : {}", footerLinksTitle);
+					
+					if (StringUtils.isNotBlank(footerLinksTitle)) {
+						if (StringUtils.isNotBlank(jsonObjectTitle.getString("footerLinksPages"))) {
 							JSONArray jsonArrayPages = jsonObjectTitle.getJSONArray("footerLinksPages");
-							footerLinksPages = new ArrayList<FooterModelLinksBean>();
+							footerLinksPages = new ArrayList<>();
+							
 							for (int i = 0; i < jsonArrayPages.length(); i++) {
-								JSONObject points = jsonArrayPages.getJSONObject(i);
-								LOGGER.info("Page link is " + points.getString("linkPath"));
+								JSONObject pages = jsonArrayPages.getJSONObject(i);
+								LOGGER.debug("Page link is " + pages.getString("linkPath"));
 								
-								if(CoreUtils.isInternalLink(points.getString("linkPath"))) {
-									page = pageManager.getPage(points.getString("linkPath"));
+								if(CoreUtils.isInternalLink(pages.getString("linkPath"))) {
+									page = pageManager.getPage(pages.getString("linkPath"));
 									linkName = page.getTitle();
 								}
 								else {
-									linkName = points.getString("linkPath");
+									linkName = pages.getString("linkPath");
 								}
 								
 								footerLinksPages.add(new FooterModelLinksBean(
-										CoreUtils.getQualifiedLink(resolver, points.getString("linkPath")),
+										CoreUtils.getQualifiedLink(resolver, pages.getString("linkPath")),
 										linkName));
 							}
 							footerLinksMap.put(footerLinksTitle, footerLinksPages);
@@ -103,17 +106,21 @@ public class FooterModel {
 					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
+					LOGGER.error("Exception occured in FooterModel class: " + e.getMessage());
 					e.printStackTrace();
 				}
 				
 			}
 		}
-		
 	}
 
+	/*
+	 * Description: This method handles social-links tab configuration
+	 */
 	private void socialProps() {
+		
 		if (ArrayUtils.isNotEmpty(social)) {
-			socialItems = new ArrayList<FooterModelBean>();
+			socialItems = new ArrayList<>();
 			for (String si : social) {
 				try {
 					JSONObject jsonObject = new JSONObject(si);
