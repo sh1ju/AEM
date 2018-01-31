@@ -113,6 +113,7 @@ public class HeaderComponentModel {
         .setSearchResultsPagePath(valMap.get("searchResultsPagePath", String.class));
     resource = resolver.getResource(
         homePage.getPath() + Constants.HEADER_COMPONENT_RELATIVE_PATH + "/navigationSections");
+    LOGGER.debug("Navigation section resource is :  {}", resource);
     if (resource != null) {
       navigationSectionModelBeanList =
           CoreUtils.getNodeProperties(resource, NavigationSectionModelBean.class);

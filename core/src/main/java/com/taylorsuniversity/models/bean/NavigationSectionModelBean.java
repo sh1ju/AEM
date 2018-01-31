@@ -4,14 +4,14 @@ package com.taylorsuniversity.models.bean;
 
 import javax.inject.Inject;
 
-import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 
 /**
  * The Class NavigationSectionModelBean.
  */
-@Model(adaptables = SlingHttpServletRequest.class)
+@Model(adaptables = Resource.class)
 public class NavigationSectionModelBean {
   
   @Inject
