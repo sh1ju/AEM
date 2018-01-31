@@ -41,7 +41,6 @@ public class FooterModel {
 	@Self
 	private SlingHttpServletRequest request;
 	
-	
 	@Inject
 	private PageManager pageManager;
 	
@@ -61,12 +60,10 @@ public class FooterModel {
 	private List<FooterModelSocialBean> socialItems = null;
 	private List<FooterModelBean> footerLinksPages = null;
 	private LinkedHashMap<String, List<FooterModelBean>> footerLinksMap = null;
-	private Page page;
-	private String footerLinksTitle;
-	private String linkTitle;
-	private String linkUrlPath = "";
-	private String linkName = "";
-	private String link = "";
+	private FooterModelLinksBean fmb = null;
+	private String linkUrlPath = StringUtils.EMPTY;
+	private String linkName = StringUtils.EMPTY;
+	private String link = StringUtils.EMPTY;
 
 	@PostConstruct
 	protected void init() {
@@ -74,7 +71,6 @@ public class FooterModel {
 		footerLinkProps();
 	}
 
-	
 	/**
 	 * Reads the authored footer links properties and adds to bean
 	 * 
@@ -87,21 +83,23 @@ public class FooterModel {
 			for (String footerLinksJsonString : footerLinks) {
 				
 				Gson gson = new Gson();
-				FooterModelLinksBean fmb = gson.fromJson(footerLinksJsonString, FooterModelLinksBean.class);
-				LOGGER.info("Footer model bean is : {}" + fmb);
+				fmb = gson.fromJson(footerLinksJsonString, FooterModelLinksBean.class);
+				LOGGER.debug("Footer model bean is : {}" + fmb);
 				
 				if (StringUtils.isNotBlank(fmb.getFooterLinksTitle())) {
 					
-					LOGGER.info("Footer model bean title is : {}" + fmb.getFooterLinksTitle());
+					LOGGER.debug("Footer model bean title is : {}" + fmb.getFooterLinksTitle());
 					List<FooterModelLinkPathBean> pages = fmb.getFooterLinksPages();
 					footerLinksPages = new ArrayList<>();
+					
 					if (null != pages && ArrayUtils.isNotEmpty(pages.toArray())) {
 						
 						for (FooterModelLinkPathBean li: pages) {
+							
 							if(StringUtils.isNotBlank(li.getLinkPath())) {
 								
 								link = li.getLinkPath();
-								LOGGER.info("Link is : {}" + link);
+								LOGGER.debug("Link is : {}" + link);
 								
 								if(CoreUtils.isInternalLink(link)) {
 									linkName = pageManager.getPage(link).getTitle();
@@ -109,22 +107,17 @@ public class FooterModel {
 								else {
 									linkName = link;
 								}
-								
-								LOGGER.info("Link name is : {}" + linkName);
+								LOGGER.debug("Link name is : {}" + linkName);
 								
 								linkUrlPath = CoreUtils.getQualifiedLink(request.getResourceResolver(), link);
-								LOGGER.info("Link Url Path is : {}" + linkUrlPath);
-								
+								LOGGER.debug("Link Url Path is : {}" + linkUrlPath);
 							}
-							
 							footerLinksPages.add(new FooterModelBean(linkUrlPath, linkName));
-							LOGGER.info("Link Url Path is : {}" + linkUrlPath);
-							
+							LOGGER.debug("Link Url Path is : {}" + linkUrlPath);
 						}
 					}
 					footerLinksMap.put(fmb.getFooterLinksTitle(), footerLinksPages );
 				}	
-				
 			}
 		}
 	}
@@ -140,7 +133,7 @@ public class FooterModel {
 		
 		if (null != social && ArrayUtils.isNotEmpty(social)) {
 			for(String si : social) {
-				LOGGER.info("Social item is: : {}", si);
+				LOGGER.debug("Social item is: : {}", si);
 				FooterModelSocialBean fmb = gson.fromJson(si, FooterModelSocialBean.class);
 				socialItems.add(fmb);
 			}
@@ -162,15 +155,15 @@ public class FooterModel {
 	 * @return List<FooterModelBean>
 	 */
 	public List<FooterModelSocialBean> getSocialItems() {
+		LOGGER.debug("Socail Links list being sent is: : {}", socialItems);
 		return socialItems;
 	}
-
 	
 	/**
 	 * @return Map<String, List<FooterModelLinksBean>>
 	 */
 	public Map<String, List<FooterModelBean>> getFooterLinksMap() {
-		LOGGER.info("Footer Links Map being sent is: : {}", footerLinksMap);
+		LOGGER.debug("Footer Links Map being sent is: : {}", footerLinksMap);
 		return footerLinksMap;
 	}
 }
