@@ -60,7 +60,6 @@ public class FooterModel {
 	private List<FooterModelSocialBean> socialItems = null;
 	private List<FooterModelBean> footerLinksPages = null;
 	private LinkedHashMap<String, List<FooterModelBean>> footerLinksMap = null;
-	private FooterModelLinksBean fmb = null;
 	private String linkUrlPath = StringUtils.EMPTY;
 	private String linkName = StringUtils.EMPTY;
 	private String link = StringUtils.EMPTY;
@@ -83,7 +82,7 @@ public class FooterModel {
 			for (String footerLinksJsonString : footerLinks) {
 				
 				Gson gson = new Gson();
-				fmb = gson.fromJson(footerLinksJsonString, FooterModelLinksBean.class);
+				FooterModelLinksBean fmb = gson.fromJson(footerLinksJsonString, FooterModelLinksBean.class);
 				LOGGER.debug("Footer model bean is : {}" + fmb);
 				
 				if (StringUtils.isNotBlank(fmb.getFooterLinksTitle())) {
