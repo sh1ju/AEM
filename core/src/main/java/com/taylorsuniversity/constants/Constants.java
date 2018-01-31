@@ -53,4 +53,25 @@ public final class Constants {
     
     /** The Constant for DAM path */
     public static final String DAM_ROOT = "/content/dam/taylorsuniversity";
+    
+    /** The Constant for 2_property key. */
+    public static final String SECOND_PROPERTY_KEY = "2_property";
+    
+    /** The Constant for 2_property value. */
+    public static final String SECOND_PROPERTY_VALUE = "2_property.value";
+    
+    /** The Constant for 2_property operation. */
+    public static final String SECOND_PROPERTY_OPERATION = "2_property.operation";
+    
+    /** The Constant for jcr:content/jcr:title. */
+    public static final String JCR_CONTENT_TITLE = "jcr:content/jcr:title";
+    
+    /** The Constant for jcr:title. */
+    public static final String JCR_TITLE = "jcr:title";
+    
+    /** The Constant for like. */
+    public static final String LIKE = "like";
+    
+    /** The Constant for percentage. */
+    public static final String PERCENTAGE = "%";
 }

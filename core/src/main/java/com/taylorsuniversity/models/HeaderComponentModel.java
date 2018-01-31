@@ -16,6 +16,7 @@ import javax.jcr.Node;
 import javax.jcr.Session;
 
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
@@ -43,20 +44,25 @@ import com.day.cq.search.result.SearchResult;
  * This class is used to retrieve the properties configured in the header component of the home-page
  * template.
  */
-@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public class HeaderComponentModel {
 
   private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
   @Inject
   private ResourceResolver resolver;
-
-  @Inject
-  private Resource resource;
   
   @Inject
   @Optional
   QueryBuilder queryBuilder;
+  
+  @Inject
+  @Optional
+  private Page currentPage;
+  
+  @Inject
+  @Optional
+  String queryParam;
 
   private Page homePage;
 
@@ -74,7 +80,6 @@ public class HeaderComponentModel {
     LOGGER.error("Resolver is : {}", resolver);
     PageManager pageManager = resolver.adaptTo(PageManager.class);
     LOGGER.debug("PageManager is  : {}", pageManager);
-    Page currentPage = pageManager == null ? null : pageManager.getContainingPage(resource);
     LOGGER.debug("CurrentPage is : {}", currentPage);
     if(currentPage == null) {
       LOGGER.debug("currentPage is null");
@@ -214,19 +219,15 @@ public class HeaderComponentModel {
     
     LOGGER.debug("Get Search Suggest method invoked !!!");
     
+    LOGGER.debug("Query Params in the Search Suggest Json is : {}", queryParam);
+    
     schoolAndCourseListJson = new ArrayList<>();
     
     PageManager pageManager = resolver.adaptTo(PageManager.class);
     LOGGER.debug("PageManager is : {}", pageManager);
-    Page page = pageManager == null ? null : pageManager.getContainingPage(resource);
     
-    if(page == null) {
-      LOGGER.debug("Page is null");
-      return "";
-    }
-    
-    createPredicateMapToFindSchoolAndCourses(page.getPath(), Constants.SCHOOL_PAGE_TEMPLATE);
-    createPredicateMapToFindSchoolAndCourses(page.getPath(), Constants.COURSES_PAGE_TEMPLATE);
+    createPredicateMapToFindSchoolAndCourses(currentPage.getPath(), Constants.SCHOOL_PAGE_TEMPLATE);
+    createPredicateMapToFindSchoolAndCourses(currentPage.getPath(), Constants.COURSES_PAGE_TEMPLATE);
     
     String schoolAndCoursesJson = schoolAndCourseListJson.toString();
     
@@ -236,7 +237,7 @@ public class HeaderComponentModel {
   }
   
   private void createPredicateMapToFindSchoolAndCourses(String homePagePath, String templatePath) {
-
+    
     Map<String, String> predicateMap = new HashMap<>();
   
     predicateMap.put(Constants.TYPE, Constants.CQ_PAGE);
@@ -244,6 +245,10 @@ public class HeaderComponentModel {
   
     predicateMap.put(Constants.FIRST_PROPERTY_KEY, Constants.JCR_CONTENT_RESOURCE_TYPE);
     predicateMap.put(Constants.FIRST_PROPERTY_VALUE, templatePath);
+    
+    predicateMap.put(Constants.SECOND_PROPERTY_KEY, Constants.JCR_CONTENT_TITLE);
+    predicateMap.put(Constants.SECOND_PROPERTY_VALUE, queryParam + Constants.PERCENTAGE);
+    predicateMap.put(Constants.SECOND_PROPERTY_OPERATION, Constants.LIKE);
 
     LOGGER.debug("Predicate map is : {}", predicateMap);
     
