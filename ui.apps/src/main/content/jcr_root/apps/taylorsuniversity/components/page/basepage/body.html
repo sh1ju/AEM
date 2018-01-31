@@ -41,8 +41,12 @@
  <!-- Placeholder for header component -->
 <sly data-sly-include="content.html"></sly>
 <!-- Placeholder for footer component -->
-<div data-sly-resource="${ @path='footer', resourceType='taylorsuniversity/components/content/footer', wcmmode=mode}"></div>
-
-
+<sly data-sly-test.templateName="${pageProperties.cq:template}">
+    <div data-sly-test.mode="${templateName == '/apps/taylorsuniversity/templates/homepage' ? 'edit' : 'disabled'}">
+        <section class="container-fluid">
+            <div data-sly-resource="${ @path='footer', resourceType='taylorsuniversity/components/content/footer', wcmmode=mode}"></div>
+        </section>
+    </div>
+</sly>
 
 

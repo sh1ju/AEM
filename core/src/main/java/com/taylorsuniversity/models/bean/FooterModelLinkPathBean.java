@@ -12,9 +12,4 @@ public class FooterModelLinkPathBean {
 	public String getLinkPath() {
 		return linkPath;
 	}
-
-	public void setLinkPath(String linkPath) {
-		this.linkPath = linkPath;
-	}
-	
 }

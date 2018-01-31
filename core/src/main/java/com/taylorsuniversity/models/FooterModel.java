@@ -100,7 +100,7 @@ public class FooterModel {
 								link = li.getLinkPath();
 								LOGGER.debug("Link is : {}" + link);
 								
-								if(CoreUtils.isInternalLink(link)) {
+								if(CoreUtils.isInternalLink(link) && (null != pageManager.getPage(link))) {
 									linkName = pageManager.getPage(link).getTitle();
 								}
 								else {

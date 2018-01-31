@@ -11,50 +11,13 @@ public class FooterModelSocialBean {
 	private String socialLink;
 	private String socialText;
 	
-	
-	/**
-	 * @param socialIcon
-	 */
-	public void setSocialIcon(String socialIcon) {
-		this.socialIcon = socialIcon;
-	}
-
-
-	/**
-	 * @param socialLink
-	 */
-	public void setSocialLink(String socialLink) {
-		this.socialLink = socialLink;
-	}
-
-
-	/**
-	 * @param socialText
-	 */
-	public void setSocialText(String socialText) {
-		this.socialText = socialText;
-	}
-	
-	
-	/**
-	 * @return String
-	 */
 	public String getSocialIcon() {
 		return socialIcon;
 	}
-	
-	/**
-	 * @return String
-	 */
 	public String getSocialLink() {
 		return socialLink;
 	}
-	
-	/**
-	 * @return String
-	 */
 	public String getSocialText() {
 		return socialText;
 	}
-
 }

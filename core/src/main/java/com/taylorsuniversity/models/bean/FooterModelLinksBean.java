@@ -10,14 +10,8 @@ public class FooterModelLinksBean {
 	public String getFooterLinksTitle() {
 		return footerLinksTitle;
 	}
-	public void setFooterLinksTitle(String footerLinksTitle) {
-		this.footerLinksTitle = footerLinksTitle;
-	}
 	public List<FooterModelLinkPathBean> getFooterLinksPages() {
 		return footerLinksPages;
-	}
-	public void setFooterLinksPages(List<FooterModelLinkPathBean> footerLinksPages) {
-		this.footerLinksPages = footerLinksPages;
 	}
 }
 
