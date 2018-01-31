@@ -1,30 +1,23 @@
 package com.taylorsuniversity.models.bean;
 
-/**
- * @author prajput
- *
- */
+import java.util.List;
+
 public class FooterModelLinksBean {
 	
-	private String pageLinkItem;
-	private String pageNameItem;
-
-	public FooterModelLinksBean(String pageLink, String pageName) {
-		super();
-		this.pageLinkItem = pageLink;
-		this.pageNameItem = pageName;
-	}
+	private String footerLinksTitle;
+	private List<FooterModelLinkPathBean> footerLinksPages;
 	
-	/**
-	 * @return String
-	 */
-	public String getPageLinkItem() {
-		return pageLinkItem;
+	public String getFooterLinksTitle() {
+		return footerLinksTitle;
 	}
-	/**
-	 * @return String
-	 */
-	public String getPageNameItem() {
-		return pageNameItem;
+	public void setFooterLinksTitle(String footerLinksTitle) {
+		this.footerLinksTitle = footerLinksTitle;
+	}
+	public List<FooterModelLinkPathBean> getFooterLinksPages() {
+		return footerLinksPages;
+	}
+	public void setFooterLinksPages(List<FooterModelLinkPathBean> footerLinksPages) {
+		this.footerLinksPages = footerLinksPages;
 	}
 }
+

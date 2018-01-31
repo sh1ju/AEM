@@ -1,39 +1,25 @@
 package com.taylorsuniversity.models.bean;
 
 /**
- * @author prajput
+ * This bean class is used to set and retrieve the link name and link path 
+ * for the url entered by the user in Footer component of the home-page template.
  *
  */
 public class FooterModelBean {
 	
-	private String socialIcon;
-	private String socialLink;
-	private String socialText;
-	
-	public FooterModelBean(String socialIcon, String socialLink, String socialText) {
+	private String pageLinkItem;
+	private String pageNameItem;
+
+	public FooterModelBean(String pageLinkItem, String pageNameItem) {
 		super();
-		this.socialIcon = socialIcon;
-		this.socialLink = socialLink;
-		this.socialText = socialText;
+		this.pageLinkItem = pageLinkItem;
+		this.pageNameItem = pageNameItem;
 	}
 	
-	
-	/**
-	 * @return String
-	 */
-	public String getSocialIcon() {
-		return socialIcon;
+	public String getPageLinkItem() {
+		return pageLinkItem;
 	}
-	/**
-	 * @return String
-	 */
-	public String getSocialLink() {
-		return socialLink;
-	}
-	/**
-	 * @return String
-	 */
-	public String getSocialText() {
-		return socialText;
+	public String getPageNameItem() {
+		return pageNameItem;
 	}
 }
