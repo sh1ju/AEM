@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.taylorsuniversity.models.bean.FooterModelSocialBean;
+import com.taylorsuniversity.constants.Constants;
 import com.taylorsuniversity.models.bean.FooterModelBean;
 import com.taylorsuniversity.models.bean.FooterModelLinkPathBean;
 import com.taylorsuniversity.models.bean.FooterModelLinksBean;
@@ -43,31 +44,28 @@ public class FooterModel {
 	
 	@Inject
 	private PageManager pageManager;
-	
 	@Inject
-	@Optional
-	@Via("resource")
-	private String[] social;
-	
-	@Inject
-	@Optional
-	@Via("resource")
-	private String[] footerLinks;
+	private Page currentPage;
 
 	/*
 	 * Initializing variable to be used
 	 */
+	private String[] footerLinks;
+	private String[] social;
 	private List<FooterModelSocialBean> socialItems = null;
 	private List<FooterModelBean> footerLinksPages = null;
 	private LinkedHashMap<String, List<FooterModelBean>> footerLinksMap = null;
 	private String linkUrlPath = StringUtils.EMPTY;
 	private String linkName = StringUtils.EMPTY;
 	private String link = StringUtils.EMPTY;
+	private Page rootPage;
 
 	@PostConstruct
 	protected void init() {
-		socialProps();
+		rootPage = CoreUtils.getParentPage(currentPage, Constants.HOMEPAGE_LEVEL);
+		LOGGER.debug("RootPage value is: {} "+ rootPage);
 		footerLinkProps();
+		socialProps();
 	}
 
 	/**
@@ -75,7 +73,10 @@ public class FooterModel {
 	 * 
 	 */
 	private void footerLinkProps() {
-		
+						
+		footerLinks = rootPage.getContentResource("footer").getValueMap().get("footerLinks",String[].class);
+		LOGGER.debug("FooterLinks value is: {} " + footerLinks);
+	
 		if (null != footerLinks && ArrayUtils.isNotEmpty(footerLinks)) {
 			
 			this.footerLinksMap = new LinkedHashMap<>();
@@ -126,6 +127,8 @@ public class FooterModel {
 	 * 
 	 */
 	private void socialProps() {
+		social = rootPage.getContentResource("footer").getValueMap().get("social",String[].class);
+		LOGGER.debug("Social value is: {} " + social);
 		
 		Gson gson = new Gson();
 		socialItems = new ArrayList<>();
