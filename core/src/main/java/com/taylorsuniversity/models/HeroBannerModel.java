@@ -22,7 +22,7 @@ public class HeroBannerModel {
 
 	@Inject
 	@Optional
-	private String fileReference;
+	private String desktopReference;
 
 	Logger LOGGER = LoggerFactory.getLogger(HeroBannerModel.class);
 	private String damType = "--";
@@ -30,8 +30,8 @@ public class HeroBannerModel {
 	@PostConstruct
 	protected void init() {
 
-		if (StringUtils.isNotBlank(fileReference)) {
-			Resource resource = resourceResolver.getResource(fileReference);
+		if (StringUtils.isNotBlank(desktopReference)) {
+			Resource resource = resourceResolver.getResource(desktopReference);
 			
 			if(StringUtils.isNotBlank(resource.toString())){
 				Asset asset = resource.adaptTo(Asset.class);

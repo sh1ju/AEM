@@ -11,32 +11,49 @@
     
 	<video poster="${properties.imageReference  @ context='uri'}"
 		class="banner-video d-none d-lg-block" id="_banner-video" playsinline autoplay muted loop>
-		<source src="${properties.fileReference @ context='uri'}" type="video/mp4">
+		<source src="${properties.desktopReference @ context='uri'}" type="video/mp4">
 	</video>
 
 	<div class="hearo-banner-content t-m text-white">
-</sly>
-    
-<!--Conditional HTML snippet for image-->  
-<sly data-sly-test="${properties.title && hb.damType=='image'}">  
-    <div class="cover-container d-flex align-items-end t-p  red-blend-no-hover" style="background-image: url('${properties.fileReference @ context='styleString'}');">
-	<div class="hearo-banner-content align-self-end text-white">
-</sly>
-        
- <!--Common HTML Snippet for both image and video-->   
+     <!--Common HTML Snippet for both image and video-->   
 		<h1>${properties.title}</h1>
 		<div class="d-flex flex-column">
-			<a class="btn btn-simple btn-red btn-standard-w  mb-3" 
-               data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=properties.redLinkPath}" 
+			<a data-sly-test.redLinkPath="${properties.redLinkPath}" class="btn btn-simple btn-red btn-standard-w  mb-3" 
+               data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=redLinkPath}" 
                href="${linkHelper.link}">
                 ${properties.redLinkTitle}<i class="t-icon-right white"></i>
 			</a>
-            <a class="btn btn-simple btn-clear btn-standard-w white-bordered" 
-               data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=properties.whiteLinkPath}" 
+            <a data-sly-test.whiteLinkPath="${properties.whiteLinkPath}" class="btn btn-simple btn-clear btn-standard-w white-bordered" 
+               data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=whiteLinkPath}" 
                href="${linkHelper.link}">
                 ${properties.whiteLinkTitle}<i class="t-icon-right white"></i>
             </a>
 		</div>
 	</div>
 </div>
+</sly>
+    
+<!--Conditional HTML snippet for image-->  
+<sly data-sly-test="${properties.title && hb.damType=='image'}">  
+    <div class="cover-container d-flex align-items-end t-p  red-blend-no-hover" style="background-image: url('${properties.desktopReference @ context='styleString'}');">
+        <div class="hearo-banner-content align-self-end text-white">
+             <!--Common HTML Snippet for both image and video-->   
+            <h1>${properties.title}</h1>
+            <div class="d-flex flex-column">
+                <a data-sly-test.redLinkPath="${properties.redLinkPath}" class="btn btn-simple btn-red btn-standard-w  mb-3" 
+                   data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=redLinkPath}" 
+                   href="${linkHelper.link}">
+                    ${properties.redLinkTitle}<i class="t-icon-right white"></i>
+                </a>
+                <a data-sly-test.whiteLinkPath="${properties.whiteLinkPath}" class="btn btn-simple btn-clear btn-standard-w white-bordered" 
+                   data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=whiteLinkPath}" 
+                   href="${linkHelper.link}">
+                    ${properties.whiteLinkTitle}<i class="t-icon-right white"></i>
+                </a>
+            </div>
+		</div>
+	</div>
+</sly>
+
+
 </sly>

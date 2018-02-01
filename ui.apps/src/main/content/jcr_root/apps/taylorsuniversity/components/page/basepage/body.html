@@ -21,14 +21,32 @@
 
 <sly data-sly-test.templateName="${pageProperties.cq:template}">
 	<div data-sly-test.mode="${templateName == '/apps/taylorsuniversity/templates/homepage' ? 'edit' : 'disabled'}">
-	      <div data-sly-resource="${ @path='header', resourceType='taylorsuniversity/components/content/header', wcmmode=mode}"></div>
+
+          <section class="container-fluid">
+
+            <div data-sly-resource="${ @path='header', resourceType='taylorsuniversity/components/content/header', wcmmode=mode}"></div>
+        
+            <div class="btn-group sticky-left-buttons minimized d-none d-lg-block">
+                <sly data-sly-test.appointment="${properties['appointmentPath']}"><a href="${appointment}.html"><button style="top:299px;" id="appointment-button" class="btn btn-simple btn-black px-1 py-2 action-btn mb-2 w-100 d-flex justify-content-start"><img class="t-icon pt-1 px-3" src="/etc/clientlibs/taylorsuniversity/main/img/appointment-icon.png" alt=""> <span class="button-text">${'APPOINTMENT' @ i18n}</span></button></a></sly>
+                <sly data-sly-test.livechat="${properties['liveChatPath']}"><a href="${livechat}.html"><button id="livechat-button" class="btn btn-simple btn-black px-1 py-2 action-btn w-100 d-flex justify-content-start"><img class="t-icon pt-1 px-3" src="/etc/clientlibs/taylorsuniversity/main/img/messenger-icon.png" alt=""><span class="button-text">${'LIVE CHAT' @ i18n}</span></button></a></sly>
+            </div>
+            <a class="btn btn-simple btn-red d-lg-none mobile-bottom-fixed-appointment-btn text-white"><span class="button-text">${'MAKE AN APPOINTMENT' @ i18n}</span></a>
+            
+            <div data-sly-resource="${ @path='herobanner', resourceType='taylorsuniversity/components/content/herobanner', wcmmode=mode}"></div>
+        
+        </section>
 	</div>
 </sly>
 
  <!-- Placeholder for header component -->
 <sly data-sly-include="content.html"></sly>
 <!-- Placeholder for footer component -->
-
-
+<sly data-sly-test.templateName="${pageProperties.cq:template}">
+    <div data-sly-test.mode="${templateName == '/apps/taylorsuniversity/templates/homepage' ? 'edit' : 'disabled'}">
+        <section class="container-fluid">
+            <div data-sly-resource="${ @path='footer', resourceType='taylorsuniversity/components/content/footer', wcmmode=mode}"></div>
+        </section>
+    </div>
+</sly>
 
 
