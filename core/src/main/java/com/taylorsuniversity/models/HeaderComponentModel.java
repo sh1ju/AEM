@@ -5,10 +5,8 @@ package com.taylorsuniversity.models;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -16,6 +14,8 @@ import javax.jcr.Node;
 import javax.jcr.Session;
 
 import org.apache.sling.api.resource.Resource;
+import org.apache.commons.lang.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
@@ -29,34 +29,35 @@ import com.taylorsuniversity.utils.CoreUtils;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 
+import com.day.cq.search.QueryBuilder;
+
 import org.apache.sling.api.resource.ValueMap;
 
 import com.google.gson.JsonObject;
-
-import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.Query;
-import com.day.cq.search.QueryBuilder;
-import com.day.cq.search.result.Hit;
-import com.day.cq.search.result.SearchResult;
 
 /**
  * This class is used to retrieve the properties configured in the header component of the home-page
  * template.
  */
-@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public class HeaderComponentModel {
 
   private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
   @Inject
   private ResourceResolver resolver;
-
-  @Inject
-  private Resource resource;
   
   @Inject
   @Optional
   QueryBuilder queryBuilder;
+  
+  @Inject
+  @Optional
+  private Page currentPage;
+  
+  @Inject
+  @Optional
+  String queryParam;
 
   private Page homePage;
 
@@ -74,7 +75,6 @@ public class HeaderComponentModel {
     LOGGER.error("Resolver is : {}", resolver);
     PageManager pageManager = resolver.adaptTo(PageManager.class);
     LOGGER.debug("PageManager is  : {}", pageManager);
-    Page currentPage = pageManager == null ? null : pageManager.getContainingPage(resource);
     LOGGER.debug("CurrentPage is : {}", currentPage);
     if(currentPage == null) {
       LOGGER.debug("currentPage is null");
@@ -108,6 +108,7 @@ public class HeaderComponentModel {
         .setSearchResultsPagePath(valMap.get("searchResultsPagePath", String.class));
     resource = resolver.getResource(
         homePage.getPath() + Constants.HEADER_COMPONENT_RELATIVE_PATH + "/navigationSections");
+    LOGGER.debug("Navigation section resource is :  {}", resource);
     if (resource != null) {
       navigationSectionModelBeanList =
           CoreUtils.getNodeProperties(resource, NavigationSectionModelBean.class);
@@ -214,19 +215,14 @@ public class HeaderComponentModel {
     
     LOGGER.debug("Get Search Suggest method invoked !!!");
     
+    LOGGER.debug("Query Params in the Search Suggest Json is : {}", queryParam);
+    
     schoolAndCourseListJson = new ArrayList<>();
     
-    PageManager pageManager = resolver.adaptTo(PageManager.class);
-    LOGGER.debug("PageManager is : {}", pageManager);
-    Page page = pageManager == null ? null : pageManager.getContainingPage(resource);
-    
-    if(page == null) {
-      LOGGER.debug("Page is null");
-      return "";
-    }
-    
-    createPredicateMapToFindSchoolAndCourses(page.getPath(), Constants.SCHOOL_PAGE_TEMPLATE);
-    createPredicateMapToFindSchoolAndCourses(page.getPath(), Constants.COURSES_PAGE_TEMPLATE);
+    LOGGER.debug("Calling Xpath query ...");
+    getQueryString(currentPage.getPath(), Constants.SCHOOL_PAGE_TEMPLATE);
+    getQueryString(currentPage.getPath(), Constants.COURSES_PAGE_TEMPLATE);
+    LOGGER.debug("Calling Xpath query finished ...");
     
     String schoolAndCoursesJson = schoolAndCourseListJson.toString();
     
@@ -235,70 +231,43 @@ public class HeaderComponentModel {
     return schoolAndCoursesJson;
   }
   
-  private void createPredicateMapToFindSchoolAndCourses(String homePagePath, String templatePath) {
-
-    Map<String, String> predicateMap = new HashMap<>();
-  
-    predicateMap.put(Constants.TYPE, Constants.CQ_PAGE);
-    predicateMap.put(Constants.PATH, homePagePath);
-  
-    predicateMap.put(Constants.FIRST_PROPERTY_KEY, Constants.JCR_CONTENT_RESOURCE_TYPE);
-    predicateMap.put(Constants.FIRST_PROPERTY_VALUE, templatePath);
-
-    LOGGER.debug("Predicate map is : {}", predicateMap);
+  private void getQueryString(String homePagePath, String templatePath) {
+    StringBuilder JCR_QUERY_FILTER = new StringBuilder("/jcr:root");
+    JCR_QUERY_FILTER.append(homePagePath);
+    JCR_QUERY_FILTER.append("//element(*, ");
+    JCR_QUERY_FILTER.append("cq:PageContent");
+    JCR_QUERY_FILTER.append(")");
+    JCR_QUERY_FILTER.append("[");
+    JCR_QUERY_FILTER.append("(sling:resourceType='");
+    JCR_QUERY_FILTER.append(templatePath);
+    JCR_QUERY_FILTER.append("' and jcr:like(fn:upper-case(");
+    JCR_QUERY_FILTER.append(Constants.JCR_TITLE);
+    JCR_QUERY_FILTER.append("), '");
+    JCR_QUERY_FILTER.append(StringUtils.upperCase(queryParam));
+    JCR_QUERY_FILTER.append(Constants.PERCENTAGE);
+    JCR_QUERY_FILTER.append("')");
+    JCR_QUERY_FILTER.append(")");
+    JCR_QUERY_FILTER.append("]");
     
-    List<String> searchResults = getSchoolAndCoursesSearchResults(predicateMap);
+    LOGGER.debug("Xpath query is : {}", JCR_QUERY_FILTER);
     
-    if(searchResults != null && !searchResults.isEmpty()) {
-      Iterator<String> itr = searchResults.iterator();
-      while(itr.hasNext()) {
-        String nextItem = itr.next();
-        LOGGER.debug("Search result next item is : {} ", nextItem);
+    Iterator<Resource> resourceIter = resolver.findResources(JCR_QUERY_FILTER.toString(), "xpath");
+
+    while (resourceIter.hasNext()) {
+        Resource res = resourceIter.next();
+        LOGGER.debug("Xpath query findResource is : {}", res.getPath());
         PageManager pageManager = resolver.adaptTo(PageManager.class);
         LOGGER.debug("PageManager is : {}", pageManager);
+        String pathToPage = res.getPath().substring(0, res.getPath().indexOf("/jcr:content"));
         Page page = pageManager == null ? null
-            : pageManager.getPage(nextItem);
+            : pageManager.getPage(pathToPage);
         if(page == null) {
-          return;
+          continue;
         }
         JsonObject obj = new JsonObject();
         obj.addProperty("name", page.getTitle());
         obj.addProperty("link", page.getPath() + ".html");
         this.schoolAndCourseListJson.add(obj);
-      }
     }
-  }
-  
-  private List<String> getSchoolAndCoursesSearchResults(
-      Map<String, String> predicateMap) {
-
-    Session session = null;
-    List<String> pagePaths = null;
-    try {
-        session = resolver.adaptTo(Session.class);
-  
-        Query queryObj = this.queryBuilder.createQuery(
-                PredicateGroup.create(predicateMap), session);
-        String searchQuery = queryObj.getPredicates().toString();
-        LOGGER.debug("Search Query : {}", searchQuery);
-  
-        SearchResult searchResults = queryObj.getResult();
-  
-        if (searchResults != null) {
-            LOGGER.debug("Total number of search matches are: "
-                    + searchResults.getTotalMatches());
-            final List<Hit> hitsList = searchResults.getHits();
-            if (hitsList != null && !hitsList.isEmpty()) {
-              pagePaths = new ArrayList<>();
-                for (Hit hit : searchResults.getHits()) {
-                  pagePaths.add(hit.getPath());
-                }
-            }
-        }
-    } catch (Exception e) {
-        LOGGER.error("Exception at getWebToPrintSearchResults(): {}", e);
-    }
-    return pagePaths;
-  
   }
 }
