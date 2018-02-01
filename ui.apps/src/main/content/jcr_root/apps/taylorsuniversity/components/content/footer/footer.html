@@ -1,0 +1,40 @@
+<sly data-sly-use.fm="com.taylorsuniversity.models.FooterModel"/>
+<sly data-sly-test="${wcmmode.edit}">
+    <p class="cq-placeholder" data-emptytext="Footer"></p>
+</sly>
+
+<section class="container-fluid">
+	<div class="footer-accordion bg-black t-p row">
+        
+        <sly data-sly-test="${fm.getFooterLinksMap}" data-sly-list.keyName="${fm.getFooterLinksMap}">
+	    <div class="accordion-item col-12 col-lg">
+            <button class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary">
+                ${keyName}<i class="d-lg-none t-icon-down white"></i>
+            </button>
+            
+            <ul class="text-white" data-sly-test="${fm.getFooterLinksMap[keyName]}" data-sly-list.key="${fm.getFooterLinksMap[keyName]}">
+		      <li><a href="${key.pageLinkItem}">${key.pageNameItem}</a></li>
+            </ul>
+	    </div>
+        </sly>
+        
+        <div class="col-12 col-lg" data-sly-test="${fm.socialItems.size}">
+            <div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary" data-sly-test="${properties.socialTitle}">
+                ${properties.socialTitle}
+            </div>
+            <div class="w-100 d-flex justify-content-start" data-sly-list.soc="${fm.socialItems}" >
+                <a class="mr-2" href="${soc.socialLink}" target="_blank" data-sly-test="${soc.socialIcon || soc.socialText}">
+                    <img src="${soc.socialIcon}" alt="${soc.socialText}">
+                </a>
+            </div> 
+	    </div>
+        
+	</div>
+</section>
+<section class="container-fluid">
+	<div class="row ">
+	    <div class="t-px bg-red t-display-1 text-white py-3 w-100 t-display-3">
+        <span>${'Copyright' @ i18n} &copy; ${fm.currentYear} ${'Taylor’s University. All rights reserved.' @ i18n}</span>
+	    </div>
+	</div>
+</section>
