@@ -131,7 +131,9 @@
                         <Sling-Model-Packages>
                           com.taylorsuniversity.models
                         </Sling-Model-Packages>
-
+						
+						<Embed-Dependency>gson</Embed-Dependency>
+						
                     </instructions>
                 </configuration>
             </plugin>
