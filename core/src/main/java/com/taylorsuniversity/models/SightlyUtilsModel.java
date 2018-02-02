@@ -20,7 +20,8 @@ import com.taylorsuniversity.utils.CoreUtils;
 @Model(adaptables = SlingHttpServletRequest.class)
 public class SightlyUtilsModel {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    /** The Constant LOG. */
+    public static final Logger LOGGER = LoggerFactory.getLogger(SightlyUtilsModel.class);
 
     /** The Resolver. */
     @Inject
@@ -39,12 +40,12 @@ public class SightlyUtilsModel {
      */
     public String getLink() {
         if (StringUtils.isNotBlank(linkTarget)) {
-            logger.debug("Link Target is : {}", linkTarget);
+          LOGGER.debug("Link Target is : {}", linkTarget);
             link = CoreUtils.getQualifiedLink(resolver, linkTarget);
         } else {
-            logger.debug("Link entered is invalid");
+          LOGGER.debug("Link entered is invalid");
         }
-        logger.debug("Link being sent is : {}", link);
+        LOGGER.debug("Link being sent is : {}", link);
         return link;
     }
 }
