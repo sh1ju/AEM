@@ -31,7 +31,7 @@
 	            </div>
 	            <a class="btn btn-simple btn-red d-lg-none mobile-bottom-fixed-appointment-btn text-white"><span class="button-text">${'MAKE AN APPOINTMENT' @ i18n}</span></a>
 	            
-	            <sly data-sly-test="${templateName != '/apps/taylorsuniversity/templates/homepage'}" class="cover-container d-flex align-items-end t-p  red-blend-no-hover"></sly>
+	            <div data-sly-test="${templateName != '/apps/taylorsuniversity/templates/homepage'}" class="cover-container d-flex align-items-end t-p  red-blend-no-hover"></div>
 	            <sly data-sly-test="${templateName == '/apps/taylorsuniversity/templates/homepage'}" data-sly-resource="${ @path='herobanner', resourceType='taylorsuniversity/components/content/herobanner', wcmmode=mode}"></sly>
         	</div>
         </section>
