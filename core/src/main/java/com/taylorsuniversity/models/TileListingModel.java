@@ -1,55 +1,50 @@
+/* Copyright Taylors University */
+
 package com.taylorsuniversity.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import com.taylorsuniversity.models.bean.TileListingModelBean;
 
+/**
+ * This class is used to retrieve the properties configured in the Tile Listing
+ * component
+ *
+ */
 @Model(adaptables = Resource.class)
-public class TileListingModel {
+public final class TileListingModel {
 
-	@Inject
-	ResourceResolver resolver;
-	
-	@Optional
-	@Inject
-	List<Resource> tileListing;
+    @Optional
+    @Inject
+    private List<Resource> tileListing;
 
-	private List<TileListingModelBean> tileListingItems = null;
-	Logger LOGGER = LoggerFactory.getLogger(TileListingModel.class);
+    private List<TileListingModelBean> tileListingItems = null;
+    private Logger logger = LoggerFactory.getLogger(TileListingModel.class);
 
-	@PostConstruct
-	protected void init() {
+    /**
+     * @return List
+    */
+    public List<TileListingModelBean> getTileListingItems() {
+        try {
+            if (null != tileListing && !tileListing.isEmpty()) {
+                tileListingItems = new ArrayList<>();
 
-		tileListingProps();
-	}
-
-	private void tileListingProps() {
-		
-		 try {
-		      if (null != tileListing && !tileListing.isEmpty()) {
-		        tileListingItems = new ArrayList<>();
-		        
-		        for (Resource tile : tileListing) {
-		        	LOGGER.debug("Tile items are :", tile);
-		        	tileListingItems.add(tile.adaptTo(TileListingModelBean.class));
-		        }
-		      }
-		    } catch (Exception exception) {
-		    	LOGGER.error("Unable to parse the tile list ", exception);
-		    }
-	}
-
-	public List<TileListingModelBean> getTileListingItems() {
-		LOGGER.debug("Tile Listing items are : {}", tileListingItems);
-		return tileListingItems;
-	}
+                for (Resource tile : tileListing) {
+                    logger.debug("Tile items are :", tile);
+                    tileListingItems.add(tile.adaptTo(TileListingModelBean.class));
+                }
+            }
+        } catch (Exception exception) {
+            logger.error("Unable to parse the tile list ", exception);
+        }
+        logger.debug("Tile Listing items are : {}", tileListingItems);
+        return tileListingItems;
+    }
 
 }

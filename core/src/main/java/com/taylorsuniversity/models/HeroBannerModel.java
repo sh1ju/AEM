@@ -1,3 +1,5 @@
+/* Copyright Taylors University */
+
 package com.taylorsuniversity.models;
 
 import javax.annotation.PostConstruct;
@@ -14,48 +16,61 @@ import org.slf4j.LoggerFactory;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.commons.util.DamUtil;
 
+/**
+ * This Model class helps in retrieving the attributes for Hero-Banner component.
+ *
+ */
 @Model(adaptables = Resource.class)
 public class HeroBannerModel {
 
-	@Inject
-	ResourceResolver resourceResolver;
+    /**
+     * The Resolver
+     */
+    @Inject
+    private ResourceResolver resourceResolver;
 
-	@Inject
-	@Optional
-	private String desktopReference;
+    @Inject
+    @Optional
+    private String desktopReference;
 
-	Logger LOGGER = LoggerFactory.getLogger(HeroBannerModel.class);
-	private String damType = "--";
+    private Logger logger = LoggerFactory.getLogger(HeroBannerModel.class);
+    private String damType = "--";
 
-	@PostConstruct
-	protected void init() {
+    /**
+     * The init method
+     */
+    @PostConstruct
+    protected final void init() {
 
-		if (StringUtils.isNotBlank(desktopReference)) {
-			Resource resource = resourceResolver.getResource(desktopReference);
-			
-			if(StringUtils.isNotBlank(resource.toString())){
-				Asset asset = resource.adaptTo(Asset.class);
-				
-				if(StringUtils.isNotBlank(asset.toString())) {
-					
-					if (DamUtil.isImage(asset)) {
-						damType = "image";
-						LOGGER.debug("Found image at: {}", asset.getPath());
-					}
-					if (DamUtil.isVideo(asset)) {
-						damType = "video";
-						LOGGER.debug("Found video at: {}", asset.getPath());
-					}
-				}
-			}
-		} else {
-			LOGGER.debug("Found desktop asset variable as null, empty or invalid");
-		}
-	}
+        if (StringUtils.isNotBlank(desktopReference)) {
+            Resource resource = resourceResolver.getResource(desktopReference);
 
-	public String getDamType() {
-		LOGGER.debug("Dam type is : {}", damType);
-		return damType;
-	}
+            if (StringUtils.isNotBlank(resource.toString())) {
+                Asset asset = resource.adaptTo(Asset.class);
+
+                if (StringUtils.isNotBlank(asset.toString())) {
+
+                    if (DamUtil.isImage(asset)) {
+                        damType = "image";
+                        logger.debug("Found image at: {}", asset.getPath());
+                    }
+                    if (DamUtil.isVideo(asset)) {
+                        damType = "video";
+                        logger.debug("Found video at: {}", asset.getPath());
+                    }
+                }
+            }
+        } else {
+            logger.debug("Found desktop asset variable as null, empty or invalid");
+        }
+    }
+
+    /**
+     * @return damType
+     */
+    public final String getDamType() {
+        logger.debug("Dam type is : {}", damType);
+        return damType;
+    }
 
 }
