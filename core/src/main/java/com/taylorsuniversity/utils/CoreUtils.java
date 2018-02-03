@@ -48,7 +48,7 @@ public final class CoreUtils {
         }
         return parentPage;
     }
-    
+
     /**
      * Gets the multi value property.
      *
@@ -128,7 +128,7 @@ public final class CoreUtils {
         return Collections.emptyList();
 
     }
-    
+
     /**
      * Gets the template name.
      *
@@ -138,27 +138,27 @@ public final class CoreUtils {
     public static String getTemplateName(final Resource resource) {
         Page page = null;
         if (resource == null) {
-          return "";
+            return "";
         }
 
         page = resource.adaptTo(Page.class);
-        
-        if(page == null) {
-          return "";
+
+        if (page == null) {
+            return "";
         }
-        
+
         Template template = page.getTemplate();
-        
-        if(template == null) {
-          return "";
+
+        if (template == null) {
+            return "";
         }
-        
+
         return template.getName();
     }
 
     /**
-    * Intercepts the linkUrl builds it appropriately. 
-    * Internal url's will be appended with the appropriate extension. 
+    * Intercepts the linkUrl builds it appropriately.
+    * Internal url's will be appended with the appropriate extension.
     * External url's will undergo no modification.
     *
     * @param resolver
@@ -168,28 +168,26 @@ public final class CoreUtils {
     * @return a mapped link consistent with the ResourceResolver mappings
     */
     public static String getQualifiedLink(final ResourceResolver resolver, final String linkUrl) {
-    	String url = StringUtils.EMPTY;
-    	if (StringUtils.isNotBlank(linkUrl) && linkUrl.startsWith(Constants.CONTENT_ROOT)
-    			&& !linkUrl.contains(Constants.HTML_EXTN) && !linkUrl.startsWith(Constants.DAM_ROOT)) {
-    		int paramIndex = linkUrl.indexOf('?');
-    		if (paramIndex > -1) {
-    			url = resolver.map(linkUrl.substring(0, paramIndex)).concat(Constants.HTML_EXTN)
-    					.concat(linkUrl.substring(paramIndex));
-    		} else
-    			url = resolver.map(linkUrl).concat(Constants.HTML_EXTN);
-    	}
-    	return StringUtils.isNotEmpty(url) ? url : linkUrl;
+        String url = StringUtils.EMPTY;
+        if (StringUtils.isNotBlank(linkUrl) && linkUrl.startsWith(Constants.CONTENT_ROOT)
+            && !linkUrl.contains(Constants.HTML_EXTN) && !linkUrl.startsWith(Constants.DAM_ROOT)) {
+            int paramIndex = linkUrl.indexOf('?');
+            if (paramIndex > -1) {
+                url = resolver.map(linkUrl.substring(0, paramIndex)).concat(Constants.HTML_EXTN)
+                      .concat(linkUrl.substring(paramIndex));
+            } else {
+                url = resolver.map(linkUrl).concat(Constants.HTML_EXTN);
+            }
+        }
+        return StringUtils.isNotEmpty(url) ? url : linkUrl;
     }
-    
+
     /**
-     * Intercepts the linkUrl and checks if external or internal 
-     * @param linkUrl: the authored link			
+     * Intercepts the linkUrl and checks if external or internal
+     * @param linkUrl the authored link
      * @return boolean
      */
-     public static boolean isInternalLink(final String linkUrl) {
-     	if (StringUtils.isNotBlank(linkUrl) && linkUrl.startsWith(Constants.CONTENT_ROOT)) {
-     		return true;
-     	}
-     	return false;
-     }
+    public static boolean isInternalLink(final String linkUrl) {
+        return (StringUtils.isNotBlank(linkUrl) && linkUrl.startsWith(Constants.CONTENT_ROOT));
+    }
 }

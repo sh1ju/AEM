@@ -13,30 +13,30 @@ import org.apache.sling.models.annotations.Optional;
  */
 @Model(adaptables = Resource.class)
 public class NavigationSectionModelBean {
-  
-  @Inject
-  @Optional
-  private String sectionPath;
-  
-  @Inject
-  @Optional
-  private String showCourseSearch;
-  
-  /**
-   * Gets the sectionPath.
-   *
-   * @return the sectionPath
-   */
-  public String getSectionPath() {
-    return sectionPath;
-  }
 
-  /**
-   * Gets the showCourseSearch.
-   *
-   * @return the showCourseSearch
-   */
-  public String getShowCourseSearch() {
-    return showCourseSearch;
-  }
+    @Inject
+    @Optional
+    private String sectionPath;
+
+    @Inject
+    @Optional
+    private String showCourseSearch;
+
+    /**
+     * Gets the sectionPath.
+     *
+     * @return the sectionPath
+     */
+    public String getSectionPath() {
+        return sectionPath;
+    }
+
+    /**
+     * Gets the showCourseSearch.
+     *
+     * @return the showCourseSearch
+     */
+    public String getShowCourseSearch() {
+        return showCourseSearch;
+    }
 }
