@@ -35,7 +35,7 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/foundation/form/multifield"
                                     class="full-width"
-                                    fieldDescription="Click '+' to add a new social feature"
+                                    fieldDescription="Click 'Add field' to add a new social feature"
                                     fieldLabel="Social Config">
                                    <field
                                        jcr:primaryType="nt:unstructured"
@@ -122,7 +122,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/foundation/form/multifield"
                                                     class="full-width"
-                                                    fieldDescription="Click '+' to add a new link feature"
+                                                    fieldDescription="Click 'Add field' to add a new link feature"
                                                     fieldLabel="Footer Links">
                                                     <field
                                                         jcr:primaryType="nt:unstructured"

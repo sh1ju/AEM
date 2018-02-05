@@ -47,7 +47,7 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
                                         composite="{Boolean}true"
                                         class="full-width"
-                                        fieldDescription="Click '+' to add a a new tile"
+                                        fieldDescription="Click 'Add' to add a a new tile"
                                         fieldLabel="Tiles">
                                         <field
                                             jcr:primaryType="nt:unstructured"
@@ -84,7 +84,7 @@
                                                         <titlelink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            fieldDescription="configure url for the title image"
+                                                            fieldDescription="Configure url for the title image"
                                                             fieldLabel="Title Link"
                                                             name="./titleLink"
                                                             rootPath="/content/taylorsuniversity"/>
