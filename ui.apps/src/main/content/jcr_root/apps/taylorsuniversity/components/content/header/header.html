@@ -45,7 +45,7 @@
                                                </button>
                                                <ul data-sly-list.subchild="${child.listChildren}"
                                                    class="t-nav-sub-dropdown-item p-0">
-                                                   <li><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}">${subchild.title}</a>
+                                                   <li data-sly-test="${!subchild.hideInNav}"><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}">${subchild.title}</a>
                                                    </li>
                                                </ul>
                                            </div>
