@@ -6114,7 +6114,7 @@ li {
   width: 12px; }
   .t-icon-right:after, .t-icon-left:after, .t-icon-down:after, .t-icon-up:after {
     content: "";
-    background-image: url(/assets/img/arrow-right-black.png);
+    background-image: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-black.png);
     background-size: 100%;
     background-repeat: no-repeat;
     height: 20px;
@@ -6140,28 +6140,28 @@ li {
     top: -10px; }
 
 .t-icon-right.white:after, .white.t-icon-left:after, .white.t-icon-down:after, .white.t-icon-up:after {
-  background-image: url(/assets/img/arrow-right-white.png); }
+  background-image: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-white.png); }
 
 .t-icon-right.white:hover .t-icon-right, .white.t-icon-left:hover .t-icon-right, .white.t-icon-down:hover .t-icon-right, .white.t-icon-up:hover .t-icon-right, .t-icon-right.white:hover .t-icon-left, .white.t-icon-left:hover .t-icon-left, .white.t-icon-down:hover .t-icon-left, .white.t-icon-up:hover .t-icon-left, .t-icon-right.white:hover .t-icon-down, .white.t-icon-left:hover .t-icon-down, .white.t-icon-down:hover .t-icon-down, .white.t-icon-up:hover .t-icon-down, .t-icon-right.white:hover .t-icon-up, .white.t-icon-left:hover .t-icon-up, .white.t-icon-down:hover .t-icon-up, .white.t-icon-up:hover .t-icon-up {
-  background: url(/assets/img/arrow-right-black.png); }
+  background: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-black.png); }
 
 .btn-simple.btn-text-red > .t-icon-right:after, .btn-simple.btn-text-red > .t-icon-left:after, .btn-simple.btn-text-red > .t-icon-down:after, .btn-simple.btn-text-red > .t-icon-up:after {
-  background-image: url(/assets/img/arrow-right-red.png);
+  background-image: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-red.png);
   top: 5px;
   background-size: 87%;
   background-position: 2px 2px; }
 
 .btn-simple.btn-text-red:hover > .t-icon-right:after, .btn-simple.btn-text-red:hover > .t-icon-left:after, .btn-simple.btn-text-red:hover > .t-icon-down:after, .btn-simple.btn-text-red:hover > .t-icon-up:after {
-  background-image: url(/assets/img/arrow-right-black.png); }
+  background-image: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-black.png); }
 
 .btn-simple.btn-text-black > .t-icon-right:after, .btn-simple.btn-text-black > .t-icon-left:after, .btn-simple.btn-text-black > .t-icon-down:after, .btn-simple.btn-text-black > .t-icon-up:after {
-  background-image: url(/assets/img/arrow-right-black.png);
+  background-image: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-black.png);
   top: 5px;
   background-size: 87%;
   background-position: 2px 2px; }
 
 .btn-simple.btn-text-black:hover > .t-icon-right:after, .btn-simple.btn-text-black:hover > .t-icon-left:after, .btn-simple.btn-text-black:hover > .t-icon-down:after, .btn-simple.btn-text-black:hover > .t-icon-up:after {
-  background-image: url(/assets/img/arrow-right-red.png); }
+  background-image: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-red.png); }
 
 @media (min-width: 992px) {
   .t-icon-right:after, .t-icon-left:after, .t-icon-down:after, .t-icon-up:after {
@@ -6951,7 +6951,7 @@ h6 {
     background-size: cover;
     background-color: red;
     background-blend-mode: multiply;
-    background-image: url(/assets/img/cover-img.png);
+    background-image: url(/etc/clientlibs/taylorsuniversity/main/img/cover-img.png);
     background-repeat: no-repeat; }
     .cover-container:not(.banner-video) .hearo-banner-content {
       width: 100%;
@@ -7262,7 +7262,7 @@ h6 {
   .all-schools-link:hover {
     color: #ff0e00; }
   .all-schools-link .t-icon-right::after, .all-schools-link .t-icon-left::after, .all-schools-link .t-icon-down::after, .all-schools-link .t-icon-up::after {
-    background-image: url(/assets/img/arrow-right-red.png);
+    background-image: url(/etc/clientlibs/taylorsuniversity/main/img/arrow-right-red.png);
     top: 1px;
     background-size: 87%;
     background-position: 2px 5px; }
