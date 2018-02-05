@@ -6,10 +6,13 @@
     extraClientlibs="[cq.common.wcm,core.wcm.page.properties,cq.wcm.msm.properties]"
     helpPath="https://www.adobe.com/go/aem_cmp_page_v1"
     mode="edit">
-    <content
-        granite:class="cq-dialog-content-page"
+  <content
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/container">
+        sling:resourceType="granite/ui/components/foundation/container">
+    <layout
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/layouts/tabs"
+        type="nav"/>
         <items jcr:primaryType="nt:unstructured">
             <header
                 jcr:primaryType="nt:unstructured"
