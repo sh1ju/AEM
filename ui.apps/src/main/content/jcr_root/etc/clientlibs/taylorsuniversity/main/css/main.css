@@ -3,11 +3,11 @@
 ====================================================*/
 @font-face {
   font-family: "AvenirNextLTPro-Bold";
-  src: url("/fonts/AvenirNextLTPro-Bold.woff") format("woff"); }
+  src: url("/etc/clientlibs/taylorsuniversity/main/fonts/AvenirNextLTPro-Bold.woff") format("woff"); }
 
 @font-face {
   font-family: "AvenirNextLTPro-Regular";
-  src: url("/fonts/AvenirNextLTPro-Regular.woff") format("woff"); }
+  src: url("/etc/clientlibs/taylorsuniversity/main/fonts/AvenirNextLTPro-Regular.woff") format("woff"); }
 
 .font-avenir-bold {
   font-family: 'AvenirNextLTPro-Bold'; }
