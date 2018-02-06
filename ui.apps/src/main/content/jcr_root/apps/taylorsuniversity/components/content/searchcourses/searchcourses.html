@@ -1,0 +1,33 @@
+<sly data-sly-test="${wcmmode.edit}">
+    <div class="cq-placeholder" data-emptytext="${component.cellName}"></div>
+</sly>
+<sly
+	data-sly-use.header="com.taylorsuniversity.models.HeaderComponentModel">
+	<div class="row t-px">
+	    <div class="bg-solid-container bg-gray-1 p-4 p-lg-5 col-12 col-lg-6">
+	        <h3>${properties.searchCoursesTitleText}</h3>
+	        <div class="content d-flex justify-content-between">
+	            <div class="d-flex flex-column justify-content-start align-items-start pr-2 pt-2 w-75">
+	                <div class="simple-input-group auto-complete w-100 " data-source-url="${header.homePageContentPath @ context='uri'}.searchcourses.json">
+	                    <div class="auto-complete-group ">
+	                        <input type="text" class="form-control simple-input" aria-label="Text input with dropdown button" placeholder="Search Courses">
+	                        <ul class="auto-complete-list">
+	                        </ul>
+	                    </div>
+	                    <button class="btn btn-simple btn-red btn-icon after-input px-4 ml-2"><i class="t-icon-right white"></i></button>
+	                </div>                    </div>
+	            <img class="d-none d-lg-block" src="${properties.searchCoursesIconReference @ context='uri'}" alt="" width="100" height="80">
+	        </div>
+	    </div>
+	    <div class="bg-solid-container bg-gray-2 p-4 p-lg-5 col-12 col-lg-6">
+	        <h3>${properties.rightContentTitle}</h3>
+	        <div class="content d-flex justify-content-between">
+	            <div class="d-flex flex-column justify-content-start align-items-start pr-2">
+	                ${properties.rightContentDescription}
+	                <a href="${properties.rightContentLink @ context='uri'}" class="btn btn-simple btn-text-red px-0">${properties.rightContentLinkText}<i class="t-icon-right"></i></a>
+	            </div>
+	            <img class="d-none d-lg-block" src="${properties.rightContentLinkTextIconReference @ context='uri'}" alt="" width="115" height="62">
+	        </div>
+	    </div>
+	</div>
+</sly>
