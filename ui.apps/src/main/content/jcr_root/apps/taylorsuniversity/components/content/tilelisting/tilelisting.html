@@ -5,12 +5,14 @@
 <!--Tiles Section 1-->
 <div class="row" data-sly-test="${properties.displayStyle == 'tiles' && model.tileListingItems}">
     <div class="w-100 d-flex flex-row flex-wrap flex-lg-nowrap align-items-stretch no-gutters" data-sly-list.ti="${model.tileListingItems}"> 
-        <div class="image-with-tag col-12 col-lg">
+        <div class="image-with-tag student-work col-12 col-lg">
             <img class="img-fluid" src="${ti.image}" width="100%" height="auto" alt="${ti.alt}">
             <a href="${ti.titleLink}" class="btn btn-simple btn-red" target="${ti.titleLinkType=='true'? '_self' : '_blank'}">
 				${ti.title}<i class="t-icon-right white ml-1"></i>
             </a>
-            <p class="content pt-4">${ti.description}</p>
+            <p class="content pt-4 student-work">
+			More floating content comes here More floating content comes here More floating content comes here More floating content comes here 
+            </p>
         </div>
     </div>
 </div>
