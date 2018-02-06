@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:language="en"
+    jcr:mixinTypes="[mix:language]"
+    jcr:primaryType="nt:folder">
+    <available_countries_heading
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="available_countries_heading"
+        sling:message="Select Domestic E-Platform"/>
+    <coming_soon_heading
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="coming_soon_heading"
+        sling:message="Coming Soon"/>
+    <country_label_text
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="country_label_text"
+        sling:message="Country"/>
+    <default_currency_text
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="default_currency_text"
+        sling:message="USD"/>
+    <searchbar_placeholder_text
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="searchbar_placeholder_text"
+        sling:message="I'm looking for"/>
+    <sign_in
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="sign_in"
+        sling:message="Sign In"/>
+    <sign_up
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="sign_up"
+        sling:message="Sign Up"/>
+    <switch_to_retail
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="switch_to_retail"
+        sling:message="Switch to Retail"/>
+    <switch_to_wholesale
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="switch_to_wholesale"
+        sling:message="Switch to Wholesale"/>
+</jcr:root>

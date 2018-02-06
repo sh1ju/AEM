@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Column Control"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/container">
+        <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/tabs"
+            type="nav"/>
+        <items jcr:primaryType="nt:unstructured">
+            <columncontrol
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Column Control"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                defaultValue="1"
+                                fieldLabel="Columns"
+                                name="./columns">
+                                <items
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/FormSelectItem">
+                                    <_x0030_
+                                        jcr:primaryType="nt:unstructured"
+                                        selected="{Boolean}true"
+                                        text="1 Column"
+                                        value="1"/>
+                                    <_x0031_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="2 Column (50:50)"
+                                        value="6|6"/>
+                                    <_x0032_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="2 Column(75:25)"
+                                        value="9|3"/>
+                                </items>
+                            </columns>
+                            <column1width
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/select"
+                                fieldLabel="Column 1 Width"
+                                name="./dcolumn1width">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <cp
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Container Padding"
+                                        value="t-px"/>
+                                    <_x0031_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="1"
+                                        value="px-1"/>
+                                    <_x0032_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="2"
+                                        value="px-2"/>
+                                    <_x0033_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="3"
+                                        value="px-3"/>
+                                    <_x0034_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="4"
+                                        value="px-4"/>
+                                </items>
+                            </column1width>
+                        </items>
+                    </column>
+                </items>
+            </columncontrol>
+        </items>
+    </content>
+</jcr:root>

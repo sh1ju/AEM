@@ -1,0 +1,18 @@
+<sly data-sly-use.text="text.js">
+    <sly data-sly-test="${properties.isformlabel&&properties.formlabelid}">
+        <label id="${text.id}" form-target-name="${properties.formlabelid @ context='unsafe'}" for=" ">
+    </sly>
+
+    <div class="default-css ${text.cssClass} ${properties.alignment} ${text.fontColor} ${text.fontSize} ${text.marginCss}" data-emptytext="Text">
+        ${text.text @ context="unsafe"}
+        <div data-sly-repeat.item="${text.list}" id="${item.dataId}" class="hide"><span class="bt4 w margin-bottom-s margin-top-s">${item.message @ context = 'html'}</span></div>
+        <sly data-sly-use.template="${'/apps/hlb/widgets/templates/reload-page.html'}">
+            <sly data-sly-call="${template.reload @ isTouchAuthoring=text.isTouchAuthoring}"></sly>
+        </sly>
+    </div>
+
+    <sly data-sly-test="${properties.isformlabel&&properties.formlabelid}">
+        </label>
+    </sly>
+</sly>
+
