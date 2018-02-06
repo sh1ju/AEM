@@ -48,4 +48,17 @@ public class SightlyUtilsModel {
         LOGGER.debug("Link being sent is : {}", link);
         return link;
     }
+    
+    /**
+     * Helper method for checking the type of link i.e. internal or external
+     *
+     * @return String String
+     */
+    public String getTitleLinkType() {
+      if (StringUtils.isBlank(linkTarget)) {
+        LOGGER.debug("Link Type is : {}", linkTarget);
+        return StringUtils.EMPTY;
+      }
+      return String.valueOf(CoreUtils.isInternalLink(linkTarget));
+    }
 }

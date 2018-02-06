@@ -45,13 +45,13 @@
                                                </button>
                                                <ul data-sly-list.subchild="${child.listChildren}"
                                                    class="t-nav-sub-dropdown-item p-0">
-                                                   <li data-sly-test="${!subchild.hideInNav}"><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}">${subchild.title}</a>
+                                                   <li data-sly-test="${!subchild.hideInNav}"><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${subchild.title}</a>
                                                    </li>
                                                </ul>
                                            </div>
 									</sly>
    									<sly data-sly-test="${!child.listChildren}">
-                                            <a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}" href="${linkHelper.link @ context='uri'}">${child.title}</a>
+                                            <a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${child.title}</a>
                                        </sly>
                                    </li>
 							</sly>
@@ -80,7 +80,7 @@
 					</div>
                        </sly>
                        <sly data-sly-test="${!firstLevelNavSection.listChildren && !firstLevelNavSection.hideInNav}">
-						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=firstLevelNavSection.path}" href="${linkHelper.link @ context='uri'}">${firstLevelNavSection.title}</a>
+						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=firstLevelNavSection.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${firstLevelNavSection.title}</a>
                        </sly>
 					</sly>
 	
@@ -89,23 +89,23 @@
 	
 				<div
 					class="nav-after py-4 py-lg-3 mt-4 mt-lg-0 border-v-light border-left-0 border-right-0 border-bottom-0 d-lg-flex border-lg-0 justify-content-lg-between desktop-border-0 ">
-					<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.switchPath}" href="${linkHelper.link @ context='uri'}"><button
+					<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.switchPath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
 							class="btn btn-simple text-white t-header-6-20 d-flex align-items-center">${headerComponent.switchText}</button></a>
 					<div class="btn-group d-flex align-items-center">
-						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.searchResultsPagePath}" href="${linkHelper.link @ context='uri'}"><button
+						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.searchResultsPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
 								class="btn btn-simple t-icon pr-2 pl-1 action-btn">
 								<img class="t-icon"
 									src="/etc/clientlibs/taylorsuniversity/main/img/search-icon.png"
 									alt="">
 							</button></a> 
-						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.loginPagePath}" href="${linkHelper.link @ context='uri'}"><button
+						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.loginPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
 								class="btn btn-simple text-white t-header-6-20">${'Login'
 								@ i18n}</button></a>
 					</div>
 				</div>
 			</nav>
 	
-			<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=header.homePagePath}" href="${linkHelper.link @ context='uri'}" class="d-lg-block taylors-logo"><img
+			<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=header.homePagePath}" href="${linkHelper.link @ context='uri'}" class="d-lg-block taylors-logo" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><img
 				class="" src="${headerComponent.fileReference @ context='uri'}"
 				width="200" alt="">${headerComponent.logoTitle}</a>
 	
