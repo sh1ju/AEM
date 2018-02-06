@@ -1,0 +1,22 @@
+<sly data-sly-use.logic="logic.js" data-sly-unwrap>
+<section class="container-fluid offset-nav">
+        <div class="row">
+ 			<div class="hero-banner"  style="background-image: url(${properties.desktopimage @ context='unsafe'})">
+            </div>
+        </div>
+</section>
+<section class="container-fluid">
+        <div class="row t-px">
+            <div class="black-header-with-text col-12 col-lg black-header-negetive-margin pr-4">
+                <div class="bg-black d-inline-block py-2 px-4 text-white">
+                    <h3 class="">${properties.smalltitle_t}</h3>
+                        <sly data-sly-test="${properties.title_t}">
+							<h2 class="">${properties.title_t}</h2>
+                        </sly>
+                        <sly data-sly-test="${!properties.title_t}">
+							<h2 class="">${currentPage.title}</h2>
+						</sly>
+                </div>
+            </div>
+        </div>
+    </section>

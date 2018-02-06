@@ -16,8 +16,7 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs"
                 size="L">
-                <items jcr:primaryType="nt:unstructured">
-                </items>
+                <items jcr:primaryType="nt:unstructured"/>
             </tabs>
         </items>
     </content>
