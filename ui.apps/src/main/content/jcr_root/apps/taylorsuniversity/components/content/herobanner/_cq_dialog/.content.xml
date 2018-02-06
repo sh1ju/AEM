@@ -37,6 +37,7 @@
                                         rootPath="/content/dam"
                                         title="Upload Image or Video"
                                         uploadUrl="${suffix.path}"
+                                        required="{Boolean}true"
                                         useHTML5="{Boolean}true"/>
                                     <mobileimage
                                         jcr:primaryType="nt:unstructured"
