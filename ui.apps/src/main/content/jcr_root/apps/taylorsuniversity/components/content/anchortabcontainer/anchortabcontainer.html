@@ -6,4 +6,9 @@
             </sly>
         </div>
 	</div>
-<sly data-sly-resource="${ @path='anchorpar', resourceType='foundation/components/parsys'}" />
+    <sly data-sly-list.item="${logic.children}">
+    	<section id="${item.anchor}" class="t-px" data-section="${item.title_t}">
+		<sly data-sly-resource="${ @path=item.anchor, resourceType='foundation/components/parsys'}" />
+		</section>
+    </sly>
+</sly>

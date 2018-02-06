@@ -23,6 +23,14 @@
         jcr:primaryType="sling:MessageEntry"
         sling:key="searchbar_placeholder_text"
         sling:message="I'm looking for"/>
+    <show_all_label
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="show_all_label"
+        sling:message="SHOW ALL"/>
+    <show_less_label
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="show_less_label"
+        sling:message="SHOW LESS"/>
     <sign_in
         jcr:primaryType="sling:MessageEntry"
         sling:key="sign_in"

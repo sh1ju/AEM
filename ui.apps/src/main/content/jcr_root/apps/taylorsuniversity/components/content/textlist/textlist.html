@@ -1,0 +1,82 @@
+<sly data-sly-test="${wcmmode.edit}">
+			Text List
+        </sly>
+<sly data-sly-use.logic="logic.js" data-sly-unwrap>
+    <div class="row" id="${logic.id}">
+        <sly data-sly-use.bulletLists="com.taylorsuniversity.core.components.TouchMultiCompositeFieldComponentUse">
+            <sly data-sly-test="${logic.hideBullets}">
+
+                     <div class="col-lg-${logic.colStyle}" data-sly-list.bean="${bulletLists.col1}">
+                     	   <div class="${bean.mobileCSS}">
+                           <h4>${bean.text}</h4>
+                           <p class="mb-4">${bean.title}</p>
+                           </div>
+                     </div>
+                     <div class="col-lg-${logic.colStyle}" data-sly-list.bean="${bulletLists.col2}" >
+                     	   <div class="${bean.mobileCSS}">
+                           <h4> ${bean.text} </h4>
+                           <p class="mb-4">${bean.title}</p>
+                           </div>
+                     </div>
+                     <div class="col-lg-${logic.colStyle}" data-sly-list.bean="${bulletLists.col3}">
+                     <div class="${bean.mobileCSS}">
+                           <h4> ${bean.text} </h4>
+                           <p class="mb-4">${bean.title}</p>
+                           </div>
+                     </div>
+
+            </sly>
+            <sly data-sly-test="${!logic.hideBullets}">
+                <ul class="col-sm-${logic.colStyle} course-details-careers-list">
+                    <sly data-sly-list.bean="${bulletLists.col1}">
+                    <div class="${bean.mobileCSS}">
+                        <li class="course-details-careers-list-item">${bean.title}</li>
+                        </div>
+                     </sly>
+                </ul>
+                <ul class="col-sm-${logic.colStyle} course-details-careers-list">
+                    <sly data-sly-list.bean="${bulletLists.col2}">
+                     <div class="${bean.mobileCSS}">
+                        <li class="course-details-careers-list-item">${bean.title}</li>
+                        </div>
+                    </sly>
+                 </ul>
+                 <ul class="col-sm-${logic.colStyle} course-details-careers-list">
+                    <sly data-sly-list.bean="${bulletLists.col3}">
+                     <div class="${bean.mobileCSS}">
+                        <li class="course-details-careers-list-item">${bean.title}</li>
+                        </div>
+                    </sly>
+                 </ul>
+            </sly>
+    </div>
+    <sly data-sly-test="${logic.viewMore}">
+ 		<div class="row d-lg-none">
+        	<button id="${logic.id}-button" class="btn btn-simple btn-text-red"><span class="button-text">${'SHOW ALL' @ i18n}</span> <i class="t-icon-down py-2 ml-1"></i></button>
+        </div>
+    </sly>
+    <script>
+ //show more button
+ $(function() {
+ var targetId= "#${logic.id @ context='unsafe'}";
+             var targetButton = targetId + '-button';
+            $(targetButton).on('click', function(e) {
+            	var showAll = "${'SHOW ALL' @ i18n, context='unsafe'}";
+            	var showLess = "${'SHOW LESS' @ i18n, context='unsafe'}";
+                if (!$(targetId+' .showmore-content').hasClass('hidden-mobile')) {
+                    $(targetButton+' .button-text').html(showAll);
+                    $(targetButton+' > i').removeClass('t-icon-up');
+                    $(targetButton+' > i').addClass('t-icon-down');
+                } else {
+                    $(targetButton+' .button-text').html(showLess);
+                    $(targetButton+' > i').addClass('t-icon-up');
+                    $(targetButton+' > i').removeClass('t-icon-down');
+                }
+                $(targetId+' .showmore-content').toggleClass('hidden-mobile');
+            })
+
+ });
+
+            </script>
+</sly>
+
