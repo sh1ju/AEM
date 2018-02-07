@@ -6,7 +6,7 @@ $(document).on("dialog-ready", function () {
 			var ui = $(window).adaptTo("foundation-ui");
 			var totalLinkCount = $(this).prev('ol').children('li').length;
 			if (totalLinkCount >= size) {
-				ui.alert("Warning", "Maximum " + size + " links are allowed!", "notice");
+				ui.alert("Warning", "Maximum " + size + " items are allowed!", "notice");
 				return false;
 			}
 		}
