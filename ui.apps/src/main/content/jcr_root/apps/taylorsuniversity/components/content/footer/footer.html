@@ -18,8 +18,8 @@
 	    </div>
         </sly>
         <div class="col-12 col-lg" data-sly-test="${(fm.socialItems) && (fm.socialItems.size>0)}">
-            <div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary" data-sly-test="${properties.socialTitle}">
-                ${properties.socialTitle}
+            <div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary" data-sly-test="${fm.socialTitle}">
+                ${fm.socialTitle}
             </div>
             <div class="w-100 d-flex justify-content-start" data-sly-list.soc="${fm.socialItems}" >
                 <a class="mr-2" href="${soc.socialLink}" target="_blank" data-sly-test="${soc.socialIcon || soc.socialText}">
