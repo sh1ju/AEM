@@ -59,6 +59,7 @@ public final class FooterModel {
     private String linkUrlPath = StringUtils.EMPTY;
     private String linkName = StringUtils.EMPTY;
     private String link = StringUtils.EMPTY;
+    private String socialTitle = StringUtils.EMPTY;
     private Page rootPage;
 
     /**
@@ -186,4 +187,16 @@ public final class FooterModel {
         logger.debug("Footer Links Map being sent is: : {}", footerLinksMap);
         return footerLinksMap;
     }
+
+    /**
+     * @return socialTitle
+     */
+    public String getSocialTitle() {
+        if (null != rootPage.getContentResource("footer")) {
+            socialTitle = rootPage.getContentResource("footer").getValueMap().get("socialTitle", String.class);
+        }
+        logger.debug("Social title is: {} " + socialTitle);
+        return socialTitle;
+    }
+
 }
