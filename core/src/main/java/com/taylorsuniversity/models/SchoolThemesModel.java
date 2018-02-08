@@ -51,8 +51,7 @@ public final class SchoolThemesModel {
     /*
      * Initializing variable to be used
      */
-    private String[] footerLinks;
-    private List<FooterModelSocialBean> socialItems = null;
+    private String[] schoolThemes;
     private List<FooterModelBean> footerLinksPages = null;
     private LinkedHashMap<String, List<FooterModelBean>> footerLinksMap = null;
     private String linkUrlPath = StringUtils.EMPTY;
@@ -79,10 +78,10 @@ public final class SchoolThemesModel {
      */
     private void footerLinkProps() {
 
-        if (null != rootPage.getContentResource("footer")) {
+        if (null != rootPage.getContentResource("schoolthemes")) {
 
-            footerLinks = rootPage.getContentResource("footer").getValueMap().get("footerLinks", String[].class);
-            logger.debug("FooterLinks value is: {} " + footerLinks);
+            footerLinks = rootPage.getContentResource("schoolthemes").getValueMap().get("schoolThemes", String[].class);
+            logger.debug("School Themes value is: {} " + schoolThemes);
 
             if (null != footerLinks && ArrayUtils.isNotEmpty(footerLinks)) {
                 this.footerLinksMap = new LinkedHashMap<>();
