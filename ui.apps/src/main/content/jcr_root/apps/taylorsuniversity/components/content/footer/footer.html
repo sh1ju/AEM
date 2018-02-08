@@ -1,6 +1,6 @@
 <sly data-sly-use.fm="com.taylorsuniversity.models.FooterModel"/>
 <sly data-sly-test="${wcmmode.edit}">
-    <p class="cq-placeholder" data-emptytext="Footer"></p>
+    <div class="cq-placeholder" data-emptytext="Footer"></div>
 </sly>
 
 <section class="container-fluid">
@@ -17,10 +17,9 @@
             </ul>
 	    </div>
         </sly>
-        
-        <div class="col-12 col-lg" data-sly-test="${fm.socialItems.size}">
-            <div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary" data-sly-test="${properties.socialTitle}">
-                ${properties.socialTitle}
+        <div class="col-12 col-lg" data-sly-test="${(fm.socialItems) && (fm.socialItems.size>0)}">
+            <div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary" data-sly-test="${fm.socialTitle}">
+                ${fm.socialTitle}
             </div>
             <div class="w-100 d-flex justify-content-start" data-sly-list.soc="${fm.socialItems}" >
                 <a class="mr-2" href="${soc.socialLink}" target="_blank" data-sly-test="${soc.socialIcon || soc.socialText}">

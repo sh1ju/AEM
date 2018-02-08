@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.taylorsuniversity</groupId>
         <artifactId>taylorsuniversity-project</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
 
     <!-- ====================================================================== -->
@@ -86,6 +86,7 @@
             <groupId>com.adobe.acs</groupId>
             <artifactId>acs-aem-commons-content</artifactId>
             <type>content-package</type>
+            <classifier>min</classifier>
         </dependency>
     </dependencies>
     <build>

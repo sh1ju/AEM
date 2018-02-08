@@ -4,28 +4,28 @@ package com.taylorsuniversity.models.bean;
 
 import javax.inject.Inject;
 
-import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 
 /**
  * The Class HeaderComponentModelBean.
  */
-@Model(adaptables = SlingHttpServletRequest.class)
+@Model(adaptables = Resource.class)
 public class HeaderComponentModelBean {
 
     @Inject
     @Optional
     private String switchText;
-    
+
     @Inject
     @Optional
     private String switchPath;
-    
+
     @Inject
     @Optional
     private String logoTitle;
-    
+
     @Inject
     @Optional
     private String loginPagePath;
@@ -44,7 +44,7 @@ public class HeaderComponentModelBean {
      * @return the switchText
      */
     public String getSwitchText() {
-      return switchText;
+        return switchText;
     }
 
     /**
@@ -53,7 +53,7 @@ public class HeaderComponentModelBean {
      * @return the switchPath
      */
     public String getSwitchPath() {
-      return switchPath;
+        return switchPath;
     }
 
     /**
@@ -62,7 +62,7 @@ public class HeaderComponentModelBean {
      * @return the logoTitle
      */
     public String getLogoTitle() {
-      return logoTitle;
+        return logoTitle;
     }
 
     /**
@@ -71,7 +71,7 @@ public class HeaderComponentModelBean {
      * @return the loginPagePath
      */
     public String getLoginPagePath() {
-      return loginPagePath;
+        return loginPagePath;
     }
 
     /**
@@ -80,7 +80,7 @@ public class HeaderComponentModelBean {
      * @return the fileReference
      */
     public String getFileReference() {
-      return fileReference;
+        return fileReference;
     }
 
     /**
@@ -89,60 +89,6 @@ public class HeaderComponentModelBean {
      * @return the searchResultsPagePath
      */
     public String getSearchResultsPagePath() {
-      return searchResultsPagePath;
-    }
-    
-    /**
-     * Sets the switchText.
-     *
-     * @param switchText switchText
-     */
-    public void setSwitchText(String switchText) {
-      this.switchText = switchText;
-    }
-
-    /**
-     * Sets the switchPath.
-     *
-     * @param switchPath switchPath
-     */
-    public void setSwitchPath(String switchPath) {
-      this.switchPath = switchPath;
-    }
-
-    /**
-     * Sets the logoTitle.
-     *
-     * @param logoTitle logoTitle
-     */
-    public void setLogoTitle(String logoTitle) {
-      this.logoTitle = logoTitle;
-    }
-
-    /**
-     * Sets the loginPagePath.
-     *
-     * @param loginPagePath loginPagePath
-     */
-    public void setLoginPagePath(String loginPagePath) {
-      this.loginPagePath = loginPagePath;
-    }
-
-    /**
-     * Sets the fileReference.
-     *
-     * @param fileReference fileReference
-     */
-    public void setFileReference(String fileReference) {
-      this.fileReference = fileReference;
-    }
-
-    /**
-     * Sets the searchResultsPagePath.
-     *
-     * @param searchResultsPagePath searchResultsPagePath
-     */
-    public void setSearchResultsPagePath(String searchResultsPagePath) {
-      this.searchResultsPagePath = searchResultsPagePath;
+        return searchResultsPagePath;
     }
 }

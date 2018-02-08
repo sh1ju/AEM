@@ -1,138 +1,136 @@
+<sly data-sly-test="${wcmmode.edit}">
+    <div class="cq-placeholder" data-emptytext="${component.cellName}"></div>
+</sly>
 <sly
 	data-sly-use.header="com.taylorsuniversity.models.HeaderComponentModel">
-	<sly data-sly-test="${wcmmode.edit}">
-	    <p class="cq-placeholder" data-emptytext="${component.cellName}"></p>
-	</sly>
 	<sly data-sly-test.headerComponent="${header.headerComponentModelBean}">
-			<div class="row">
 		
-				<!-- START NAV -->
-				<nav
-					class="t-nav d-lg-flex flex-lg-column-reverse t-px position-absolute mobile-transparent">
-					<div
-						class="sticky-nav d-lg-flex flex-lg-row justify-content-lg-between border-v-light-desktop border-left-0 border-right-0 border-bottom-0 ">
-						<img class="pull-right py-4 d-lg-none action-btn"
-							data-action="mobilemenu-close"
-							src="/etc/clientlibs/taylorsuniversity/main/img/close-icon.png"
-							alt="">
-						<div class="sticky-logo-container d-none">
-							<img
-								src="/etc/clientlibs/taylorsuniversity/main/img/logo-without-text.png"
-								height="35" alt="">
-						</div>
-		
-						<!-- START NAV DROP DOWN ITEM  -->
-						<sly
-							data-sly-list.firstLevelNavSection="${header.navigationSectionModelBean}">
-                            <sly data-sly-test="${firstLevelNavSection.listChildren && !firstLevelNavSection.hideInNav}">
-						<div class="t-nav-dropdown">
-                            	<button type="button"
-								class="btn btn-sm btn-block px-0 py-2 px-lg-2">
-								${firstLevelNavSection.title} <i
-									class="fa fa-angle-down t-nav-icon ml-lg-1" aria-hidden="true"></i>
-									</button>
-							<ul class="t-nav-dropdown-item p-0">
-								<sly data-sly-list.child="${firstLevelNavSection.listChildren}">
-                                    <li data-sly-test="${!child.hideInNav}">
-    									<sly data-sly-test="${child.listChildren}">
-                                            <div class="t-nav-sub-dropdown">
-                                                <button type="button"
-                                                    class="btn btn-sm btn-block px-0  py-2 py-lg-0">
-                                                    ${child.title} <i
-                                                        class="fa fa-angle-down t-nav-icon ml-2 d-lg-none"
-                                                        aria-hidden="true"></i> <i
-                                                        class="fa fa-angle-right t-nav-icon ml-2 d-none d-lg-inline-block"
-                                                        aria-hidden="true"></i>
-                                                </button>
-                                                <ul data-sly-repeat.subchild="${child.listChildren}"
-                                                    class="t-nav-sub-dropdown-item p-0">
-                                                    <li><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}">${subchild.title}</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-										</sly>
-    									<sly data-sly-test="${!child.listChildren}">
-                                             <a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}" href="${linkHelper.link @ context='uri'}">${child.title}</a>
-                                        </sly>
-                                    </li>
-								</sly>
-
-
-
-								<li data-sly-test="${firstLevelNavSection.properties.showCourseSearch == 'yes'}" class="no-padding">
-									<div
-										class="simple-input-group auto-complete w-100 d-none d-lg-flex"
-										data-source-url="${header.homePageContentPath @ context='uri'}.searchcourses.json">
-										<div class="auto-complete-group w-100">
-											<input type="text" class="form-control simple-input"
-												aria-label="Text input with dropdown button"
-												placeholder="Search Courses">
-											<ul class="auto-complete-list">
-											</ul>
-										</div>
-										<button
-											class="btn btn-simple btn-red btn-icon after-input px-4 ">
-											<i class="t-icon-right white"></i>
-										</button>
-									</div>
-								</li>
-
-							</ul>
-						</div>
-                        </sly>
-                        <sly data-sly-test="${!firstLevelNavSection.listChildren && !firstLevelNavSection.hideInNav}">
-							<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=firstLevelNavSection.path}" href="${linkHelper.link @ context='uri'}">${firstLevelNavSection.title}</a>
-                        </sly>
-						</sly>
-		
-						<!-- END NAV DROP DOWN ITEM  -->
-					</div>
-		
-					<div
-						class="nav-after py-4 py-lg-3 mt-4 mt-lg-0 border-v-light border-left-0 border-right-0 border-bottom-0 d-lg-flex border-lg-0 justify-content-lg-between desktop-border-0 ">
-						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.switchPath}" href="${linkHelper.link @ context='uri'}"><button
-								class="btn btn-simple text-white t-header-6-20 d-flex align-items-center">${headerComponent.switchText}</button></a>
-						<div class="btn-group d-flex align-items-center">
-							<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.searchResultsPagePath}" href="${linkHelper.link @ context='uri'}"><button
-									class="btn btn-simple t-icon pr-2 pl-1 action-btn">
-									<img class="t-icon"
-										src="/etc/clientlibs/taylorsuniversity/main/img/search-icon.png"
-										alt="">
-								</button></a> 
-							<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.loginPagePath}" href="${linkHelper.link @ context='uri'}"><button
-									class="btn btn-simple text-white t-header-6-20">${'Login'
-									@ i18n}</button></a>
-						</div>
-					</div>
-				</nav>
-		
-				<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=header.homePagePath}" href="${linkHelper.link @ context='uri'}" class="d-lg-block taylors-logo"><img
-					class="" src="${headerComponent.fileReference @ context='uri'}"
-					width="200" alt="">${headerComponent.logoTitle}</a>
-		
+			<!-- START NAV -->
+			<nav
+				class="t-nav d-lg-flex flex-lg-column-reverse t-px position-absolute mobile-transparent">
 				<div
-					class="mobile-nav d-lg-none d-flex justify-content-end mobile-transparent">
-					<button class="btn btn-simple px-1 action-btn">
-						<img class="t-icon"
-							src="/etc/clientlibs/taylorsuniversity/main/img/messenger-icon.png"
-							alt="">
-					</button>
-					<button class="btn btn-simple t-icon pr-2 pl-1 action-btn">
-						<img class="t-icon"
-							src="/etc/clientlibs/taylorsuniversity/main/img/search-icon.png"
-							alt="">
-					</button>
-					<div class="verticle-devider"></div>
-					<button class="btn btn-simple t-icon px-2 action-btn"
-						data-action="mobilemenu">
-						<img class="t-icon"
-							src="/etc/clientlibs/taylorsuniversity/main/img/hamburger.png"
-							alt="">
-					</button>
-				</div>
+					class="sticky-nav d-lg-flex flex-lg-row justify-content-lg-between border-v-light-desktop border-left-0 border-right-0 border-bottom-0 ">
+					<img class="pull-right py-4 d-lg-none action-btn"
+						data-action="mobilemenu-close"
+						src="/etc/clientlibs/taylorsuniversity/main/img/close-icon.png"
+						alt="">
+					<div class="sticky-logo-container d-none">
+						<img
+							src="/etc/clientlibs/taylorsuniversity/main/img/logo-without-text.png"
+							height="35" alt="">
+					</div>
+	
+					<!-- START NAV DROP DOWN ITEM  -->
+					<sly
+						data-sly-list.firstLevelNavSection="${header.navigationSectionModelBean}">
+                           <sly data-sly-test="${firstLevelNavSection.listChildren && !firstLevelNavSection.hideInNav}">
+					<div class="t-nav-dropdown">
+                           	<button type="button"
+							class="btn btn-sm btn-block px-0 py-2 px-lg-2">
+							${firstLevelNavSection.title} <i
+								class="fa fa-angle-down t-nav-icon ml-lg-1" aria-hidden="true"></i>
+								</button>
+						<ul class="t-nav-dropdown-item p-0">
+							<sly data-sly-list.child="${firstLevelNavSection.listChildren}">
+                                   <li data-sly-test="${!child.hideInNav}">
+   									<sly data-sly-test="${child.listChildren}">
+                                           <div class="t-nav-sub-dropdown">
+                                               <button type="button"
+                                                   class="btn btn-sm btn-block px-0  py-2 py-lg-0">
+                                                   ${child.title} <i
+                                                       class="fa fa-angle-down t-nav-icon ml-2 d-lg-none"
+                                                       aria-hidden="true"></i> <i
+                                                       class="fa fa-angle-right t-nav-icon ml-2 d-none d-lg-inline-block"
+                                                       aria-hidden="true"></i>
+                                               </button>
+                                               <ul data-sly-list.subchild="${child.listChildren}"
+                                                   class="t-nav-sub-dropdown-item p-0">
+                                                   <li data-sly-test="${!subchild.hideInNav}"><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${subchild.title}</a>
+                                                   </li>
+                                               </ul>
+                                           </div>
+									</sly>
+   									<sly data-sly-test="${!child.listChildren}">
+                                            <a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${child.title}</a>
+                                       </sly>
+                                   </li>
+							</sly>
 
-		
-				<!-- END PICTURE COVER -->
+
+
+							<li data-sly-test="${firstLevelNavSection.properties.showCourseSearch == 'yes'}" class="no-padding">
+								<div
+									class="simple-input-group auto-complete w-100 d-none d-lg-flex"
+									data-source-url="${header.homePageContentPath @ context='uri'}.searchcourses.json">
+									<div class="auto-complete-group w-100">
+										<input type="text" class="form-control simple-input"
+											aria-label="Text input with dropdown button"
+											placeholder="Search Courses">
+										<ul class="auto-complete-list">
+										</ul>
+									</div>
+									<button
+										class="btn btn-simple btn-red btn-icon after-input px-4 ">
+										<i class="t-icon-right white"></i>
+									</button>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+                       </sly>
+                       <sly data-sly-test="${!firstLevelNavSection.listChildren && !firstLevelNavSection.hideInNav}">
+						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=firstLevelNavSection.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${firstLevelNavSection.title}</a>
+                       </sly>
+					</sly>
+	
+					<!-- END NAV DROP DOWN ITEM  -->
+				</div>
+	
+				<div
+					class="nav-after py-4 py-lg-3 mt-4 mt-lg-0 border-v-light border-left-0 border-right-0 border-bottom-0 d-lg-flex border-lg-0 justify-content-lg-between desktop-border-0 ">
+					<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.switchPath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
+							class="btn btn-simple text-white t-header-6-20 d-flex align-items-center">${headerComponent.switchText}</button></a>
+					<div class="btn-group d-flex align-items-center">
+						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.searchResultsPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
+								class="btn btn-simple t-icon pr-2 pl-1 action-btn">
+								<img class="t-icon"
+									src="/etc/clientlibs/taylorsuniversity/main/img/search-icon.png"
+									alt="">
+							</button></a> 
+						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.loginPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
+								class="btn btn-simple text-white t-header-6-20">${'Login'
+								@ i18n}</button></a>
+					</div>
+				</div>
+			</nav>
+	
+			<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=header.homePagePath}" href="${linkHelper.link @ context='uri'}" class="d-lg-block taylors-logo" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><img
+				class="" src="${headerComponent.fileReference @ context='uri'}"
+				width="200" alt="">${headerComponent.logoTitle}</a>
+	
+			<div
+				class="mobile-nav d-lg-none d-flex justify-content-end mobile-transparent">
+				<button class="btn btn-simple px-1 action-btn">
+					<img class="t-icon"
+						src="/etc/clientlibs/taylorsuniversity/main/img/messenger-icon.png"
+						alt="">
+				</button>
+				<button class="btn btn-simple t-icon pr-2 pl-1 action-btn">
+					<img class="t-icon"
+						src="/etc/clientlibs/taylorsuniversity/main/img/search-icon.png"
+						alt="">
+				</button>
+				<div class="verticle-devider"></div>
+				<button class="btn btn-simple t-icon px-2 action-btn"
+					data-action="mobilemenu">
+					<img class="t-icon"
+						src="/etc/clientlibs/taylorsuniversity/main/img/hamburger.png"
+						alt="">
+				</button>
 			</div>
+
+			<!-- END PICTURE COVER -->
+
 	</sly> 
 </sly>
