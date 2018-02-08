@@ -2,6 +2,9 @@
 
 package com.taylorsuniversity.models;
 
+import java.util.Collections;
+import java.util.Iterator;
+
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -12,7 +15,11 @@ import org.apache.sling.models.annotations.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.wcm.api.Page;
 import com.taylorsuniversity.utils.CoreUtils;
+
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 
 /**
  * This class is used to retrieve the values to be used in sightly.
@@ -60,5 +67,39 @@ public class SightlyUtilsModel {
         return StringUtils.EMPTY;
       }
       return String.valueOf(CoreUtils.isInternalLink(linkTarget));
+    }
+    
+    /**
+     * Helper method for hide in navigation for all the child pages of a given page
+     *
+     * @return String String
+     */
+    public String getHideInNavForAllPages() {
+    	String hideInNavForAllPages = "true";
+        if (StringUtils.isNotBlank(linkTarget)) {
+            LOGGER.debug("getHideInNavForAllPages Link Target is : {}", linkTarget);
+            PageManager pageManager = resolver.adaptTo(PageManager.class);
+            LOGGER.debug("PageManager is  : {}", pageManager);
+            if (pageManager == null) {
+                LOGGER.error("PageManager is null in getNavigationSectionModelBean ...");
+                return "";
+            }
+            Page currentPage = pageManager.getPage(linkTarget);
+            LOGGER.debug("Current page in getHideInNavForAllPages is : {}", currentPage.getPath());
+            Iterator<Page> itr = currentPage.listChildren();
+            while(itr.hasNext()) {
+            	Page page = itr.next();
+            	LOGGER.debug("Current child of the page {} in getHideInNavForAllPages is : {}", currentPage.getPath(), page);
+            	if(!page.isHideInNav()) {
+            		LOGGER.debug("isHideInNav of the Current child {] of the page {} in getHideInNavForAllPages is : {}", page, currentPage.getPath(), page.isHideInNav());
+            		hideInNavForAllPages = "false";
+            	}
+            }
+            
+        } else {
+            LOGGER.debug("getHideInNavForAllPages LinkTarget is invalid");
+        }
+        LOGGER.debug("hideInNavForAllPages is : {}", hideInNavForAllPages);
+        return hideInNavForAllPages;
     }
 }
