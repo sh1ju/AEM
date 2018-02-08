@@ -149,6 +149,7 @@ Focus on reviews will be more on the
 * All Sightly utility methods must be written in existing SightlyUtils.java
 * All methods must be preceded by proper Javadoc. 
 * All constants must have a proper and detailed Javadoc
+* Use 6.3 Coral components rather than 6.2 non-coral components in the Touch UI dialogs & Page Properties.
 * Proper description for rach parameter and return type in Javadoc must be added.
 * Method names and Parameter names in methods must be self explanatory. Arguments such as param1, param2 must not be given.
 * Logger variable must be decalred as LOGGER. So in code it should appear as LOGGER.debug
