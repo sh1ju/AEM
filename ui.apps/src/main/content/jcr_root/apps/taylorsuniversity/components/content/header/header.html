@@ -32,28 +32,32 @@
 								</button>
 						<ul class="t-nav-dropdown-item p-0">
 							<sly data-sly-list.child="${firstLevelNavSection.listChildren}">
-                                   <li data-sly-test="${!child.hideInNav}">
-   									<sly data-sly-test="${child.listChildren}">
-                                           <div class="t-nav-sub-dropdown">
-                                               <button type="button"
-                                                   class="btn btn-sm btn-block px-0  py-2 py-lg-0">
-                                                   ${child.title} <i
-                                                       class="fa fa-angle-down t-nav-icon ml-2 d-lg-none"
-                                                       aria-hidden="true"></i> <i
-                                                       class="fa fa-angle-right t-nav-icon ml-2 d-none d-lg-inline-block"
-                                                       aria-hidden="true"></i>
-                                               </button>
-                                               <ul data-sly-list.subchild="${child.listChildren}"
-                                                   class="t-nav-sub-dropdown-item p-0">
-                                                   <li data-sly-test="${!subchild.hideInNav}"><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${subchild.title}</a>
-                                                   </li>
-                                               </ul>
-                                           </div>
-									</sly>
-   									<sly data-sly-test="${!child.listChildren}">
-                                            <a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${child.title}</a>
-                                       </sly>
-                                   </li>
+                                <li data-sly-test="${!child.hideInNav}">
+                                	<sly data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}">
+	   									<sly data-sly-test="${!linkHelper.hideInNavForAllPages}">
+	                                           <div class="t-nav-sub-dropdown">
+	                                               <button type="button"
+	                                                   class="btn btn-sm btn-block px-0  py-2 py-lg-0">
+	                                                   ${child.title} <i
+	                                                       class="fa fa-angle-down t-nav-icon ml-2 d-lg-none"
+	                                                       aria-hidden="true"></i> <i
+	                                                       class="fa fa-angle-right t-nav-icon ml-2 d-none d-lg-inline-block"
+	                                                       aria-hidden="true"></i>
+	                                               </button>
+	                                               <ul data-sly-list.subchild="${child.listChildren}"
+	                                                   class="t-nav-sub-dropdown-item p-0">
+	                                                   <li data-sly-test="${!subchild.hideInNav}"><a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=subchild.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${subchild.title}</a>
+	                                                   </li>
+	                                               </ul>
+	                                           </div>
+										</sly>
+                                    </sly>
+                                    <sly data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}">
+	   									<sly data-sly-test="${linkHelper.hideInNavForAllPages}">
+	                                            <a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=child.path}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">${child.title}</a>
+	                                    </sly>
+                                    </sly>
+                                </li>
 							</sly>
 
 
@@ -92,15 +96,19 @@
 					<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.switchPath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
 							class="btn btn-simple text-white t-header-6-20 d-flex align-items-center">${headerComponent.switchText}</button></a>
 					<div class="btn-group d-flex align-items-center">
-						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.searchResultsPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
-								class="btn btn-simple t-icon pr-2 pl-1 action-btn">
-								<img class="t-icon"
-									src="/etc/clientlibs/taylorsuniversity/main/img/search-icon.png"
-									alt="">
-							</button></a> 
-						<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.loginPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
-								class="btn btn-simple text-white t-header-6-20">${'Login'
-								@ i18n}</button></a>
+						<sly data-sly-test="${headerComponent.searchResultsPagePath}">
+							<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.searchResultsPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
+									class="btn btn-simple t-icon pr-2 pl-1 action-btn">
+									<img class="t-icon"
+										src="/etc/clientlibs/taylorsuniversity/main/img/search-icon.png"
+										alt="">
+								</button></a> 
+						</sly>
+						<sly data-sly-test="${headerComponent.loginPagePath}">
+							<a data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=headerComponent.loginPagePath}" href="${linkHelper.link @ context='uri'}" target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"><button
+									class="btn btn-simple text-white t-header-6-20">${'Login'
+									@ i18n}</button></a>
+						</sly>
 					</div>
 				</div>
 			</nav>
