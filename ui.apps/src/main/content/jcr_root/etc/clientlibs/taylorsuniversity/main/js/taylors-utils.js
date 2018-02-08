@@ -11,3 +11,9 @@ $('input[name="email"]').on('change', function() {
 		input.removeClass("valid").addClass("invalid");
 	}
 });
+
+$(function() {
+    $(".underlined").find(".active").each(function() {  
+        alert($(this).attr("data-tab"));
+    });
+});
