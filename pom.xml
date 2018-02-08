@@ -8,7 +8,7 @@
 
     <groupId>com.taylorsuniversity</groupId>
     <artifactId>taylorsuniversity-project</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>pom</packaging>
 
     <name>Taylors University AEM Implementation Project - Reactor Project</name>
@@ -187,6 +187,7 @@
                 <version>3.8.4</version>
                 <scope>provided</scope>
                 <type>content-package</type>
+                <classifier>min</classifier>
             </dependency>
             <dependency>
                 <groupId>javax.inject</groupId>
