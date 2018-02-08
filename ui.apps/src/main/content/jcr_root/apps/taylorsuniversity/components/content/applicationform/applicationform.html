@@ -1,0 +1,359 @@
+<sly data-sly-test="${!properties.title && wcmmode.edit}">
+<p class="cq-placeholder" data-emptytext="${component.cellName}"></p>
+</sly>
+
+<div class="row t-px t-pt">
+	<p>
+		Fields marked <span class="txt-primary">*</span> are mandatory fields.
+	</p>
+</div>
+<div class="row">
+	<div class="t-tab-container container-fluid" id="tab-container-2">
+		<div class="row  t-pl">
+			<div class="col-12 col-lg-2 p-0">
+				<div class="t-header-5 pt-3">
+					I'AM <span class="txt-primary"> *</span> :
+				</div>
+			</div>
+			<div class="col-12 col-lg p-0">
+				<div class="t-tabs underlined btn-group mb-3">
+					<button class="btn btn-simple btn-text-black pl-0 tab-item active"
+						data-tab="application-form-malaysian">MALAYSIAN</button>
+					<div class="verticle-devider dark my-3 "></div>
+					<button class="btn btn-simple btn-text-black tab-item"
+						data-tab="application-form-international">INTERNATIONAL
+						STUDENTS</button>
+				</div>
+			</div>
+		</div>
+		<div class="t-tab-content">
+			<div class="row  t-p pt-0 t-tab-content-item active"
+				data-tab-content="application-form-malaysian">
+				<!-- APPLICATION FORM MALAYSIA -->
+				<form class="col-12 t-form recaptcha-form "
+					id="application-form-malaysian" data-widget-id="widgetMalaysian"
+					novalidate>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="staticEmail" class="col-form-label t-header-5">NAME
+									<span class="txt-primary">*</span>
+								</label> <input type="text" class="form-control" name="name" required>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="contact_number" class="col-form-label t-header-5">CONTACT
+									NUMBER <span class="txt-primary">*</span>
+								</label> <input type="number" class="form-control" name="contact_number"
+									required>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="email" class="col-form-label t-header-5">EMAIL
+									<span class="txt-primary">*</span>
+								</label> <input type="email" class="form-control" name="email" required>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="state" class="col-form-label t-header-5">STATE
+									<span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="state" required>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="qualification" class="col-form-label t-header-5">ACADEMIC
+									QUALIFICATION <span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="qualification" required>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="results" class="col-form-label t-header-5">RESULTS</label>
+								<input type="text" class="form-control" name="results">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="level" class="col-form-label t-header-5">LEVEL
+									OF STUDY <span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="level" required>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="preference" class="col-form-label t-header-5">PROGRAMME
+									PREFERENCE <span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="preference" value="0"
+									required>
+									<option value="1">OPTION</option>
+									<option value="2">OPTION</option>
+									<option value="3">OPTION</option>
+									<option value="4">OPTION</option>
+									<option value="5">OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
+							<div class="form-group row">
+								<label for="intake_month"
+									class="col-12 col-form-label t-header-5">PREFERRED
+									INTAKE</label>
+								<div class="col-6">
+									<select class="form-control" size name="intake_month">
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
+								</div>
+								<div class="col-6">
+									<select class="form-control" size name="intake_year">
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row d-none">
+						<!--- hidden -->
+						<input type="hidden" name="interested_course" value="HIDDEN_VALUE">
+					</div>
+					<div class="row">
+						<div class="form-group form-check">
+							<div class="t-custom-checkbox form-control">
+								<i class="fa fa-check"></i>
+							</div>
+							<input type="checkbox" class="form-control" for="terms_agreed"
+								required> <label
+								class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0"
+								for="terms_agreed">*Yes, I understand that Taylor's
+								University will protect my details as per the <u> <a
+									href="#" class="txt-black">privacy policy</a>
+							</u>.
+							</label>
+							<div class="invalid-feedback">This field is required.</div>
+
+						</div>
+					</div>
+					<div class="row t-pt">
+						<div id="recaptcha-application-form-malaysian" class="d-none"></div>
+
+						<button
+							class="btn btn-simple btn-red recaptcha-element btn-standard-w"
+							data-sitekey="6LdHvj8UAAAAANxhryvj-yJvtloO5PUb2o7bg4rf"
+							data-callback="onSubmitApplicationMalaysian">
+							SUBMIT NOW <i class="t-icon-right white ml-2"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+			<div class="row  t-p  pt-0 t-tab-content-item"
+				data-tab-content="application-form-international">
+				<!-- APPLICATION FORM INTERNATIONAL -->
+				<form class="col-12 t-form recaptcha-form "
+					id="application-form-international"
+					data-widget-id="widgetInternational" novalidate>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="staticEmail" class="col-form-label t-header-5">NAME
+									<span class="txt-primary">*</span>
+								</label> <input type="text" class="form-control" name="name" required>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="contact_number" class="col-form-label t-header-5">CONTACT
+									NUMBER <span class="txt-primary">*</span>
+								</label> <input type="number" class="form-control" name="contact_number"
+									required>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="email" class="col-form-label t-header-5">EMAIL
+									<span class="txt-primary">*</span>
+								</label> <input type="email" class="form-control" name="email" required>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="nationality" class="col-form-label t-header-5">NATIONALITY
+									<span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="nationality" required>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="qualification" class="col-form-label t-header-5">ACADEMIC
+									QUALIFICATION <span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="qualification" required>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="results" class="col-form-label t-header-5">RESULTS</label>
+								<input type="text" class="form-control" name="results">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg">
+							<div class="form-group row pr-lg-4">
+								<label for="level" class="col-form-label t-header-5">LEVEL
+									OF STUDY <span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="level" required>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+									<option>OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg pr-lg-4">
+							<div class="form-group row ">
+								<label for="preference" class="col-form-label t-header-5">PROGRAMME
+									PREFERENCE <span class="txt-primary">*</span>
+								</label> <select class="form-control" size name="preference" value="0"
+									required>
+									<option value="1">OPTION</option>
+									<option value="2">OPTION</option>
+									<option value="3">OPTION</option>
+									<option value="4">OPTION</option>
+									<option value="5">OPTION</option>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
+							<div class="form-group row">
+								<label for="intake_month"
+									class="col-12 col-form-label t-header-5">PREFERRED
+									INTAKE</label>
+								<div class="col-6">
+									<select class="form-control" size name="intake_month">
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
+								</div>
+								<div class="col-6">
+									<select class="form-control" size name="intake_year">
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+										<option>OPTION</option>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row d-none">
+						<!--- hidden -->
+						<input type="hidden" name="interested_course" value="HIDDEN_VALUE">
+					</div>
+					<div class="row">
+						<div class="form-group form-check">
+							<div class="t-custom-checkbox form-control">
+								<i class="fa fa-check"></i>
+							</div>
+							<input type="checkbox" class="form-control" for="terms_agreed"
+								required> <label
+								class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0"
+								for="terms_agreed">*I agree to the Taylor's <u><a
+									href="#" class="txt-black">terms & conditions</a></u> and <u> <a
+									href="#" class="txt-black">privacy policy</a>
+							</u>.
+							</label>
+							<div class="invalid-feedback">This field is required.</div>
+
+						</div>
+					</div>
+					<div class="row t-pt">
+						<div id="recaptcha-application-form-international" class="d-none"></div>
+						<button id="application-form-submit"
+							class="btn btn-simple btn-red recaptcha-element btn-standard-w"
+							data-sitekey="6LdHvj8UAAAAANxhryvj-yJvtloO5PUb2o7bg4rf"
+							data-callback="onSubmitApplicationInternational">
+							SUBMIT NOW <i class="t-icon-right white ml-2"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
