@@ -36,7 +36,6 @@
                                     sling:resourceType="granite/ui/components/foundation/form/multifield"
                                     class="full-width"
                                     fieldDescription="Click 'Add field' to add a new social feature"
-                                    maxlinksallowed="3"
                                     fieldLabel="Social Config">
                                    <field
                                        jcr:primaryType="nt:unstructured"
