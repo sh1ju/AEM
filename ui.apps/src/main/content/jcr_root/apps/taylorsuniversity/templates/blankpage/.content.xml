@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:description="Taylors University Home Page Template"
+    jcr:description="Taylors University Blank Template"
     jcr:primaryType="cq:Template"
-    jcr:title="Taylors University Home Page Template"
+    jcr:title="Taylors University Blank Template"
     allowedPaths="[/content/taylorsuniversity(/.*)?,/content/tu(/.*)?,/content/tc(/.*)?]"
     ranking="{Long}10">
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="/apps/taylorsuniversity/components/page/homepage">
+        sling:resourceType="/apps/taylorsuniversity/components/page/blankpage">
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
                 <phone
