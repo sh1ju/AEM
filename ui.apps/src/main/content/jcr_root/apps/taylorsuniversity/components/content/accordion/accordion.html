@@ -1,15 +1,14 @@
 		<sly data-sly-test="${wcmmode.edit}">
 			Accordion
         </sly>
-		<div data-accordion-group>
-			<sly data-sly-use.multiItems="com.taylorsuniversity.core.components.TouchMultiFieldComponentUse">
-				<sly data-sly-list.head="${multiItems.multiFieldItems}">
+<div data-accordion-group>
+			<sly data-sly-use.multiItems="com.taylorsuniversity.models.AccordionComponentModel">
+				<sly data-sly-list.head="${multiItems.submenuItems}">
 					<section class="accordion t-accordion ${wcmmode.edit ? 'open':'' }" data-accordion>
-						<div class="accordion-control" data-control>${head.title}</div>
+						<div class="accordion-control" data-control>${head.accordiontitles_t}</div>
                         	<div data-content>
 								<sly data-sly-resource="${ 'accordionpar{0}' @ format=[headList.count], resourceType='foundation/components/parsys'}" />
-
-                               </div>
+                            </div>
                      </section>
  				 </sly>
 			</sly>

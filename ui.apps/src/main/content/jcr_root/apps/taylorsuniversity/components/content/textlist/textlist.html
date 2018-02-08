@@ -3,7 +3,7 @@
         </sly>
 <sly data-sly-use.logic="logic.js" data-sly-unwrap>
     <div class="row" id="${logic.id}">
-        <sly data-sly-use.bulletLists="com.taylorsuniversity.core.components.TouchMultiCompositeFieldComponentUse">
+        <sly data-sly-use.bulletLists="com.taylorsuniversity.models.TextListComponentModel">
             <sly data-sly-test="${logic.hideBullets}">
 
                      <div class="col-lg-${logic.colStyle}" data-sly-list.bean="${bulletLists.col1}">
@@ -14,7 +14,7 @@
                      </div>
                      <div class="col-lg-${logic.colStyle}" data-sly-list.bean="${bulletLists.col2}" >
                      	   <div class="${bean.mobileCSS}">
-                           <h4> ${bean.text} </h4>
+                           <h4>${bean.text} </h4>
                            <p class="mb-4">${bean.title}</p>
                            </div>
                      </div>

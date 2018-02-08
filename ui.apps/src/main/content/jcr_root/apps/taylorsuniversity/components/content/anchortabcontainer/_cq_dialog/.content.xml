@@ -5,7 +5,7 @@
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/foundation/container"
+        sling:resourceType="granite/ui/components/coral/foundation/container"
         class="cq-dialog-content-page">
         <items jcr:primaryType="nt:unstructured">
             <content
@@ -15,17 +15,17 @@
                 sling:resourceType="granite/ui/components/foundation/section">
                 <layout
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
                     margin="{Boolean}false"/>
                 <items jcr:primaryType="nt:unstructured">
                     <column
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/foundation/container">
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <listcontainer
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="List"
-                                sling:resourceType="granite/ui/components/foundation/form/fieldset">
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                 <items jcr:primaryType="nt:unstructured">
                                     <list-items
                                         jcr:primaryType="nt:unstructured"

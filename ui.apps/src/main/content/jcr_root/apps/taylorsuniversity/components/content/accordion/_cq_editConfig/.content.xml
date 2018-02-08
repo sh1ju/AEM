@@ -5,7 +5,7 @@
     jcr:primaryType="nt:unstructured">
     <cq:listeners
         jcr:primaryType="cq:EditListenersConfig"
-        aftercopy="REFRESH_PAGE"
-        afteredit="REFRESH_PAGE"
-        afterinsert="REFRESH_PAGE"/>
+        aftercopy="REFRESH_SELF"
+        afteredit="REFRESH_SELF"
+        afterinsert="REFRESH_SELF"/>
 </jcr:root>
