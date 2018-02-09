@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"   xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="School Themes"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    mode="edit">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/container">
+        <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/tabs"
+            type="nav"/>
+            <items jcr:primaryType="nt:unstructured">
+                <schoolthemes
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="School Themes"
+                    sling:resourceType="granite/ui/components/foundation/section">
+                    <layout
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                        margin="{Boolean}false"/>
+                        <items jcr:primaryType="nt:unstructured">
+                        <column
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/container">
+                            <items jcr:primaryType="nt:unstructured">
+                            <themeconfig
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/multifield"
+                                maxlinksallowed="4"
+                                class="full-width"
+                                fieldLabel="Themes Config">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/foundation/form/fieldset"
+                                    acs-commons-nested=""
+                                    name="./schoolThemes">
+                                    <layout
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                                        method="absolute"/>
+                                        <items jcr:primaryType="nt:unstructured">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <image
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                    fieldDescription="Choose the tile image from DAM"
+                                                    fieldLabel="Image "
+                                                    name="./image"
+                                                    rootPath="/content/dam/taylorsuniversity"/>
+                                                <imagealignment
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/select"
+                                                    fieldLabel="Image Alignment"
+                                                    fieldDescription="Select the image alignment"
+                                                    name="./imageAlignment">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <left
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Image Left"
+                                                            value="left"/>
+                                                        <right
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Image Right"
+                                                            value="right"/>
+                                                    </items>
+                                                </imagealignment>
+                                                <themetitle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                                    fieldDescription="Title of the school theme"
+                                                    fieldLabel="Theme Title"
+                                                    name="./themeTitle"/>
+                                                <themetext
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/textarea"
+                                                    fieldDescription="Description of the school theme"
+                                                    fieldLabel="Theme Text"
+                                                    name="./themeText"/>
+                                                <schools
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/foundation/form/multifield"
+                                                    class="full-width"
+                                                    fieldDescription="Click 'Add field' to add a new school link"
+                                                    fieldLabel="School Links">
+                                                    <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/foundation/form/fieldset"
+                                                        acs-commons-nested=""
+                                                        name="./schoolLinks">
+                                                        <layout
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                                                            method="absolute"/>
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/foundation/container">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <linkpath
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                                        fieldDescription="List of links to the school."
+                                                                        fieldLabel="School Links"
+                                                                        name="./linkPath"
+                                                                        rootPath="/content/taylorsuniversity"/>
+                                                                </items>
+                                                            </column>
+                                                        </items>
+                                                    </field>
+                                                </schools>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </themeconfig>
+                        </items>
+                    </column>
+                </items>
+            </schoolthemes>
+        </items>
+    </content>
+</jcr:root>
