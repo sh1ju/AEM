@@ -1,7 +1,13 @@
-$( "#appointment-button" ).click(function(appointmentPath) {
-    console.log("Appointment Path is: " + appointmentPath);
+$(window).on('back-to-top', function() {
+        $('html,body').animate({ scrollTop: 0 }, "slow", 'swing');
 });
 
-$( "#livechat-button" ).click(function(livechatPath) {
-    console.log("Live Chat Path is: " + livechatPath);
+var triggerBackToTop = 50;
+$(window).on('scroll',function(e) {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (triggerBackToTop < scrollTop) {
+        $('.back-to-top-btn').show();
+    } else {
+        $('.back-to-top-btn').hide();
+    }
 });
