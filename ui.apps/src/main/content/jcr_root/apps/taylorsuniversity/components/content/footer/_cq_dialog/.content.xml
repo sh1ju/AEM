@@ -53,14 +53,14 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <socialicon
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                         fieldDescription="Image of the social icon"
                                                         fieldLabel="Social Icon"
                                                         name="./socialIcon"
                                                         rootPath="/content/dam/taylorsuniversity"/>
                                                     <sociallink
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                         fieldDescription="Link of the social icon. It will open in a new window if external link."
                                                         fieldLabel="Social Link"
                                                         name="./socialLink"
@@ -141,7 +141,7 @@
                                                                 <items jcr:primaryType="nt:unstructured">
                                                                     <linkpath
                                                                         jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                         fieldDescription="List of page paths of the links."
                                                                         fieldLabel="Pages"
                                                                         name="./linkPath"
