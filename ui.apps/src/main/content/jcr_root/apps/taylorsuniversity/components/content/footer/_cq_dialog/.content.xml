@@ -36,7 +36,6 @@
                                     sling:resourceType="granite/ui/components/foundation/form/multifield"
                                     class="full-width"
                                     fieldDescription="Click 'Add field' to add a new social feature"
-                                    maxlinksallowed="3"
                                     fieldLabel="Social Config">
                                    <field
                                        jcr:primaryType="nt:unstructured"
@@ -123,7 +122,7 @@
                                                 <footerlinks
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/foundation/form/multifield"
-                                                    class="full-width"
+                                                    class="full-width path-readonly"
                                                     fieldDescription="Click 'Add field' to add a new link feature"
                                                     fieldLabel="Footer Links">
                                                     <field
