@@ -12,20 +12,20 @@
                 jcr:primaryType="nt:unstructured"
                 jcr:title="List Content"
                 sling:orderBefore="styling"
-                sling:resourceType="granite/ui/components/foundation/section">
+                sling:resourceType="granite/ui/components/coral/foundation/container">
                 <layout
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    sling:resourceType="granite/ui/components/coral/foundation/container"
                     margin="{Boolean}false"/>
                 <items jcr:primaryType="nt:unstructured">
                     <column
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/foundation/container">
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <listcontainer
                                 jcr:primaryType="nt:unstructured"
                                 jcr:title="List"
-                                sling:resourceType="granite/ui/components/foundation/form/fieldset">
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                 <items jcr:primaryType="nt:unstructured">
                                     <list-items
                                         jcr:primaryType="nt:unstructured"

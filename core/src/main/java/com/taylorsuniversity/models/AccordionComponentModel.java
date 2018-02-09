@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.apache.sling.api.resource.Resource;
@@ -24,40 +23,39 @@ import com.taylorsuniversity.models.bean.AccordionModelBean;
 @Model(adaptables = Resource.class)
 public class AccordionComponentModel {
 
-	 /** The Constant LOG. */
-    public static final Logger LOGGER = LoggerFactory.getLogger(AccordionComponentModel.class);
-    
+	/** The Constant LOG. */
+	public static final Logger LOGGER = LoggerFactory.getLogger(AccordionComponentModel.class);
 
-    @Inject @Optional
+	 /**
+     * The Resolver
+     */
+	@Inject @Optional
     private Resource listItems;
-    
-    // variable to hold the submenuItems list items
-    private List<AccordionModelBean> submenuItems = new ArrayList<>();    
- 
-    public List<AccordionModelBean> getSubmenuItems() {
-    	LOGGER.debug("In getSubmenuItems()");
-		try{			
-			if (listItems != null)
-			{
+
+	// variable to hold the submenuItems list items
+	private List<AccordionModelBean> submenuItems = new ArrayList<>();
+
+	public final List<AccordionModelBean> getSubmenuItems() {
+		LOGGER.error("In getSubmenuItems()");
+		try {
+			if (listItems != null) {
 				Iterator<Resource> listChildren = listItems.listChildren();
-				while(listChildren.hasNext()){
+				while (listChildren.hasNext()) {
 					LOGGER.debug("In loop listItems()");
 					AccordionModelBean modelBean = listChildren.next().adaptTo(AccordionModelBean.class);
-						if(modelBean != null){
+						if (modelBean != null) {
 							submenuItems.add(modelBean);
-						}else{
-							LOGGER.debug("Else"); 
-						}						
-					}				
-				} 
-			LOGGER.debug("submenuItems"+submenuItems);
-			}catch(Exception e){ 
-				LOGGER.error("Exception while setMultiFieldItems data {}", e.getMessage(), e); 
-				} 
+						} else {
+							LOGGER.debug("Else");
+						}
+					}
+			} else {
+				LOGGER.error("Else");
+			}
+			LOGGER.error("submenuItems" + submenuItems);
+		} catch (Exception e) {
+			LOGGER.error("Exception while setMultiFieldItems data {}", e.getMessage(), e);
+		}
 		return submenuItems;
 	}
-
-
-
-
 }
