@@ -2,42 +2,25 @@
 
 package com.taylorsuniversity.models.bean;
 
-import javax.inject.Inject;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.models.annotations.injectorspecific.Self;
-
-import com.day.cq.wcm.api.PageManager;
-import com.taylorsuniversity.utils.CoreUtils;
-
 /**
  * This bean class is used to set and retrieve the footer links path properties
  * configured in the footer component of the home-page template.
  *
  */
+
 public final class SchoolLinksBean {
-
-    @Inject
-    private PageManager pageManager;
-
+   
     private String linkPath;
-    private String linkTitle = StringUtils.EMPTY;
+    private String linkTitle;
 
-    /**
-     * @return linkPath
-     */
-    public String getLinkPath() {
-        return linkPath;
-    }
+	public String getLinkPath() {
+		return linkPath;
+	}
+	public String getLinkTitle() {
+		return linkTitle;
+	}
+	public void setLinkTitle(String linkTitle) {
+		this.linkTitle = linkTitle;
+	}
 
-    /**
-     * @return linkTitle
-     */
-    public String getLinkTitle() {
-        if (CoreUtils.isInternalLink(linkPath) && (null != pageManager.getPage(linkPath))) {
-            linkTitle = pageManager.getPage(linkPath).getTitle();
-        }
-        return linkTitle;
-    }
 }

@@ -32,4 +32,7 @@ public final class SchoolThemesModelBean {
     public List<SchoolLinksBean> getSchoolLinks() {
         return schoolLinks;
     }
+	public void setSchoolLinks(List<SchoolLinksBean> schoolLinks) {
+		this.schoolLinks = schoolLinks;
+	}
 }
