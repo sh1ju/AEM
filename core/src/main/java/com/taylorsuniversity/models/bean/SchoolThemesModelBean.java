@@ -9,20 +9,27 @@ import java.util.List;
  * configured in the footer component of the home-page template.
  *
  */
-public class SchoolThemesModelBean {
+public final class SchoolThemesModelBean {
 
-    private String footerLinksTitle;
-    private String footerLinksTitle;
-    private String footerLinksTitle;
-    private String footerLinksTitle;
-    
-    private List<FooterModelLinkPathBean> footerLinksPages;
+    private String image;
+    private String imageAlignment;
+    private String themeTitle;
+    private String themeText;
+    private List<SchoolLinksBean> schoolLinks;
 
-    public final String getFooterLinksTitle() {
-        return footerLinksTitle;
+    public String getImage() {
+        return image;
     }
-    public final List<FooterModelLinkPathBean> getFooterLinksPages() {
-        return footerLinksPages;
+    public String getImageAlignment() {
+        return imageAlignment;
+    }
+    public String getThemeTitle() {
+        return themeTitle;
+    }
+    public String getThemeText() {
+        return themeText;
+    }
+    public List<SchoolLinksBean> getSchoolLinks() {
+        return schoolLinks;
     }
 }
-

@@ -54,19 +54,16 @@
                                                     rootPath="/content/dam/taylorsuniversity"/>
                                                 <imagealignment
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    sling:resourceType="granite/ui/components/foundation/form/select"
                                                     fieldLabel="Image Alignment"
+                                                    fieldDescription="Select the image alignment"
                                                     name="./imageAlignment">
                                                     <items jcr:primaryType="nt:unstructured">
-                                                        <select
-                                                            jcr:primaryType="nt:unstructured"
-                                                            text="--Select--"
-                                                            value="select"/>
-                                                        <tiles
+                                                        <left
                                                             jcr:primaryType="nt:unstructured"
                                                             text="Image Left"
                                                             value="left"/>
-                                                        <stats
+                                                        <right
                                                             jcr:primaryType="nt:unstructured"
                                                             text="Image Right"
                                                             value="right"/>
@@ -77,13 +74,13 @@
                                                     sling:resourceType="granite/ui/components/foundation/form/textfield"
                                                     fieldDescription="Title of the school theme"
                                                     fieldLabel="Theme Title"
-                                                    name="./themetitle"/>
+                                                    name="./themeTitle"/>
                                                 <themetext
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/foundation/form/textarea"
                                                     fieldDescription="Description of the school theme"
                                                     fieldLabel="Theme Text"
-                                                    name="./themetext"/>
+                                                    name="./themeText"/>
                                                 <schools
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/foundation/form/multifield"

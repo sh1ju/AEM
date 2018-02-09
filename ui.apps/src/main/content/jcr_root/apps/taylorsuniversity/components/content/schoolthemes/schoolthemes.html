@@ -1,20 +1,25 @@
+<sly data-sly-use.model="com.taylorsuniversity.models.SchoolThemesModel"/>
 <sly data-sly-test="${wcmmode.edit}">
     <p class="cq-placeholder" data-emptytext="School Themes"></p>
 </sly>
-<div class="container-fluid t-p pt-0">
-        <div class="row pt-0 pb-0 m-0 mb-md-0 mb-4">
-            <div class="col-md-6 p-0 d-flex justify-content-center flex-column align-items-start all-schools-right-triangle">
-                <img class="all-schools-image" src="assets/img/all-schools/img1.jpg">
-            </div>
-            <div class="col-md-6 p-0 d-flex justify-content-center flex-column align-items-start pl-md-5 p-md-0 pt-3 pb-3">
-                <div class="d-inline-block text-uppercase btn btn-simple btn-red no-hover">Talk To The World</div>
-                <p class="mt-4 mb-4">It’s a big world out there, and we’re going to help you connect to it.</p>
-                
-                <a href="#" class="d-block btn btn-simple btn-text-red no-cap p-0">ADP (American Degree transfer Program) <i class="t-icon-right"></i></a>
-                <a href="#" class="d-block btn btn-simple btn-text-red no-cap p-0">Communication <i class="t-icon-right"></i></a>
-                <a href="#" class="d-block btn btn-simple btn-text-red no-cap p-0">Centre for Learning <i class="t-icon-right"></i></a>
-                <a href="#" class="d-block btn btn-simple btn-text-red no-cap p-0">Hospitality <i class="t-icon-right"></i></a>
-            </div>
-        </div>
 
+<div class="container-fluid t-p pt-0" data-sly-test="${model.schoolThemesList && model.schoolThemesList.size>0}"
+     data-sly-list.st="${model.schoolThemesList}">
+    
+    <div class="row pt-0 pb-0 m-0 mb-md-0 mb-4">
+        <div class="col-md-6 p-0 d-flex justify-content-center flex-column align-items-start all-schools-${st.ImageAlignment == 
+                    'left'?'left-triangle order-md-1':'right-triangle'}">
+            <img class="all-schools-image" src="${st.image}">
+        </div>
+        <div class="col-md-6 p-0 d-flex justify-content-center flex-column align-items-start ${st.ImageAlignment == 
+                    'left'?'pl-md-5':'pr-md-5'} p-md-0 pt-3 pb-3">
+            <div class="d-inline-block text-uppercase btn btn-simple btn-red no-hover">${st.themeTitle}</div>
+            <p class="mt-4 mb-4">${st.themeText}</p>
+            <sly data-sly-test="${st.schoolLinks && st.schoolLinks.size>0}" data-sly-list="${st.schoolLinks}">
+                <a href="${item.linkPath}" class="d-block btn btn-simple btn-text-red no-cap p-0">
+                ${item.linkTitle}<i class="t-icon-right"></i>
+                </a>
+            </sly>
+        </div>
+    </div>
 </div>
