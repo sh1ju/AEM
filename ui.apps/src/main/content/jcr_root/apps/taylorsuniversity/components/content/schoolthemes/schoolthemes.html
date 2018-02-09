@@ -16,8 +16,8 @@
             <div class="d-inline-block text-uppercase btn btn-simple btn-red no-hover">${st.themeTitle}</div>
             <p class="mt-4 mb-4">${st.themeText}</p>
             <sly data-sly-test="${st.schoolLinks && st.schoolLinks.size>0}" data-sly-list="${st.schoolLinks}">
-                <a href="${item.linkPath}" class="d-block btn btn-simple btn-text-red no-cap p-0">
-                ${item.linkTitle}<i class="t-icon-right"></i>
+                <a href="${item.linkPath @ extension = 'html'}" class="d-block btn btn-simple btn-text-red no-cap p-0">
+                    ${item.linkPath @ extension = 'html'}<i class="t-icon-right"></i>
                 </a>
             </sly>
         </div>

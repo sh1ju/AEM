@@ -77,4 +77,5 @@ public final class SchoolThemesModel {
         logger.info("School Themes Links Map being sent is: : {}", schoolThemesList);
         return schoolThemesList;
     }
+    
 }

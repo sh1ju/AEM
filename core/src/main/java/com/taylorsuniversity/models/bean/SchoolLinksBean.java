@@ -18,10 +18,6 @@ import com.taylorsuniversity.utils.CoreUtils;
  */
 public final class SchoolLinksBean {
 
-    /** The Resolver. */
-    @Self
-    private SlingHttpServletRequest request;
-
     @Inject
     private PageManager pageManager;
 
@@ -32,9 +28,6 @@ public final class SchoolLinksBean {
      * @return linkPath
      */
     public String getLinkPath() {
-        if (StringUtils.isNotEmpty(linkPath)) {
-            linkPath = CoreUtils.getQualifiedLink(request.getResourceResolver(), linkPath);
-        }
         return linkPath;
     }
 
