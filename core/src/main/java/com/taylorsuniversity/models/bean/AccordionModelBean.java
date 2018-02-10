@@ -13,13 +13,13 @@ import org.apache.sling.models.annotations.Model;
  */
 
 @Model(adaptables = Resource.class)
-public class AccordionModelBean {
+public final class AccordionModelBean {
 
     @Inject
     @Named("accordiontitles_t")
-    private String accordiontitles_t;
+    private String accordiontitlest;
 
-    public String getAccordiontitles_t() {
-        return accordiontitles_t;
+    public String getAccordiontitlest() {
+        return accordiontitlest;
     }
 }
