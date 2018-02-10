@@ -55,9 +55,11 @@ public final class TileListingModelBean {
         return StringUtils.EMPTY;
 
     }
+
     public String getTitleLinkType() {
         return String.valueOf(CoreUtils.isInternalLink(titleLink));
     }
+
     public String getDescription() {
         return description;
     }

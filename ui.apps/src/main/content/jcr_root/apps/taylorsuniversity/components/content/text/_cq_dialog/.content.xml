@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Text"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="en/cq/current/wcm/default_components.html">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/container">
+        <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/tabs"
+            type="nav"/>
+        <items jcr:primaryType="nt:unstructured">
+            <content
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Content"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <isformlabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                                name="./isformlabel"
+                                text="Is Form Label ?"
+                                value="true"/>
+                            <text/>
+                            <formlabelid/>
+                        </items>
+                    </column>
+                </items>
+            </content>
+            <styling
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Styling"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <font-color
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hlb/widgets/colorpicker"
+                                classicPaletteType="{Boolean}false"
+                                fieldLabel="Font Color"
+                                freestylePaletteType="{Boolean}true"
+                                name="./fontColor">
+                                <mappings jcr:primaryType="nt:unstructured">
+                                    <color-txt-blue
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-blue"
+                                        value="#002248"/>
+                                    <color-txt-red
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-red"
+                                        value="#ff0000"/>
+                                    <color-txt-light-blue
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-light-blue"
+                                        value="#6ab7de"/>
+                                    <color-txt-light-grey
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-light-grey"
+                                        value="#363E3F"/>
+                                    <color-txt-grey
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-grey"
+                                        value="#999999"/>
+                                    <color-txt-dark-grey
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-dark-grey"
+                                        value="#666666"/>
+                                    <color-txt-deep-dark-grey
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-deep-dark-grey"
+                                        value="#333333"/>
+                                    <color-txt-black
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-black"
+                                        value="#000000"/>
+                                    <color-txt-white
+                                        jcr:primaryType="nt:unstructured"
+                                        name="color-txt-white"
+                                        value="#ffffff"/>
+                                </mappings>
+                            </font-color>
+                            <alignment
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/select"
+                                fieldLabel="Alignment"
+                                name="./alignment">
+                                <datasource
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="/apps/hlb/components/structure/common/datasources/alignment"/>
+                            </alignment>
+                            <font-size
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/select"
+                                fieldLabel="Font Size"
+                                name="./fontSize">
+                                <datasource
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hlb/components/structure/common/datasources/font-size"/>
+                            </font-size>
+                        </items>
+                    </column>
+                </items>
+            </styling>
+            <desktop
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Desktop"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <margintop/>
+                            <marginbottom/>
+                        </items>
+                    </column>
+                </items>
+            </desktop>
+            <tablet
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Tablet"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <margintop/>
+                            <marginbottom/>
+                        </items>
+                    </column>
+                </items>
+            </tablet>
+            <mobile
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Mobile"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <margintop/>
+                            <marginbottom/>
+                        </items>
+                    </column>
+                </items>
+            </mobile>
+        </items>
+    </content>
+</jcr:root>
