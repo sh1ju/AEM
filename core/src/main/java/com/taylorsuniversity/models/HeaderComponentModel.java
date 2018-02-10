@@ -39,7 +39,7 @@ import com.google.gson.JsonObject;
  * template.
  */
 @Model(adaptables = SlingHttpServletRequest.class)
-public class HeaderComponentModel {
+public final class HeaderComponentModel {
 
     /** The Constant LOG. */
     public static final Logger LOGGER = LoggerFactory.getLogger(HeaderComponentModel.class);

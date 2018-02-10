@@ -4,7 +4,7 @@
 
   <!-- Checks whether files end with a new line.                        -->
   <!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
-  <module name="NewlineAtEndOfFile"/>
+  <!--module name="NewlineAtEndOfFile"/-->
 
   <!-- Checks that property files contain the same keys.         -->
   <!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
@@ -16,9 +16,9 @@
 
   <!-- Checks for whitespace                               -->
   <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-  <module name="FileTabCharacter">
+  <!--module name="FileTabCharacter">
     <property name="eachLine" value="true"/>
-  </module>
+  </module-->
 
   <!-- Miscellaneous other checks.                   -->
   <!-- See http://checkstyle.sf.net/config_misc.html -->
@@ -150,9 +150,9 @@
     <module name="UpperEll"/>
 
     <!-- Ensure 4 spaces per indentation level -->
-    <module name="Indentation">
+    <!--module name="Indentation">
       <property name="severity" value="warning"/>
-    </module>
+    </module-->
     <!-- Required for the SuppressionCommentFilter module -->
     <module name="FileContentsHolder"/>
 

@@ -34,10 +34,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         
         <!-- properties for DEV server author deployment -->
-		<dev.author.server.crx.host>LSCSVRDEVADOBE01</dev.author.server.crx.host>
+		<dev.author.server.crx.host>or1010051035023.corp.adobe.com</dev.author.server.crx.host>
         <dev.author.server.crx.port>4502</dev.author.server.crx.port>
-        <dev.author.server.crx.username>root</dev.author.server.crx.username>
-        <dev.author.server.crx.password>P@ssw0rd</dev.author.server.crx.password>
+        <dev.author.server.crx.username>admin</dev.author.server.crx.username>
+        <dev.author.server.crx.password>admin</dev.author.server.crx.password>
         
         <!-- properties for DEV server publish deployment -->
 		<dev.publish.server.crx.host>LSCSVRDEVADOBE01</dev.publish.server.crx.host>

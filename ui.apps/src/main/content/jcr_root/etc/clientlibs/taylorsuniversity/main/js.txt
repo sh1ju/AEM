@@ -1,5 +1,5 @@
 #base=js
 
 bundle.js
-header-navigation.js
-taylors-utils.js
+taylors-header.js
+taylors-footer.js

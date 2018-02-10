@@ -1,0 +1,15 @@
+<sly data-sly-use.logic="logic.js" data-sly-unwrap>
+	<div class="row t-px p-4">
+        <sly data-sly-test="${logic.isSingleColumn}">
+                <div data-sly-resource="${ @path='par1', resourceType='foundation/components/parsys'}"></div>
+        </sly>
+        <sly data-sly-test="${!logic.isSingleColumn}">
+            <div class="${logic.col1}">
+				<sly data-sly-resource="${ @path='ccpar1', resourceType='foundation/components/parsys'}" />
+            </div>
+            <div class="${logic.col2}">
+				<sly data-sly-resource="${ @path='ccpar2', resourceType='foundation/components/parsys'}" />
+            </div>
+        </sly>
+    </div>
+</sly>

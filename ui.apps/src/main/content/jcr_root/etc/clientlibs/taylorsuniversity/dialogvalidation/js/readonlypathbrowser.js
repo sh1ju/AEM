@@ -1,10 +1,19 @@
 $(document).on("dialog-ready", function() {    
     var pathReadonly = function() {        
-        setTimeout(function() {            
-            $(".path-readonly").find(".coral-Textfield").each(function() {                
+    	$(".path-readonly").find(".coral-Textfield").each(function() {                
             $(this).attr("readonly", "readonly");            
-        });        
-        }, 250);    
-        }    
+        });    
+    }    
     pathReadonly();
+});
+
+$(document).on("dialog-ready", function () {
+	$(".coral-Button").click(function() {
+		var field = $(this).parent();    
+        setTimeout(function() {
+            field.find(".coral-Textfield").each(function() {
+                $(this).attr("readonly", "readonly");
+            });
+        }, 250);
+	});
 });

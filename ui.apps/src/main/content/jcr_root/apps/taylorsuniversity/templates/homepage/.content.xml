@@ -3,7 +3,7 @@
     jcr:description="Taylors University Home Page Template"
     jcr:primaryType="cq:Template"
     jcr:title="Taylors University Home Page Template"
-    allowedPaths="[/content/taylorsuniversity(/.*)?,/content/tu(/.*)?,/content/tc(/.*)?]"
+    allowedPaths="[/content/taylorsuniversity/.*(/.*)?,/content/tu/.*(/.*)?,/content/tc/.*(/.*)?]"
     ranking="{Long}10">
     <jcr:content
         jcr:primaryType="cq:PageContent"
