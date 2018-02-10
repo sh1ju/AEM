@@ -37,27 +37,29 @@ public class AccordionComponentModel {
     // variable to hold the submenuItems list items
     private List<AccordionModelBean> submenuItems = new ArrayList<>();
 
+    /**
+     * Reads the ListItems properties and adds to bean
+     * @return List<AccordionModelBean>
+     */
     public final List<AccordionModelBean> getSubmenuItems() {
         LOGGER.error("In getSubmenuItems()");
-        try {
-            if (listItems != null) {
-                Iterator<Resource> listChildren = listItems.listChildren();
-                while (listChildren.hasNext()) {
-                    LOGGER.debug("In loop listItems()");
-                    AccordionModelBean modelBean = listChildren.next().adaptTo(AccordionModelBean.class);
-                    if (modelBean != null) {
-                        submenuItems.add(modelBean);
-                    } else {
-                        LOGGER.debug("Else");
-                    }
+
+        if (listItems != null) {
+            Iterator<Resource> listChildren = listItems.listChildren();
+            while (listChildren.hasNext()) {
+                LOGGER.debug("In loop listItems()");
+                AccordionModelBean modelBean = listChildren.next().adaptTo(AccordionModelBean.class);
+                if (modelBean != null) {
+                    submenuItems.add(modelBean);
+                } else {
+                    LOGGER.debug("Else");
                 }
-            } else {
-                LOGGER.error("Else");
             }
-            LOGGER.error("submenuItems" + submenuItems);
-        } catch (Exception e) {
-            LOGGER.error("Exception while setMultiFieldItems data {}", e.getMessage(), e);
+        } else {
+            LOGGER.error("Else");
         }
+        LOGGER.error("submenuItems" + submenuItems);
+
         return submenuItems;
     }
 }
