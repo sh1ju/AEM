@@ -6,7 +6,7 @@
 <div class="row" data-sly-test="${properties.displayStyle == 'tiles' && model.tileListingItems}">
     <div class="w-100 d-flex flex-row flex-wrap flex-lg-nowrap align-items-stretch no-gutters" data-sly-list.ti="${model.tileListingItems}"> 
         <div class="image-with-tag col-12 col-lg-3">
-            <img class="img-fluid" src="${ti.image}" width="100%" height="auto" alt="${ti.alt}">
+            <img class="img-fluid" src="${ti.image}" width="100%" height="auto" alt="">
             <div class="floating-content">
                <a href="${ti.titleLink}" class="btn btn-simple btn-red" target="${ti.titleLinkType=='true'? '_self' : '_blank'}">
 				${ti.title}<i class="t-icon-right white ml-1"></i>
@@ -22,7 +22,7 @@
     <div class="col-6 col-lg" >
         <div class="icon-percent-text d-flex flex-column flex-lg-row justify-content-center align-items-center justify-content-lg-start align-items-lg-start">
             <div class="icon-container  py-2 px-3">
-				<img src="${ti.image}" class="icon-img" alt="${ti.alt}">
+				<img src="${ti.image}" class="icon-img" alt="">
             </div>
             <div class="content text-center text-lg-left">
 				<h3 class="txt-primary">${ti.title}</h3>
@@ -37,7 +37,7 @@
     <div class="row t-px t-py" data-sly-list.ti="${model.tileListingItems}">
 		<div class="col-md-4 d-flex align-items-center mb-sm-2 mt-sm-2">
 			<div class="course-stats">
-				<img class="course-details-stats-icon" src="${ti.image}" alt=${ti.alt}>
+				<img class="course-details-stats-icon" src="${ti.image}" alt="">
 				<div class="stats-desc">
 					<div>
                         <strong class="txt-primary font-bold">${ti.title}</strong>

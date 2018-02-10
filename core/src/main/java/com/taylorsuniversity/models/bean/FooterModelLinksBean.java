@@ -9,15 +9,15 @@ import java.util.List;
  * configured in the footer component of the home-page template.
  *
  */
-public class FooterModelLinksBean {
+public final class FooterModelLinksBean {
 
     private String footerLinksTitle;
     private List<FooterModelLinkPathBean> footerLinksPages;
 
-    public final String getFooterLinksTitle() {
+    public String getFooterLinksTitle() {
         return footerLinksTitle;
     }
-    public final List<FooterModelLinkPathBean> getFooterLinksPages() {
+    public List<FooterModelLinkPathBean> getFooterLinksPages() {
         return footerLinksPages;
     }
 }

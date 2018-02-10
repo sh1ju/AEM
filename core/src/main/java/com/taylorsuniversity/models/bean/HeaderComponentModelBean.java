@@ -12,7 +12,7 @@ import org.apache.sling.models.annotations.Optional;
  * The Class HeaderComponentModelBean.
  */
 @Model(adaptables = Resource.class)
-public class HeaderComponentModelBean {
+public final class HeaderComponentModelBean {
 
     @Inject
     @Optional

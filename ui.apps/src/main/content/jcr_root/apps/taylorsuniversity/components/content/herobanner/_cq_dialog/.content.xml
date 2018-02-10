@@ -68,7 +68,7 @@
                                         name="./redLinkTitle"/>
                                     <redlinkpath
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Path of the red link (1st link)"
                                         fieldLabel="Red Link Path"
                                         name="./redLinkPath"
@@ -81,7 +81,7 @@
                                         name="./whiteLinkTitle"/>
                                     <whitelinkpath
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                         fieldDescription="Path of the white link (2nd link)"
                                         fieldLabel="White Link Path"
                                         name="./whiteLinkPath"

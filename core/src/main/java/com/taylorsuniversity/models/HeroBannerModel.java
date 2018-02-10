@@ -21,7 +21,7 @@ import com.day.cq.dam.commons.util.DamUtil;
  *
  */
 @Model(adaptables = Resource.class)
-public class HeroBannerModel {
+public final class HeroBannerModel {
 
     /**
      * The Resolver
@@ -40,7 +40,7 @@ public class HeroBannerModel {
      * The init method
      */
     @PostConstruct
-    protected final void init() {
+    protected void init() {
 
         if (StringUtils.isNotBlank(desktopReference)) {
             Resource resource = resourceResolver.getResource(desktopReference);
@@ -68,7 +68,7 @@ public class HeroBannerModel {
     /**
      * @return damType
      */
-    public final String getDamType() {
+    public String getDamType() {
         logger.debug("Dam type is : {}", damType);
         return damType;
     }
