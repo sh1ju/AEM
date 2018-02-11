@@ -7,19 +7,19 @@ package com.taylorsuniversity.models.bean;
  * configured in the footer component of the home-page template.
  *
  */
-public class FooterModelSocialBean {
+public final class FooterModelSocialBean {
 
     private String socialIcon;
     private String socialLink;
     private String socialText;
 
-    public final String getSocialIcon() {
+    public String getSocialIcon() {
         return socialIcon;
     }
-    public final String getSocialLink() {
+    public String getSocialLink() {
         return socialLink;
     }
-    public final String getSocialText() {
+    public String getSocialText() {
         return socialText;
     }
 }

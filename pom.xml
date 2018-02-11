@@ -187,7 +187,6 @@
                 <version>3.8.4</version>
                 <scope>provided</scope>
                 <type>content-package</type>
-                <classifier>min</classifier>
             </dependency>
             <dependency>
                 <groupId>javax.inject</groupId>
