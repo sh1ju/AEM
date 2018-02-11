@@ -1,12 +1,13 @@
 /* Copyright Taylors University */
 
 package com.taylorsuniversity.models.bean;
+
 import java.util.List;
 
 /**
  *
- * This bean class is used to set and retrieve the social links and title properties
- * configured in the footer component of the home-page template.
+ * This bean class is used to set and retrieve the school theme
+ * component's properties configured in the page.
  *
  */
 public final class SchoolThemesModelBean {
@@ -32,7 +33,4 @@ public final class SchoolThemesModelBean {
     public List<SchoolLinksBean> getSchoolLinks() {
         return schoolLinks;
     }
-	public void setSchoolLinks(List<SchoolLinksBean> schoolLinks) {
-		this.schoolLinks = schoolLinks;
-	}
 }
