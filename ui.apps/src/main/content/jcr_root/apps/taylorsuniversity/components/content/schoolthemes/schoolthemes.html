@@ -17,7 +17,7 @@
             <p class="mt-4 mb-4">${st.themeText}</p>
             <sly data-sly-test="${st.schoolLinks && st.schoolLinks.size>0}" data-sly-list="${st.schoolLinks}">
                 <a href="${item.linkPath @ extension = 'html'}" class="d-block btn btn-simple btn-text-red no-cap p-0">
-                    <sly data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkPath =item.linkPath}" >
+                    <sly data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkPath =item.linkPath}">
                     ${linkHelper.linkTitle}
                     </sly>
                     <i class="t-icon-right"></i>
