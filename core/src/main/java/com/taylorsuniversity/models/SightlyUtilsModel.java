@@ -28,11 +28,17 @@ public final class SightlyUtilsModel {
 	@Inject
 	private ResourceResolver resolver;
 
-	@Inject
-	@Optional
-	private String linkTarget;
+    @Inject
+    @Optional
+    private String linkTarget;
 
-	private String link = "--";
+    @Inject
+    @Optional
+    private String linkPath;
+
+    private PageManager pageManager;
+    private String link = StringUtils.EMPTY;
+    private String linkTitle = StringUtils.EMPTY;
 
 	/**
 	 * Helper method for link checker
@@ -73,7 +79,7 @@ public final class SightlyUtilsModel {
 		String hideInNavForAllPages = "true";
 		if (StringUtils.isNotBlank(linkTarget)) {
 			LOGGER.debug("getHideInNavForAllPages Link Target is : {}", linkTarget);
-			PageManager pageManager = resolver.adaptTo(PageManager.class);
+			pageManager = resolver.adaptTo(PageManager.class);
 			LOGGER.debug("PageManager is  : {}", pageManager);
 			if (pageManager == null) {
 				LOGGER.error("PageManager is null in getNavigationSectionModelBean ...");
@@ -101,4 +107,21 @@ public final class SightlyUtilsModel {
 		LOGGER.debug("hideInNavForAllPages is : {}", hideInNavForAllPages);
 		return hideInNavForAllPages;
 	}
+
+	/**
+     * Helper method for getting the title of an internal page
+     *
+     * @return String String
+     */
+    public String getLinkTitle() {
+        pageManager = resolver.adaptTo(PageManager.class);
+        if (CoreUtils.isInternalLink(linkPath) && (null != pageManager.getPage(linkPath))) {
+            LOGGER.debug("Link Path received is: {}" + linkPath);
+            linkTitle = pageManager.getPage(linkPath).getTitle();
+        } else {
+            linkTitle = linkPath;
+        }
+        LOGGER.debug("Link Title for Link Path: " + linkPath + " is : "  + linkPath);
+        return linkTitle;
+    }
 }
