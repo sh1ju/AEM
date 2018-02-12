@@ -1,40 +1,27 @@
 <sly data-sly-test="${wcmmode.edit}">
 <p class="cq-placeholder" data-emptytext="Feature Carousel"></p>
 </sly>
-hiii
 
+<sly data-sly-use.fc="com.taylorsuniversity.models.FeatureCarouselModel"/>
+dear ${fc.size}
 <div class="row">
 	<div class="w-100">
 
 		<!-- t-carousel-container start -->
 		<div class="t-carousel-container" id="t-carousel-1">
-			<div class="t-carousel">
+            
+			<div class="t-carousel" data-sly-list.fci="${fc.featureCarouselItems}">
 				<div class="t-carousel-item">
 					<img class="img-fluid d-none d-lg-block" width="100%"
-						src="assets/img/carousel-img.png" alt=""> <img
-						class="img-fluid d-lg-none" width="100%"
-						src="assets/img/carousel-img-mobile.png" alt="">
+						src="${fci.desktopImage}" alt=""> 
+                    <img class="img-fluid d-lg-none" width="100%"
+						src="${fci.mobileImage}" alt="">
 					<div class="content bg-black">
-						<div class="btn btn-simple btn-red  no-hover  t-header-4">KIN
-							CHIU YI, STUDENT</div>
-						<p class="p-4 t-header-4 text-white">"I love my F&B practival
-							classes in my hospitality course. Thanks to them, I was selected
-							to be a part-time server during the Prime Minister's Dinner with
-							the Media in 2007!"</p>
-					</div>
-				</div>
-
-				<div class="t-carousel-item">
-					<img class="img-fluid d-none d-lg-block" width="100%"
-						src="assets/img/carousel-img.png" alt=""> <img
-						class="img-fluid d-lg-none" width="100%"
-						src="assets/img/carousel-img-mobile.png" alt="">
-					<div class="content bg-black">
-						<div class="btn btn-simple btn-red no-hover t-header-4">YAP
-							HOCK SIN, STUDENT</div>
-						<p class="p-4 t-header-4 text-white">“We have individual and
-							group projects every semester. They taught us to be independent
-							and mature, and helped improve our social skills and team work.”</p>
+						<div class="btn btn-simple btn-red  no-hover  t-header-4">
+                            ${fc.title}
+                        </div>
+						<p class="p-4 t-header-4 text-white">${fc.text}
+                        </p>
 					</div>
 				</div>
 			</div>
@@ -51,8 +38,6 @@ hiii
 				</div>
 			</div>
 		</div>
-
-		
 		<!-- end t-carousel-container start -->
 	</div>
 </div>
