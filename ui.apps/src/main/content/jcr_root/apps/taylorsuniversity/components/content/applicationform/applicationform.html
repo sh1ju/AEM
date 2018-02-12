@@ -1,5 +1,5 @@
 <sly data-sly-test="${!properties.title && wcmmode.edit}">
-<p class="cq-placeholder" data-emptytext="${component.cellName}"></p>
+	<p class="cq-placeholder" data-emptytext="${component.cellName}"></p>
 </sly>
 
 <div class="row t-px t-pt">
@@ -98,7 +98,43 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
+
+
+<sly data-sly-use.cp="${'com.taylorsuniversity.models.SightlyUtilsModel'}">
+<div class="row">
+	<div class="col-12 col-lg">
+		<div class="form-group row pr-lg-4">
+			<label for="level" class="col-form-label t-header-5">LEVEL
+				OF STUDY <span class="txt-primary">*</span>
+			</label>
+			<select class="form-control" size name="level" value="0">
+				 <sly data-sly-list.keyName="${cp.courseAndProgrameMap}">
+				 	<option data-sly-test="${keyName == 'levelOfStudy'}" value="${cp.courseAndProgrameMap[keyName]}">${keyName}</option>
+				 </sly>
+			</select>
+			<div class="invalid-feedback">This field is required.</div>
+		</div>
+	</div>
+	<div class="col-12 col-lg pr-lg-4">
+		<div class="form-group row ">
+			<label for="preference" class="col-form-label t-header-5">PROGRAMME
+				PREFERENCE <span class="txt-primary">*</span>
+			</label>
+			<select class="form-control" size name="preference" value="0">
+				<sly data-sly-list.keyName="${cp.courseAndProgrameMap}">
+				 	<option data-sly-test="${keyName == 'programme'}" value="${cp.courseAndProgrameMap[keyName]}">${keyName}</option>
+				 </sly>
+			</select>
+			<div class="invalid-feedback">This field is required.</div>
+		</div>
+	</div>
+</div>
+<sly data-sly-list.keyName="${cp.courseAndProgrameMap}">
+	<input data-sly-test="${keyName == 'interestedCourse'}" type="hidden" name="${keyName}" value="${cp.courseAndProgrameMap[keyName]}"/>
+</sly>
+</sly>
+					
+					<!-- div class="row">
 						<div class="col-12 col-lg">
 							<div class="form-group row pr-lg-4">
 								<label for="level" class="col-form-label t-header-5">LEVEL
@@ -128,7 +164,7 @@
 								<div class="invalid-feedback">This field is required.</div>
 							</div>
 						</div>
-					</div>
+					</div -->
 					<div class="row">
 						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
 							<div class="form-group row">
