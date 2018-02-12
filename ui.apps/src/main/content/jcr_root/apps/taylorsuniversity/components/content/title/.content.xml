@@ -2,5 +2,5 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:description="Taylors University title component"
     jcr:primaryType="cq:Component"
-    jcr:title="Taylors University Title Component"
+    jcr:title="Title"
     componentGroup="Taylors Content"/>
