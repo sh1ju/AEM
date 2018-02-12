@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Text List"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath="en/cq/current/wcm/default_components.html">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/tabs"
+            type="nav"/>
+        <items jcr:primaryType="nt:unstructured">
+            <bulletlist
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Bullet List"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <bullestlist
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="List"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                        <items jcr:primaryType="nt:unstructured">
+                            <list-items
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                class="full-width"
+                                composite="{Boolean}true"
+                                fieldDescription="Click &quot;Add field&quot; to add a list item"
+                                fieldLabel="List">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    name="./list">
+                                    <items
+                                        jcr:primaryType="nt:unstructured"
+                                        composite="{Boolean}true">
+                                        <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <title/>
+                                                <text/>
+                                            </items>
+                                        </column>
+                                    </items>
+                                </field>
+                            </list-items>
+                        </items>
+                    </bullestlist>
+                </items>
+            </bulletlist>
+            <configurations
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Configurations"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Columns"
+                                name="./columns">
+                                <items
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/FormSelectItem">
+                                    <_x0032_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="2 Columns"
+                                        value="2"/>
+                                    <_x0033_
+                                        jcr:primaryType="nt:unstructured"
+                                        text="3 Columns"
+                                        value="3"/>
+                                </items>
+                            </columns>
+                            <mobiledefaultshow
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Mobile Default Show"
+                                name="./mobiledefaultshow"/>
+                            <hidebullets
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                allowBulkEdit="{Boolean}true"
+                                name="./hidebullets"
+                                text="Hide Bullets"
+                                value="true"/>
+                        </items>
+                    </column>
+                </items>
+            </configurations>
+        </items>
+    </content>
+</jcr:root>

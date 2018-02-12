@@ -12,7 +12,7 @@ import org.apache.sling.models.annotations.Optional;
  * The Class NavigationSectionModelBean.
  */
 @Model(adaptables = Resource.class)
-public class NavigationSectionModelBean {
+public final class NavigationSectionModelBean {
 
     @Inject
     @Optional
