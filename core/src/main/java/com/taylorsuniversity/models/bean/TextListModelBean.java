@@ -13,21 +13,21 @@ import org.apache.sling.models.annotations.Model;
  */
 
 @Model(adaptables = Resource.class)
-public class TextListModelBean {
+public final class TextListModelBean {
 
     @Inject
     @Named("text_t")
-    private String text_t;
+    private String textt;
 
     @Inject
     @Named("title_t")
-    private String title_t;
+    private String titlet;
 
-    public String getText_t() {
-        return text_t;
+    public String getTextt() {
+        return textt;
     }
 
-    public String getTitle_t() {
-        return title_t;
+    public String getTitlet() {
+        return titlet;
     }
 }
