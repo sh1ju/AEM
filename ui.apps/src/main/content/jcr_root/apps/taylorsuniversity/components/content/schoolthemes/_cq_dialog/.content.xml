@@ -48,7 +48,7 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
                                                     fieldDescription="Choose the tile image from DAM"
-                                                    fieldLabel="Image "
+                                                    fieldLabel="Image"
                                                     name="./image"
                                                     rootPath="/content/dam/taylorsuniversity"/>
                                                 <imagealignment
@@ -102,7 +102,7 @@
                                                                 <items jcr:primaryType="nt:unstructured">
                                                                     <linkpath
                                                                         jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/foundation/form/pathbrowser"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                         fieldDescription="List of links to the school."
                                                                         fieldLabel="School Links"
                                                                         name="./linkPath"

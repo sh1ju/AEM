@@ -12,6 +12,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.Via;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,13 +31,13 @@ public final class SightlyUtilsModel {
 
     @Inject
     @Optional
-    private String linkTarget;
+    @Via("resource")
+    private PageManager pageManager;
 
     @Inject
     @Optional
-    private String linkPath;
+    private String linkTarget;
 
-    private PageManager pageManager;
     private String link = StringUtils.EMPTY;
     private String linkTitle = StringUtils.EMPTY;
 
@@ -79,7 +80,6 @@ public final class SightlyUtilsModel {
 		String hideInNavForAllPages = "true";
 		if (StringUtils.isNotBlank(linkTarget)) {
 			LOGGER.debug("getHideInNavForAllPages Link Target is : {}", linkTarget);
-			pageManager = resolver.adaptTo(PageManager.class);
 			LOGGER.debug("PageManager is  : {}", pageManager);
 			if (pageManager == null) {
 				LOGGER.error("PageManager is null in getNavigationSectionModelBean ...");
@@ -114,14 +114,18 @@ public final class SightlyUtilsModel {
      * @return String String
      */
     public String getLinkTitle() {
-        pageManager = resolver.adaptTo(PageManager.class);
-        if (CoreUtils.isInternalLink(linkPath) && (null != pageManager.getPage(linkPath))) {
-            LOGGER.debug("Link Path received is: {}" + linkPath);
-            linkTitle = pageManager.getPage(linkPath).getTitle();
-        } else {
-            linkTitle = linkPath;
+        if (null != pageManager) {
+            if (CoreUtils.isInternalLink(linkTarget) && (null != pageManager.getPage(linkTarget))) {
+                LOGGER.debug("Link Path received is: {}" + linkTarget);
+                linkTitle = pageManager.getPage(linkTarget).getTitle();
+            } else {
+                LOGGER.debug("Link title not available for: {}" + linkTarget);
+                linkTitle = linkTarget;
+            }
+        } else  {
+            LOGGER.debug("Page Manager is null.");
         }
-        LOGGER.debug("Link Title for Link Path: " + linkPath + " is : "  + linkPath);
+        LOGGER.debug("Link Title for Link Path: " + linkTarget + " is : "  + linkTitle);
         return linkTitle;
     }
 }
