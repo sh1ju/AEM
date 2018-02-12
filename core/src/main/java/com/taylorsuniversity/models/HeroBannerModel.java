@@ -6,10 +6,12 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.Via;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +22,7 @@ import com.day.cq.dam.commons.util.DamUtil;
  * This Model class helps in retrieving the attributes for Hero-Banner component.
  *
  */
-@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public final class HeroBannerModel {
 
     /**
@@ -31,6 +33,7 @@ public final class HeroBannerModel {
 
     @Inject
     @Optional
+    @Via("resource")
     private String desktopReference;
 
     private Logger logger = LoggerFactory.getLogger(HeroBannerModel.class);
