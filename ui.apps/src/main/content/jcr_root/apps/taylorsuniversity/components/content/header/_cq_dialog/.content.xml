@@ -28,7 +28,7 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldLabel="Switch Path"
                                 name="./switchPath"
-                                rootPath="/content/taylorsuniversity"/>
+                                rootPath="/content"/>
                             <switchtext
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -59,13 +59,13 @@
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldLabel="Search Results Page Path"
                                 name="./searchResultsPagePath"
-                                rootPath="/content/taylorsuniversity"/>
+                                rootPath="/content"/>
                             <loginpagepath
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                 fieldLabel="Login Page Path"
                                 name="./loginPagePath"
-                                rootPath="/content/taylorsuniversity"/>
+                                rootPath="/content"/>
                         </items>
                     </columns>
                 </items>
@@ -95,7 +95,7 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                             fieldLabel="Section Path"
                                             name="./sectionPath"
-                                            rootPath="/content/taylorsuniversity"/>
+                                            rootPath="/content"/>
                                         <showcoursesearch
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
