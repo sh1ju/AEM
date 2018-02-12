@@ -43,7 +43,7 @@ https://adobe.sharepoint.com/sites/APACConsulting/Shared%20Documents/Forms/AllIt
  
 ### Development Methodology/Process
 
-* Below section outlines the development method/process that will be followed for UPS Brand portal implementation.
+* Below section outlines the development method/process that will be followed for Taylors University implementation.
 
 * Developers to create story branch from develop
 * Developers to keep wip in story branch
@@ -59,7 +59,7 @@ https://adobe.sharepoint.com/sites/APACConsulting/Shared%20Documents/Forms/AllIt
 #### Branch Terminology
 
 * 'repository': the main git repsitory currently located at https://git.corp.adobe.com/bsinghal/taylorsuniversity
-* 'master' branch - branch that will be used to build for UPS stage environment.
+* 'master' branch - branch that will be used to build for Taylors University stage environment.
 * 'develop' branch - branch that will be used to build for GDC development environment. 
 * 'feature' - branch prefixed by US will be denote the rally user story number and will be used for development of that particular story. Convention will be ex: US1234
 
@@ -149,6 +149,7 @@ Focus on reviews will be more on the
 * All Sightly utility methods must be written in existing SightlyUtils.java
 * All methods must be preceded by proper Javadoc. 
 * All constants must have a proper and detailed Javadoc
+* Use 6.3 Coral components rather than 6.2 non-coral components in the Touch UI dialogs & Page Properties.
 * Proper description for rach parameter and return type in Javadoc must be added.
 * Method names and Parameter names in methods must be self explanatory. Arguments such as param1, param2 must not be given.
 * Logger variable must be decalred as LOGGER. So in code it should appear as LOGGER.debug
@@ -160,7 +161,7 @@ Focus on reviews will be more on the
 * Minimum Java classes should be created as far as possible. Make use of Sightly features that allow you to use implicit objects, SlingModels, etc. 
 * No exception consummation (sink) in middle of code. Proper response or exception must be floated to caller for proper handling.
 * Every if must have an else. If no action required in else then at minimum LOGGER.debug must be present.
-* For common files like UPSConstants and DAMUtils, do no correct indentation so that the PR should only tell the change that is actually done.
+* For common files like Constants, SightlyUtils and CoreUtils, do no correct indentation so that the PR should only tell the change that is actually done.
 * Use i18N dictionary for display labels on html
 * No global variables to be defined in servlet, especially if it is not final.
 * Please use proper javadocs. Validate the same using mvn javadocs:javadocs command before raising PR.
@@ -179,6 +180,10 @@ Focus on reviews will be more on the
 * All constants must be in "TaylorsConstants.java"
 * All utility methods must be in "CoreUtils.java"
 * All sightly utils must be in "SightlyUtils.java"
+* Create Models instead of POJO (WCMUse)
+* Do not use the deprecated apache's json. Use Gson.
+* Try to refrain having the setter methods in the Bean classes.
+* All Beans should be in com.taylorsuniversity.models.bean package.
 * Do not create a POJO (WCMUse) if the objective is achievable by SightlyUtils
 * All workflow steps should be in com.taylorsuniversity.dam.workflow package
 * All use Models should be in com.taylorsuniversity.models package
@@ -230,7 +235,7 @@ v0.0.1-SNAPSHOT
 * SPRINT RELEASE:
 
 ```
-v0.1.0-SPRINT-1
+v0.0.1-SPRINT-1
 ```
 
 * Final RELEASE/GoLive:

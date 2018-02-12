@@ -29,10 +29,6 @@ public final class TileListingModelBean {
 
     @Inject
     @Optional
-    private String alt;
-
-    @Inject
-    @Optional
     private String title;
 
     @Inject
@@ -45,9 +41,6 @@ public final class TileListingModelBean {
 
     public String getImage() {
         return image;
-    }
-    public String getAlt() {
-        return alt;
     }
     public String getTitle() {
         return title;
@@ -62,9 +55,11 @@ public final class TileListingModelBean {
         return StringUtils.EMPTY;
 
     }
+
     public String getTitleLinkType() {
         return String.valueOf(CoreUtils.isInternalLink(titleLink));
     }
+
     public String getDescription() {
         return description;
     }

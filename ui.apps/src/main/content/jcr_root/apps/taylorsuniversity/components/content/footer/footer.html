@@ -17,10 +17,9 @@
             </ul>
 	    </div>
         </sly>
-        
-        <div class="col-12 col-lg" data-sly-test="${fm.socialItems.size>0}">
-            <div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary" data-sly-test="${properties.socialTitle}">
-                ${properties.socialTitle}
+        <div class="col-12 col-lg" data-sly-test="${(fm.socialItems) && (fm.socialItems.size>0)}">
+            <div class="btn btn-simple txt-primary d-flex justify-content-between w-100 pl-0 txt-primary" data-sly-test="${fm.socialTitle}">
+                ${fm.socialTitle}
             </div>
             <div class="w-100 d-flex justify-content-start" data-sly-list.soc="${fm.socialItems}" >
                 <a class="mr-2" href="${soc.socialLink}" target="_blank" data-sly-test="${soc.socialIcon || soc.socialText}">
@@ -31,6 +30,7 @@
         
 	</div>
 </section>
+<img class="back-to-top-btn action-btn position-fixed" data-action="back-to-top" height="60" width="60" src="/etc/clientlibs/taylorsuniversity/main/img/back-to-top.png" alt="" style="display: inline;">
 <section class="container-fluid">
 	<div class="row ">
 	    <div class="t-px bg-red t-display-1 text-white py-3 w-100 t-display-3">
