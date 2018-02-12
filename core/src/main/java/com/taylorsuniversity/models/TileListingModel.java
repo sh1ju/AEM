@@ -7,8 +7,10 @@ import java.util.List;
 import javax.inject.Inject;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.Via;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import com.taylorsuniversity.models.bean.TileListingModelBean;
 
@@ -17,11 +19,12 @@ import com.taylorsuniversity.models.bean.TileListingModelBean;
  * component
  *
  */
-@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public final class TileListingModel {
 
     @Optional
     @Inject
+    @Via("resource")
     private List<Resource> tileListing;
 
     private List<TileListingModelBean> tileListingItems = null;
