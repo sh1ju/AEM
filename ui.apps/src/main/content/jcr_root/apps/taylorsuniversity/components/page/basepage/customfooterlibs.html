@@ -20,3 +20,6 @@
 <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"/>
 <!-- Footer clientlibs js  -->
 <!-- <sly data-sly-call="${clientLib.js @ categories = ['base-nsw.design']}"></sly>  -->
+<sly data-sly-test="${!wcmmode.edit}">
+    <sly data-sly-call="${clientLib.js @ categories = ['taylorsuniversity.dependencies']}"></sly>
+</sly>

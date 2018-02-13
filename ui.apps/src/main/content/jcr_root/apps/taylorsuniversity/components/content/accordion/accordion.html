@@ -1,17 +1,16 @@
 <sly data-sly-test="${wcmmode.edit}">
-			Accordion
+    ${'accordion_label' @ i18n}
+</sly>
+<div data-sly-attribute.data-accordion-group="${!wcmmode.edit}">
+    <sly data-sly-use.multiItems="com.taylorsuniversity.models.AccordionComponentModel">
+        <sly data-sly-list.head="${multiItems.getSubmenuItems}">
+            <section class="accordion  ${wcmmode.edit ? 'open':'t-accordion' }" data-accordion>
+                <div class="accordion-control" data-control>${head.accordiontitlest}</div>
+                ${}
+                <div data-sly-attribute.data-content="${!wcmmode.edit}">
+                    <sly data-sly-resource="${ 'accordionpar{0}' @ format=[headList.count], resourceType='foundation/components/parsys'}"/>
+                </div>
+            </section>
         </sly>
-<div data-accordion-group>
-			<sly data-sly-use.multiItems="com.taylorsuniversity.models.AccordionComponentModel">
-				<sly data-sly-list.head="${multiItems.getSubmenuItems}">
-					<section class="accordion t-accordion ${wcmmode.edit ? 'open':'' }" data-accordion>
-						<div class="accordion-control" data-control>${head.accordiontitlest}</div>
-                        	<div data-content>
-								<sly data-sly-resource="${ 'accordionpar{0}' @ format=[headList.count], resourceType='foundation/components/parsys'}" />
-                            </div>
-                     </section>
- 				 </sly>
-			</sly>
+    </sly>
 </div>
-<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" data-sly-call="${accordion.css @ categories='taylorsuniversity-accordion'}" />
-<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" data-sly-call="${accordion.js @ categories='taylorsuniversity-accordion'}" />
