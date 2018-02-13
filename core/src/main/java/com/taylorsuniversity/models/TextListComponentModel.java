@@ -12,6 +12,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.models.annotations.Via;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,16 +45,19 @@ public class TextListComponentModel {
     private int column1Bullet = 0;
     private int listNodeCount = 0;
 
-    @Inject
     @Optional
+    @Inject
+    @Via("resource")
     private Resource list;
 
-    @Inject
     @Optional
+    @Inject
+    @Via("resource")
     private String columns;
 
-    @Inject
     @Optional
+    @Inject
+    @Via("resource")
     private int mobiledefaultshow;
 
     /**

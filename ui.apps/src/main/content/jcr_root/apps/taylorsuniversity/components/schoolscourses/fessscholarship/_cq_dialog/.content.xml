@@ -7,91 +7,89 @@
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
-        <layout
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="granite/ui/components/coral/foundation/tabs"
-            type="nav"/>
         <items jcr:primaryType="nt:unstructured">
-            <fees
+            <tabs
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Fees"
-                sling:resourceType="granite/ui/components/coral/foundation/form/container">
-                <layout
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/coral/foundation/container"
-                    margin="{Boolean}false"/>
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
                 <items jcr:primaryType="nt:unstructured">
-                    <column
+                    <fees
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/container">
+                        jcr:title="Fees"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <firstcontent/>
-                            <firstcolor
+                            <column
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/FormSelectItem"
-                                fieldLabel="First Box Color"
-                                name="./firstcolor">
+                                sling:resourceType="granite/ui/components/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <red
+                                    <firstcontent/>
+                                    <firstcolor
                                         jcr:primaryType="nt:unstructured"
-                                        text="Red"
-                                        value="bg-red"/>
-                                    <black
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/FormSelectItem"
+                                        fieldLabel="First Box Color"
+                                        name="./firstcolor">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <red
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Red"
+                                                value="bg-red"/>
+                                            <black
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Black"
+                                                value="bg-black"/>
+                                        </items>
+                                    </firstcolor>
+                                    <secondcontent/>
+                                    <secondcolor
                                         jcr:primaryType="nt:unstructured"
-                                        text="Black"
-                                        value="bg-black"/>
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/FormSelectItem"
+                                        fieldLabel="Second Box Color"
+                                        name="./secondcolor">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <red
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Red"
+                                                value="bg-red"/>
+                                            <black
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Black"
+                                                value="bg-black"/>
+                                        </items>
+                                    </secondcolor>
+                                    <disclaimer/>
                                 </items>
-                            </firstcolor>
-                            <secondcontent/>
-                            <secondcolor
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/FormSelectItem"
-                                fieldLabel="Second Box Color"
-                                name="./secondcolor">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <red
-                                        jcr:primaryType="nt:unstructured"
-                                        text="Red"
-                                        value="bg-red"/>
-                                    <black
-                                        jcr:primaryType="nt:unstructured"
-                                        text="Black"
-                                        value="bg-black"/>
-                                </items>
-                            </secondcolor>
-                            <disclaimer/>
+                            </column>
                         </items>
-                    </column>
-                </items>
-            </fees>
-            <scholarship
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Scholarship"
-                sling:resourceType="granite/ui/components/foundation/section">
-                <layout
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
-                    margin="{Boolean}false"/>
-                <items jcr:primaryType="nt:unstructured">
-                    <column
+                    </fees>
+                    <scholarship
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/foundation/container">
+                        jcr:title="Scholarship"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <layout
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                            margin="{Boolean}false"/>
                         <items jcr:primaryType="nt:unstructured">
-                            <scholarshiptext/>
-                            <linktext
+                            <column
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                fieldLabel="Link Text"
-                                name="./scholarshiplinktext_t"/>
-                            <link
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                fieldLabel="Link"
-                                name="./scholarshiplink"/>
+                                sling:resourceType="granite/ui/components/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <scholarshiptext/>
+                                    <linktext
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Link Text"
+                                        name="./scholarshiplinktext_t"/>
+                                    <link
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldLabel="Link"
+                                        name="./scholarshiplink"/>
+                                </items>
+                            </column>
                         </items>
-                    </column>
+                    </scholarship>
                 </items>
-            </scholarship>
+            </tabs>
         </items>
     </content>
 </jcr:root>

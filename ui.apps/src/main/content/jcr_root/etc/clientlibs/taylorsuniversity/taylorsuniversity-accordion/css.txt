@@ -1,0 +1,6 @@
+#base=css
+animate.css
+font-awesome/css/font-awesome.css
+font-awesome/css/font-awesome.min.css
+main.css
+animate.css
