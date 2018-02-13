@@ -1,27 +1,19 @@
 <sly data-sly-test="${wcmmode.edit}">
 <p class="cq-placeholder" data-emptytext="Feature Carousel"></p>
 </sly>
-
 <sly data-sly-use.fc="com.taylorsuniversity.models.FeatureCarouselModel"/>
-dear ${fc.size}
+
 <div class="row">
 	<div class="w-100">
-
 		<!-- t-carousel-container start -->
-		<div class="t-carousel-container" id="t-carousel-1">
-            
+		<div class="t-carousel-container" id="t-carousel-1" >
 			<div class="t-carousel" data-sly-list.fci="${fc.featureCarouselItems}">
 				<div class="t-carousel-item">
-					<img class="img-fluid d-none d-lg-block" width="100%"
-						src="${fci.desktopImage}" alt=""> 
-                    <img class="img-fluid d-lg-none" width="100%"
-						src="${fci.mobileImage}" alt="">
+					<img class="img-fluid d-none d-lg-block" width="100%" src="${fci.desktopImage}" alt=""> 
+                    <img class="img-fluid d-lg-none" width="100%" src="${fci.mobileImage}" alt="">
 					<div class="content bg-black">
-						<div class="btn btn-simple btn-red  no-hover  t-header-4">
-                            ${fc.title}
-                        </div>
-						<p class="p-4 t-header-4 text-white">${fc.text}
-                        </p>
+						<div class="btn btn-simple btn-red  no-hover  t-header-4">${fci.title}</div>
+						<p class="p-4 t-header-4 text-white">${fci.text}</p>
 					</div>
 				</div>
 			</div>
@@ -34,7 +26,7 @@ dear ${fc.size}
 					<button class="btn btn-simple btn-gray btn-icon px-4 next">
 						<i class="t-icon-right white"></i>
 					</button>
-					<button class="btn btn-simple btn-red pr-3 indicator no-hover">1/4</button>
+					<button class="btn btn-simple btn-red pr-3 indicator no-hover">1/2</button>
 				</div>
 			</div>
 		</div>
