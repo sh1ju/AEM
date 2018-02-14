@@ -40,8 +40,14 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                             <items jcr:primaryType="nt:unstructured">
-                                                <title/>
-                                                <text/>
+                                                <title jcr:primaryType="nt:unstructured"
+                                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                       fieldLabel="Title"
+                                                       name="./title_t"/>
+                                                <text jcr:primaryType="nt:unstructured"
+                                                      sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                      fieldLabel="Text"
+                                                      name="./text_t"/>
                                             </items>
                                         </column>
                                     </items>
