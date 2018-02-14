@@ -98,73 +98,43 @@
 							</div>
 						</div>
 					</div>
-
-
-<sly data-sly-use.cp="${'com.taylorsuniversity.models.SightlyUtilsModel'}">
-<div class="row">
-	<div class="col-12 col-lg">
-		<div class="form-group row pr-lg-4">
-			<label for="level" class="col-form-label t-header-5">LEVEL
-				OF STUDY <span class="txt-primary">*</span>
-			</label>
-			<select class="form-control" size name="level" value="0">
-				 <sly data-sly-list.keyName="${cp.courseAndProgrameMap}">
-				 	<option data-sly-test="${keyName == 'levelOfStudy'}" value="${cp.courseAndProgrameMap[keyName]}">${keyName}</option>
-				 </sly>
-			</select>
-			<div class="invalid-feedback">This field is required.</div>
-		</div>
-	</div>
-	<div class="col-12 col-lg pr-lg-4">
-		<div class="form-group row ">
-			<label for="preference" class="col-form-label t-header-5">PROGRAMME
-				PREFERENCE <span class="txt-primary">*</span>
-			</label>
-			<select class="form-control" size name="preference" value="0">
-				<sly data-sly-list.keyName="${cp.courseAndProgrameMap}">
-				 	<option data-sly-test="${keyName == 'programme'}" value="${cp.courseAndProgrameMap[keyName]}">${keyName}</option>
-				 </sly>
-			</select>
-			<div class="invalid-feedback">This field is required.</div>
-		</div>
-	</div>
-</div>
-<sly data-sly-list.keyName="${cp.courseAndProgrameMap}">
-	<input data-sly-test="${keyName == 'interestedCourse'}" type="hidden" name="${keyName}" value="${cp.courseAndProgrameMap[keyName]}"/>
-</sly>
-</sly>
 					
-					<!-- div class="row">
-						<div class="col-12 col-lg">
-							<div class="form-group row pr-lg-4">
-								<label for="level" class="col-form-label t-header-5">LEVEL
-									OF STUDY <span class="txt-primary">*</span>
-								</label> <select class="form-control" size name="level" required>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-								</select>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg pr-lg-4">
-							<div class="form-group row ">
-								<label for="preference" class="col-form-label t-header-5">PROGRAMME
-									PREFERENCE <span class="txt-primary">*</span>
-								</label> <select class="form-control" size name="preference" value="0"
-									required>
-									<option value="1">OPTION</option>
-									<option value="2">OPTION</option>
-									<option value="3">OPTION</option>
-									<option value="4">OPTION</option>
-									<option value="5">OPTION</option>
-								</select>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-					</div -->
+						<sly data-sly-use.cp="${'com.taylorsuniversity.models.SightlyUtilsModel'}">
+							
+								<div class="row">
+									<div class="col-12 col-lg">
+										<div class="form-group row pr-lg-4">
+											<label for="level" class="col-form-label t-header-5">LEVEL
+												OF STUDY <span class="txt-primary">*</span>
+											</label>
+											<select class="form-control" size name="level" value="0">
+												 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+												 	<option value="${levelOfStudy}">${levelOfStudy}</option>
+												 </sly>
+											</select>
+											<div class="invalid-feedback">This field is required.</div>
+										</div>
+									</div>
+									<div class="col-12 col-lg pr-lg-4">
+										<div class="form-group row ">
+											<label for="preference" class="col-form-label t-header-5">PROGRAMME
+												PREFERENCE <span class="txt-primary">*</span>
+											</label>
+											<select class="form-control" size name="preference" value="0">
+												<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+													<sly data-sly-list.programme="${cp.courseAndProgrameMap[levelOfStudy]}">
+													 	<option name="${levelOfStudy}" value="${programme.programme}">${programme.programme}</option>
+													</sly>
+												</sly>
+											</select>
+											<div class="invalid-feedback">This field is required.</div>
+										</div>
+									</div>
+									<input type="hidden" name="interestedCourse" value="${cp.documentReferrer}"/>
+								</div>
+							
+						</sly>
+					
 					<div class="row">
 						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
 							<div class="form-group row">
@@ -298,37 +268,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-12 col-lg">
-							<div class="form-group row pr-lg-4">
-								<label for="level" class="col-form-label t-header-5">LEVEL
-									OF STUDY <span class="txt-primary">*</span>
-								</label> <select class="form-control" size name="level" required>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-								</select>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg pr-lg-4">
-							<div class="form-group row ">
-								<label for="preference" class="col-form-label t-header-5">PROGRAMME
-									PREFERENCE <span class="txt-primary">*</span>
-								</label> <select class="form-control" size name="preference" value="0"
-									required>
-									<option value="1">OPTION</option>
-									<option value="2">OPTION</option>
-									<option value="3">OPTION</option>
-									<option value="4">OPTION</option>
-									<option value="5">OPTION</option>
-								</select>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-					</div>
+					
 					<div class="row">
 						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
 							<div class="form-group row">

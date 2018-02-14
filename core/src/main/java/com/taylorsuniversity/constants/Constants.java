@@ -74,4 +74,14 @@ public final class Constants {
 
     /** The Constant for percentage. */
     public static final String PERCENTAGE = "%";
+
+    /** Property for state generic list */
+    public static final String STATE_GENERIC_LIST = "/etc/acs-commons/lists/taylorsuniversity/state";
+
+    /** Property for nationality generic list */
+    public static final String NATIONALITY_GENERIC_LIST = "/etc/acs-commons/lists/taylorsuniversity/nationality";
+
+    /** Property for academic qualifications generic list */
+    public static final String ACADEMIC_QUALIFICATIONS_GENERIC_LIST =
+    		"/etc/acs-commons/lists/taylorsuniversity/academic";
 }
