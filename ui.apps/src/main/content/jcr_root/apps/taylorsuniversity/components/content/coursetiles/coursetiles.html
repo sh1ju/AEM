@@ -1,0 +1,28 @@
+<sly data-sly-test="${wcmmode.edit}">
+    <p class="cq-placeholder" data-emptytext="Course Listing"></p>
+</sly>
+
+<sly data-sly-use.model="com.taylorsuniversity.models.TileListingModel"/>
+
+<!--Tiles Section 1-->
+<div class="row" data-sly-test="${model.tileListingItems}"> 
+    <div class="row mobile-display-3" data-sly-list.ti="${model.tileListingItems}"> 
+
+
+        <div class="col-12 col-lg p-0">
+            <a href="#" class="d-lg-none t-mx mb-2 btn btn-simple btn-red">${ti.title} <i class="t-icon-right white"></i></a>
+            <div class="image-with-desc d-none d-lg-flex  ${tiList.odd? 'flex-column':'flex-column-reverse'} ">
+                <img class="img-fluid" src="${ti.image}" height="auto" width="100%" alt="">
+                <div class="content p-4 position-relative">   
+                    <div class="btn btn-simple btn-red no-hover d-inline-block">${ti.title}</div>
+                    <p class="py-3">${ti.description}</p>
+                    <a href="${ti.titleLink}" target="${ti.titleLinkType=='true'? '_self' : '_blank'}" class="btn btn-simple btn-text-black text-black d-lg-inline-block px-0">LEARN MORE <i class="t-icon-right black"></i></a>
+                </div>
+            </div>            
+        </div>
+
+
+
+
+    </div>
+</div>
