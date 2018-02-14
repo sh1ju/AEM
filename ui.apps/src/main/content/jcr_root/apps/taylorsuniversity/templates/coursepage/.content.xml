@@ -7,7 +7,7 @@
     ranking="{Long}11">
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="/apps/taylorsuniversity/components/page/basepage">
+        sling:resourceType="/apps/taylorsuniversity/components/page/coursepage">
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
                 <phone
