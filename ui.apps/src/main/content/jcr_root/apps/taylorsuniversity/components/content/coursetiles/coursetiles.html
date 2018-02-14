@@ -1,0 +1,45 @@
+<sly data-sly-test="${wcmmode.edit && !properties.title}">
+<p class="cq-placeholder" data-emptytext="Course Tiles"></p>
+</sly>
+<sly data-sly-use.model="com.taylorsuniversity.models.CourseTilesModel"/>
+
+<section class="container-fluid" data-sly-test="${properties.title}">
+    <div class="row t-p pb-3">
+        <h3>${properties.title}</h3>
+    </div>
+    <div class="row mobile-display-3" data-sly-test="${model.coursePathsItems && (model.coursePathsItems.size>0)}"
+        data-sly-list.cpi="${model.coursePathsItems}">
+        
+        <div class="col-12 col-lg p-0" data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=cpi.linkPath}">
+            <a href="${cpi.linkPath @ extension = 'html'}" class="d-lg-none t-mx mb-2 btn btn-simple btn-red"
+              target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"> 
+                ${linkHelper.linkTitle}
+               <i class="t-icon-right white"></i>
+            </a>
+        
+		<div class="image-with-desc d-none d-lg-flex ${cpiList.odd?'flex-column':'flex-column-reverse'} ">
+			<img class="img-fluid" src="${linkHelper.linkIcon}" height="auto" width="100%" alt="">
+			<div class="content p-4 position-relative">
+				<div class="btn btn-simple btn-red no-hover d-inline-block">
+                    ${linkHelper.linkTitle}
+                </div>
+				<p class="py-3">${linkHelper.linkDescription}</p>
+				<a href="${cpi.linkPath @ extension = 'html'}" class="btn btn-simple btn-text-black text-black d-lg-inline-block px-0"
+                    target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"> 
+                     ${'LEARN MORE' @ i18n}
+                    <i class="t-icon-right black"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+    </div>
+    <div class="row py-lg-4 t-px d-flex justify-content-center t-mb" data-sly-test="${properties.allCoursesLink}">   
+        <a href="${properties.allCoursesLink @ extension = 'html'}" class="btn btn-simple btn-red btn-standard-w w-100" 
+            data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget = properties.allCoursesLink}"
+            target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}">
+            ${'VIEW ALL COURSES' @ i18n}
+            <i class="t-icon-right white"></i>
+        </a>
+    </div>
+</section>
+    

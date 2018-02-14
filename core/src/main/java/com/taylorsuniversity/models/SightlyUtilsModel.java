@@ -4,11 +4,13 @@ package com.taylorsuniversity.models;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+import com.taylorsuniversity.constants.Constants;
 import com.taylorsuniversity.utils.CoreUtils;
 import java.util.Iterator;
 import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
@@ -40,7 +42,8 @@ public final class SightlyUtilsModel {
 
     private String link = StringUtils.EMPTY;
     private String linkTitle = StringUtils.EMPTY;
-
+    private String linkDescription = StringUtils.EMPTY;
+    private String linkIcon = StringUtils.EMPTY;
 	/**
 	 * Helper method for link checker
 	 *
@@ -127,5 +130,62 @@ public final class SightlyUtilsModel {
         }
         LOGGER.debug("Link Title for Link Path: " + linkTarget + " is : "  + linkTitle);
         return linkTitle;
+    }
+
+    /**
+     * Helper method for getting the description of an internal page
+     * @return linkDescription
+     */
+    public String getLinkDescription() {
+        if (null != pageManager) {
+            if (CoreUtils.isInternalLink(linkTarget) && (null != pageManager.getPage(linkTarget))) {
+                LOGGER.debug("Link Path received is: {}" + linkTarget);
+                linkDescription = pageManager.getPage(linkTarget).getDescription();
+            } else {
+                LOGGER.debug("Link title not available for: {}" + linkTarget);
+                linkDescription = linkTarget;
+            }
+        } else  {
+            LOGGER.debug("Page Manager is null.");
+        }
+        LOGGER.debug("Link Title for Link Path: " + linkTarget + " is : "  + linkDescription);
+        return linkDescription;
+    }
+
+    /**
+     * Helper method for getting the page icon of an internal page
+     * @return linkIcon
+     */
+    public String getLinkIcon() {
+        if (null != resolver) {
+            if (CoreUtils.isInternalLink(linkTarget) && (null != resolver.getResource(linkTarget))) {
+
+                LOGGER.debug("Link Path received is: {}" + linkTarget);
+                Resource resource = resolver.getResource(linkTarget);
+                LOGGER.debug("Resource for link path is : {}" + resource);
+
+                if (null != resource.getChild("jcr:content")) {
+                    Resource childResource = resource.getChild("jcr:content");
+
+                    if (null != childResource.getChild("image")) {
+                        Resource imageRes = childResource.getChild("image" + Constants.IMAGE_PATH);
+                        linkIcon = imageRes.getPath();
+                        LOGGER.debug("Image icon is : {}" + linkIcon);
+                    } else {
+                        LOGGER.debug("Image icon unavailable for : {}" + resource);
+                    }
+                } else {
+                    LOGGER.debug("JCR Content unavailable for : {}" + resource);
+                }
+
+            } else {
+                LOGGER.debug("Link target cannot be resolved to a resource: {}" + linkTarget);
+                linkIcon = linkTarget;
+            }
+        } else  {
+            LOGGER.debug("Resource cannot be resolved or is null.");
+        }
+        LOGGER.debug("Link Title for Link Path: " + linkTarget + " is : "  + linkIcon);
+        return linkIcon;
     }
 }
