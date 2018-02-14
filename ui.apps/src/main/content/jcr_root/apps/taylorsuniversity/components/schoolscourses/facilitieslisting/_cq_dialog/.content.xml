@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Facilities Listing"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cq-dialog-content-page"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <facilitieslisting
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Facilities Listing"
+                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="Facilities Listing"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <facilities
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        class="full-width"
+                                        fieldDescription="Click 'Add' to add a a new facility"
+                                        fieldLabel="Facilities">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                            name="./facilities">
+                                        <layout
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/layouts/fixedcolumns"
+                                            method="absolute"/>
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <column
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <image
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            fieldDescription="Add the image for facility"
+                                                            fieldLabel="Image"
+                                                            name="./image"
+                                                            rootPath="/content/dam/taylorsuniversity"/>
+                                                        <imagealignment
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldDescription="Select Image Alignment"
+                                                            fieldLabel="Image Alignment"
+                                                            name="./imagealignment">
+                                                            <items jcr:primaryType="nt:unstructured">
+					                                            <select
+					                                                jcr:primaryType="nt:unstructured"
+					                                                text="--Select--"
+					                                                value="imagetop"/>
+					                                            <imagetop
+					                                                jcr:primaryType="nt:unstructured"
+					                                                text="Image Top"
+					                                                value="imagetop"/>
+					                                            <imagebottom
+					                                                jcr:primaryType="nt:unstructured"
+					                                                text="Image Bottom"
+					                                                value="imagebottom"/>
+					                                        </items>
+                                                        </imagealignment>   
+                                                        <title
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Enter the title for facility"
+                                                            fieldLabel="Title"
+                                                            name="./title_t"/>
+                                                        <description
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                            fieldDescription="Enter the description for facility"
+                                                            fieldLabel="Description"
+                                                            name="./description"/>
+                                                       	<columns
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                            fieldDescription="Enter the description for facility"
+                                                            defaultValue="1"
+                                                            min="{Double}1"
+                                                            max="{Double}4"
+                                                            fieldLabel="Columns"
+                                                            name="./column"/>
+                                                    </items>
+                                                </column>
+                                            </items>
+                                        </field>
+                                    </facilities>
+                                </items>
+                            </title>
+                        </items>
+                    </column>
+                </items>
+            </facilitieslisting>
+        </items>
+    </content>
+</jcr:root>

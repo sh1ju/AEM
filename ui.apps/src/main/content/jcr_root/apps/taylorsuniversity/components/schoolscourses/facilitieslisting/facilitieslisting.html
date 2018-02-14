@@ -1,0 +1,24 @@
+<sly data-sly-test="${wcmmode.edit}">
+<p class="cq-placeholder" data-emptytext="Facilities Listing"></p>
+</sly>
+<sly
+	data-sly-use.model="com.taylorsuniversity.models.FacilitiesListingModel" />
+
+<!--Facilities Section 1-->
+<div class="row mobile-display-3 t-pb pt-4" data-sly-list.facility="${model.facilitiesListingItems}">
+	<div class="col-12 col-lg-${facility.newColumn} p-0">
+		<div class="image-with-desc h-100 d-flex flex-column ${facility.imagealignment=='imagetop'? '' : 'flex-lg-column-reverse'}">
+			<img class="img-fluid" src="${facility.image}"
+				height="auto" width="100%" alt="">
+			<div class="content p-4 position-relative">
+				<div class="btn btn-simple btn-red no-hover d-inline-block">${facility.title}</div>
+				<p class="py-3">${facility.description}</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row t-tab-content-item-footer d-lg-none t-px">
+	<a href="#" class="btn btn-simple btn-text-red pl-0">VIEW MORE FACILITIES <i class="t-icon-right"></i></a>
+</div>
+
+
