@@ -4,7 +4,8 @@
 //init listener can only assign before the slick initialization
  $(document).ready(function(){
    
-     var carouselID = '#t-carousel-1';
+     var carouselID = ${('#carouselType').value() === 'quote'?'#t-carousel-1':'#t-carousel-2'};
+        
      $(carouselID + ' .t-carousel').on('init', function(event, slick) {
          var indicator = $('.t-carousel-controls .indicator', $(this).parent());
         indicator.html('1/' + slick.$slides.length);

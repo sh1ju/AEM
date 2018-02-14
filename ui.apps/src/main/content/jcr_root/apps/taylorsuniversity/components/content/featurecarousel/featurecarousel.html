@@ -2,8 +2,8 @@
 <p class="cq-placeholder" data-emptytext="Feature Carousel"></p>
 </sly>
 <sly data-sly-use.fc="com.taylorsuniversity.models.FeatureCarouselModel"/>
-
-<div class="row">
+<input type="hidden" id="carouselType" value="${properties.style}">
+<div class="row" data-sly-test="${properties.style == 'quote' && fc.featureCarouselItems}" >
 	<div class="w-100">
 		<!-- t-carousel-container start -->
 		<div class="t-carousel-container" id="t-carousel-1" >
@@ -31,5 +31,40 @@
 			</div>
 		</div>
 		<!-- end t-carousel-container start -->
+	</div>
+</div>
+ <!--/* Common HTML Snippet for type 2 carousel */-->
+<div class="row" data-sly-test="${properties.style=='awards' && fc.featureCarouselItems}">
+	<div class="w-100">
+		<!-- t-carousel-container2 start -->
+		<div class="t-carousel-container" id="t-carousel-2">
+			<div class="t-carousel" data-sly-list.fci="${fc.featureCarouselItems}">
+                
+				<div class="t-carousel-item  d-flex flex-column-reverse flex-lg-row">
+					<div class="t-pl pr-4 py-4 split-item">
+						<div class="btn btn-simple btn-text-red no-hover t-header-4 pl-0">
+                            ${fci.title}
+                        </div>
+						<p class="pt-3 pr-3 text-black">${fci.text}</p>
+					</div>
+					<div class="split-item">
+						<img class="img-fluid w-100" src="${fci.desktopImage}" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="t-carousel-controls d-flex justify-content-center left-fixed-88">
+				<div class="btn-group">
+					<button class="btn btn-simple btn-gray btn-icon px-4 prev">
+						<i class="t-icon-left white"></i>
+					</button>
+					<div class="btn-seperator"></div>
+					<button class="btn btn-simple btn-gray btn-icon px-4 next">
+						<i class="t-icon-right white"></i>
+					</button>
+					<button class="btn btn-simple btn-red pr-3 indicator no-hover">1/4</button>
+				</div>
+			</div>
+		</div>
+		<!-- end t-carousel-container2 start -->
 	</div>
 </div>
