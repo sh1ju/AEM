@@ -44,7 +44,7 @@ public final class CourseTilesModel {
                 coursePathsItems.add(tile.adaptTo(CourseTilesModelBean.class));
             }
         }
-        logger.debug("Tile Listing items are : {}", coursePathsItems);
+        logger.debug("Course Tile items are : {}", coursePathsItems);
         return coursePathsItems;
     }
 }
