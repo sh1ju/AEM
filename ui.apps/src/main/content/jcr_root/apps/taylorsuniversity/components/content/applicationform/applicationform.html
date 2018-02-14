@@ -107,7 +107,7 @@
 											<label for="level" class="col-form-label t-header-5">LEVEL
 												OF STUDY <span class="txt-primary">*</span>
 											</label>
-											<select class="form-control" size name="level" value="0">
+											<select id="malaysian-levelOfStudy" class="form-control" size name="level" value="0">
 												 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
 												 	<option value="${levelOfStudy}">${levelOfStudy}</option>
 												 </sly>
@@ -120,7 +120,8 @@
 											<label for="preference" class="col-form-label t-header-5">PROGRAMME
 												PREFERENCE <span class="txt-primary">*</span>
 											</label>
-											<select class="form-control" size name="preference" value="0">
+											<select id="malaysian-programmes" class="form-control" size name="preference" value="0">
+												<option name="Select Programme" value="Select Programme">Select Programme</option>
 												<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
 													<sly data-sly-list.programme="${cp.courseAndProgrameMap[levelOfStudy]}">
 													 	<option name="${levelOfStudy}" value="${programme.programme}">${programme.programme}</option>
