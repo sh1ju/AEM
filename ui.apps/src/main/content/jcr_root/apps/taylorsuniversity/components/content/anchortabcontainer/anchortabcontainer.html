@@ -1,14 +1,10 @@
-<sly data-sly-use.logic="logic.js">
 	<div class="section-scroll-dropdown-nav w-100  t-pt" id="section-scroll-dropdown2">
         <div class="btn-group btn-dropdown">
-            <sly data-sly-list.item="${logic.children}">
-                <a href="#${item.anchor}" class="btn btn-simple btn-black"><span class="button-text">${item.title_t}</span><i class="d-lg-none t-icon-right pull-right white ml-3"></i></a>
+            <sly data-sly-use.anchorLists="com.taylorsuniversity.models.AnchorTabContainerModel">
+                <sly data-sly-list.bean="${anchorLists.getAnchorTabItems}">
+                 <a href="#${bean.link}" class="btn btn-simple btn-black"><span class="button-text">${bean.text}</span><i class="d-lg-none t-icon-right pull-right white ml-3"></i></a>
+                </sly>
             </sly>
         </div>
 	</div>
-    <sly data-sly-list.item="${logic.children}">
-    	<section id="${item.anchor}" class="t-px" data-section="${item.title_t}">
-		<sly data-sly-resource="${ @path=item.anchor, resourceType='foundation/components/parsys'}" />
-		</section>
-    </sly>
-</sly>
+<sly data-sly-resource="${ @path='anchorpar', resourceType='foundation/components/parsys'}" />
