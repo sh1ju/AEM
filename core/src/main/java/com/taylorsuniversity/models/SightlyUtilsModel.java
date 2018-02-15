@@ -14,6 +14,7 @@ import com.taylorsuniversity.utils.CoreUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -161,7 +162,7 @@ public final class SightlyUtilsModel {
 	 * @return String String
 	 */
 	public String getDocumentReferrer() {
-		LOGGER.debug("Document Referrer in getDocumentReferrer is : {}", request.getHeader("referer"));
+		LOGGER.debug("Document Referrer in getDocumentReferrer is : {}", request.getHeader(Constants.REFERRER));
 		URI uri = null;
 		try {
 			uri = new URI(request.getHeader("referer"));
@@ -175,23 +176,45 @@ public final class SightlyUtilsModel {
 	}
 
 	/**
+	 * Helper method to check if the document.referrer is course page or not
+	 *
+	 * @return boolean boolean
+	 */
+	public boolean isCoursePageReferrer() {
+		String path = getDocumentReferrer();
+		boolean coursePageReferrer = false;
+		LOGGER.debug("Path in isCoursePageReferrer is : {}", path);
+		LOGGER.debug("Is internal link in isCoursePageReferrer is : {}", CoreUtils.isInternalLink(path));
+		if (StringUtils.endsWith(path, Constants.HTML_EXTN)) {
+			path = StringUtils.substringBefore(path, Constants.HTML_EXTN);
+		}
+		if (CoreUtils.isInternalLink(path) && null != pageManager
+				&& null != pageManager.getPage(path)
+				&& pageManager.getPage(path).getTemplate().getPageTypePath()
+						.equalsIgnoreCase(Constants.COURSES_PAGE_TEMPLATE)) {
+			coursePageReferrer = true;
+		}
+		return coursePageReferrer;
+	}
+
+	/**
 	 * Helper method to get the course & program map
 	 *
 	 * @return String String
 	 */
-	public Map<String, ProgrammesBean[]> getCourseAndProgrameMap() {
+	public Map<String, List<String>> getCourseAndProgrameMap() {
 		LOGGER.debug("Request object is : {}", request);
 		LOGGER.debug("PageManager object is : {}", pageManager);
-		LOGGER.debug("Document Referrer is : {}", request.getHeader("referer"));
+		LOGGER.debug("Document Referrer is : {}", request.getHeader(Constants.REFERRER));
 		URI uri;
 		Gson gson = new Gson();
-		Map<String, ProgrammesBean[]> courseAndProgramMap = new TreeMap<>();
+		Map<String, List<String>> courseAndProgramMap = new TreeMap<>();
 		try {
 			uri = new URI(request.getHeader("referer"));
 			String pagePath = uri.getPath();
 			LOGGER.debug("URI is : {}", uri);
-			if (StringUtils.endsWith(uri.getPath(), ".html")) {
-				pagePath = StringUtils.substringBefore(uri.getPath(), ".html");
+			if (StringUtils.endsWith(uri.getPath(), Constants.HTML_EXTN)) {
+				pagePath = StringUtils.substringBefore(uri.getPath(), Constants.HTML_EXTN);
 			}
 
 			if (CoreUtils.isInternalLink(uri.getPath()) && null != pageManager
@@ -202,12 +225,16 @@ public final class SightlyUtilsModel {
 						pageManager.getPage(pagePath).getTemplate().getPageTypePath());
 				LOGGER.debug("Document Referrer Page Path received is : {}", pagePath);
 				ValueMap vm = pageManager.getPage(pagePath).getProperties();
+//				courseAndProgramMap.put(vm.get("levelOfStudy", String.class),
+//						gson.fromJson(vm.get("programme", String.class),
+//								ProgrammesBean[].class));
+				List<String> prog = new ArrayList<>();
+				prog.add(vm.get("programme", String.class));
 				courseAndProgramMap.put(vm.get("levelOfStudy", String.class),
-						gson.fromJson(vm.get("programme", String.class),
-								ProgrammesBean[].class));
+						prog);
 				LOGGER.debug("Level of Study is : {} , Programme is : {}",
 						vm.get("levelOfStudy", String.class),
-						vm.get("programme", String.class));
+						prog.get(0));
 				// courseAndProgramMap.put("levelOfStudy",
 				// vm.get("levelOfStudy", String.class));
 				// courseAndProgramMap.put("programme", vm.get("programme",
@@ -230,7 +257,7 @@ public final class SightlyUtilsModel {
 	 *
 	 * @param courseAndProgramMap Map<String, String>
 	 */
-	private void getCoursesAndProgrammes(final Map<String, ProgrammesBean[]> courseAndProgramMap) {
+	private void getCoursesAndProgrammes(final Map<String, List<String>> courseAndProgramMap) {
 		LOGGER.debug("Current Page is : {}", currentPage);
 		Gson gson = new Gson();
 		Page homePage = CoreUtils.getParentPage(currentPage, Constants.HOMEPAGE_LEVEL);
@@ -248,7 +275,13 @@ public final class SightlyUtilsModel {
 				CourseClassificationsBean ccb = gson.fromJson(courseClassification,
 						CourseClassificationsBean.class);
 				LOGGER.debug("Course Classifications model bean is : {}", ccb);
-				courseAndProgramMap.put(ccb.getLevelOfStudy(), ccb.getProgrammes());
+				List<String> prog = new ArrayList<>();
+				if (null != ccb && null != ccb.getProgrammes()) {
+					for (ProgrammesBean programme : ccb.getProgrammes()) {
+						prog.add(programme.getProgramme());
+					}
+				}
+				courseAndProgramMap.put(ccb.getLevelOfStudy(), prog);
 			}
 		}
 		LOGGER.debug("Returning the courseAndProgramMap : {}", courseAndProgramMap);

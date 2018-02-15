@@ -84,4 +84,7 @@ public final class Constants {
     /** Property for academic qualifications generic list */
     public static final String ACADEMIC_QUALIFICATIONS_GENERIC_LIST =
     		"/etc/acs-commons/lists/taylorsuniversity/academic";
+
+    /** The Constant for referer. */
+    public static final String REFERRER = "referer";
 }
