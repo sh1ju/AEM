@@ -4,7 +4,7 @@
 //init listener can only assign before the slick initialization
  $(document).ready(function(){
    
-     var carouselID = ${('#carouselType').value() === 'quote'?'#t-carousel-1':'#t-carousel-2'};
+     var carouselID = $('#carouselType').val() === 'quote'?'#t-carousel-1':'#t-carousel-2';
         
      $(carouselID + ' .t-carousel').on('init', function(event, slick) {
          var indicator = $('.t-carousel-controls .indicator', $(this).parent());
@@ -32,5 +32,3 @@
         $(this).closest('.t-carousel-container').find('.t-carousel').slick('slickPrev');
      });
 });
- 
-

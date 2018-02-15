@@ -3,10 +3,11 @@
 </sly>
 <sly data-sly-use.fc="com.taylorsuniversity.models.FeatureCarouselModel"/>
 <input type="hidden" id="carouselType" value="${properties.style}">
-<div class="row" data-sly-test="${properties.style == 'quote' && fc.featureCarouselItems}" >
-	<div class="w-100">
-		<!-- t-carousel-container start -->
-		<div class="t-carousel-container" id="t-carousel-1" >
+
+<div class="row" data-sly-test="${fc.featureCarouselItems}">
+	<div class="w-100" data-sly-test="${fc.featureCarouselItems.size > 1}">
+		<!--/* HTML Snippet for type 1 carousel */-->
+		<div class="t-carousel-container" id="t-carousel-1" data-sly-test="${properties.style == 'quote'}">
 			<div class="t-carousel" data-sly-list.fci="${fc.featureCarouselItems}">
 				<div class="t-carousel-item">
 					<img class="img-fluid d-none d-lg-block" width="100%" src="${fci.desktopImage}" alt=""> 
@@ -30,14 +31,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- end t-carousel-container start -->
-	</div>
-</div>
- <!--/* Common HTML Snippet for type 2 carousel */-->
-<div class="row" data-sly-test="${properties.style=='awards' && fc.featureCarouselItems}">
-	<div class="w-100">
-		<!-- t-carousel-container2 start -->
-		<div class="t-carousel-container" id="t-carousel-2">
+        
+        <!--/* HTML Snippet for type 2 carousel */-->
+		<div class="t-carousel-container" id="t-carousel-2" data-sly-test="${properties.style=='awards'}">
 			<div class="t-carousel" data-sly-list.fci="${fc.featureCarouselItems}">
                 
 				<div class="t-carousel-item  d-flex flex-column-reverse flex-lg-row">
@@ -65,6 +61,32 @@
 				</div>
 			</div>
 		</div>
-		<!-- end t-carousel-container2 start -->
 	</div>
+    
+    <!--/* HTML Snippet for type 1 carousel but only single item */-->
+    <div class="t-carousel-container w-100" data-sly-test="${(fc.featureCarouselItems.size == 1) && (properties.style == 'quote')}">
+		<div class="t-carousel" data-sly-list.fci="${fc.featureCarouselItems}" >
+			<div class="t-carousel-item">
+				<img class="img-fluid d-none d-lg-block" width="100%" src="${fci.desktopImage}" alt=""> 
+                <img class="img-fluid d-lg-none" width="100%" src="${fci.mobileImage}" alt="">
+				<div class="content">
+					<div class="bg-black">
+						<div class="btn btn-simple btn-red  no-hover  t-header-4">${fci.title}</div>
+						<p class="pl-4 pr-4 pt-4 t-header-5 text-white">${fci.text}</p>
+
+						<p class="pl-4 pr-4 pb-4 text-white">temp</p>
+					</div>
+
+					<div class="col-sm-12 pl-lg-0 pr-lg-0">
+						<a href="${fci.ctaLink @ extension = 'html'}" class="btn btn-simple btn-red btn-standard-w mt-3 t-mx ml-lg-0 mr-lg-0">
+                            ${fci.ctaText} <i class="t-icon-right ml-3 white"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!--/* ENDS :HTML Snippet for type 1 carousel but only single item */-->
 </div>
+ 
+
