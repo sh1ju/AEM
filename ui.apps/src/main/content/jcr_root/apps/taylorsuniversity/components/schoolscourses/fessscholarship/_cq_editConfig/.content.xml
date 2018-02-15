@@ -6,4 +6,5 @@
         aftercopy="REFRESH_SELF"
         afteredit="REFRESH_SELF"
         afterinsert="REFRESH_SELF"/>
+		
 </jcr:root>
