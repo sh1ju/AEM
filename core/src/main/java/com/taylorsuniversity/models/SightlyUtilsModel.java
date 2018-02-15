@@ -4,7 +4,6 @@ package com.taylorsuniversity.models;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
-import com.taylorsuniversity.constants.Constants;
 import com.taylorsuniversity.utils.CoreUtils;
 import java.util.Iterator;
 import javax.inject.Inject;
@@ -12,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.models.annotations.Via;
@@ -137,18 +137,34 @@ public final class SightlyUtilsModel {
      * @return linkDescription
      */
     public String getLinkDescription() {
-        if (null != pageManager) {
-            if (CoreUtils.isInternalLink(linkTarget) && (null != pageManager.getPage(linkTarget))) {
+        if (null != resolver) {
+            if (CoreUtils.isInternalLink(linkTarget) && (null != resolver.getResource(linkTarget))) {
+
                 LOGGER.debug("Link Path received is: {}" + linkTarget);
-                linkDescription = pageManager.getPage(linkTarget).getDescription();
+                Resource resource = resolver.getResource(linkTarget);
+                LOGGER.debug("Resource for link path is : {}" + resource);
+
+                if (null != resource.getChild("jcr:content")) {
+                    Resource childResource = resource.getChild("jcr:content");
+                    ValueMap map = childResource.getValueMap();
+                    if (map.containsKey("description")) {
+                        linkDescription = (String) map.get("description");
+                    } else if (map.containsKey("jcr:description")) {
+                        linkDescription = (String) map.get("jcr:description");
+                    } else {
+                        linkDescription = linkTarget;
+                    }
+                } else {
+                    LOGGER.debug("JCR content not available for the resource : {} " + resource);
+                }
             } else {
-                LOGGER.debug("Link title not available for: {}" + linkTarget);
-                linkDescription = linkTarget;
+                LOGGER.debug("Link is not an internal link or cannot be resolved to a resource : {}" + linkTarget);
             }
-        } else  {
-            LOGGER.debug("Page Manager is null.");
+            LOGGER.debug("Link Title for Link Path: " + linkTarget + " is : "  + linkDescription);
+        } else {
+            LOGGER.debug("Resource cannot be resolved or is null.");
         }
-        LOGGER.debug("Link Title for Link Path: " + linkTarget + " is : "  + linkDescription);
+        LOGGER.debug("Link Description for Link Path: " + linkTarget + " is : "  + linkDescription);
         return linkDescription;
     }
 
@@ -166,13 +182,11 @@ public final class SightlyUtilsModel {
 
                 if (null != resource.getChild("jcr:content")) {
                     Resource childResource = resource.getChild("jcr:content");
-
-                    if (null != childResource.getChild("image")) {
-                        Resource imageRes = childResource.getChild("image" + Constants.IMAGE_PATH);
-                        linkIcon = imageRes.getPath();
-                        LOGGER.debug("Image icon is : {}" + linkIcon);
+                    ValueMap map = childResource.getValueMap();
+                    if (map.containsKey("thumbnailImage")) {
+                        linkIcon = (String) map.get("thumbnailImage");
                     } else {
-                        LOGGER.debug("Image icon unavailable for : {}" + resource);
+                        linkIcon = "Image not Available";
                     }
                 } else {
                     LOGGER.debug("JCR Content unavailable for : {}" + resource);

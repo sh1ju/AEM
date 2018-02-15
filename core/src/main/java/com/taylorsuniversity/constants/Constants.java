@@ -75,6 +75,4 @@ public final class Constants {
     /** The Constant for percentage. */
     public static final String PERCENTAGE = "%";
 
-    /** The Constant for image path for course tiles component. */
-    public static final String IMAGE_PATH = "/file/jcr:content/dam:thumbnails/dam:thumbnail_48.png";
 }
