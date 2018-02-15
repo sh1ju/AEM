@@ -1,10 +1,12 @@
-<sly data-sly-use.logic="logic.js">
-	<div data-sly-test="${wcmmode.edit}" class="clearfix">
-    	<div>
-            <a class="btn btn-simple btn-red btn-standard-w w-100 ${logic.alignment}" href="${logic.site}" target="${logic.link}">
-			${logic.text}
-                <i class="t-icon-right white"></i>
+<div class="clearfix">
+    <div>
+        <a data-sly-test.linkPath="${properties.link}"
+           data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=linkPath}"
+           target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}"
+           href="${linkHelper.link}"
+           class="btn btn-simple btn-red btn-standard-w w-100 ${properties.alignment}">
+            ${properties.text_t} ${linkHelper.internalLink}
+            <i class="t-icon-right white"></i>
         </a>
-        </div>
     </div>
-</sly>
+</div>

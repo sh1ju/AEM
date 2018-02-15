@@ -3,9 +3,5 @@
     jcr:lastModified="{Date}2017-03-14T19:35:59.571+08:00"
     jcr:lastModifiedBy="admin"
     jcr:primaryType="nt:unstructured"
-    sling:resourceType="hlb/components/content/calltoaction"
-    ctaButtonLinkType="sametab"
-    ctaButtonStyling="red"
-    external="https://www.google.com.my"
-    linkType="external"
-    title="Button"/>
+    link="/content/tu/my/en"
+    text_t="APPLY NOW"/>
