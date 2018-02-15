@@ -63,4 +63,20 @@ public final class TileListingModelBean {
     public String getDescription() {
         return description;
     }
+
+    public void setImage(final String newImage) {
+        this.image = newImage;
+    }
+
+    public void setTitle(final String newTitle) {
+        this.title = newTitle;
+    }
+
+    public void setTitleLink(final String newTitleLink) {
+        this.titleLink = newTitleLink;
+    }
+
+    public void setDescription(final String newDescription) {
+        this.description = newDescription;
+    }
 }

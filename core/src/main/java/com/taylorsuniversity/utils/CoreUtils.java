@@ -2,11 +2,9 @@
 
 package com.taylorsuniversity.utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.Template;
+import com.taylorsuniversity.constants.Constants;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -15,9 +13,11 @@ import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.Template;
-import com.taylorsuniversity.constants.Constants;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * The Class CoreUtil.
@@ -189,5 +189,50 @@ public final class CoreUtils {
      */
     public static boolean isInternalLink(final String linkUrl) {
         return (StringUtils.isNotBlank(linkUrl) && linkUrl.startsWith(Constants.CONTENT_ROOT));
+    }
+
+
+
+    /**
+     *
+     * @param currentPage the page that we want to find siblings of
+     * @param excludeCurrent if true, the list excluded the currentPage param
+     * @param circular if true, then the list of siblings will continue from the 1st in the current path
+     * @return a list of sibling pages that preceed the page specified in param based on its ordering
+     */
+    public static List<Page> getNextSiblings(final Page currentPage, final Boolean excludeCurrent, final Boolean circular) {
+
+        String currentPagePath = currentPage.getPath();
+        LOGGER.info("aka Current Page Path: " + currentPagePath);
+        Page parent = currentPage.getParent();
+        Iterator<Page> siblings = parent.listChildren();
+
+        List<Page> filteredSiblings = new ArrayList<>();
+        Boolean preceedPage = circular? true: false;
+
+        while (siblings.hasNext()) {
+            Page sibling = siblings.next();
+            LOGGER.info("aka Page Name: " + sibling.getName());
+
+            if (sibling.getPath().equals(currentPagePath)) {
+                preceedPage = true;
+
+                if (excludeCurrent) {
+                    continue;
+                }
+            }
+
+            //only start adding after or during the current page (depending on excludeCurrent)
+            if (preceedPage) {
+                if (excludeCurrent && !sibling.getPath().equals(currentPagePath)) {
+                    filteredSiblings.add(sibling);
+                } else {
+                    filteredSiblings.add(sibling);
+                }
+            }
+        }
+
+        return filteredSiblings;
+
     }
 }

@@ -1,0 +1,100 @@
+<sly data-sly-test="${wcmmode.edit}">
+    <p class="cq-placeholder" data-emptytext="Other Course Tiles"></p>
+</sly>
+
+<sly data-sly-use.model="com.taylorsuniversity.models.OtherCourseModel"/>
+
+
+<section class="container-fluid" data-sly-test="${model.tileListingItems}">
+    <div class="row t-px t-pt pb-5 bg-gray-1">
+
+        <h3 class="pb-4" data-sly-test="${currentPage.properties.cq:template =='/apps/taylorsuniversity/templates/coursepage'}">OTHER COURSES</h3>
+        <h3 class="pb-4" data-sly-test="${currentPage.properties.cq:template =='/apps/taylorsuniversity/templates/schoolpage'}">OTHER SCHOOLS</h3>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- t-carousel-container2 start -->
+                <div class="t-carousel-container w-100" id="t-carousel-3">
+                    <div class="t-carousel" data-sly-list.ti="${model.tileListingItems}">
+                        <div class="t-carousel-item  slick-slide slick-current slick-active"
+                             style="display:inline-block;">
+                            <div class="card image-with-desc-card mr-lg-5">
+                                <img class="card-img-top" src="${ti.image}" alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="card-title card-title btn btn-simple btn-text-red no-hover pl-0">
+                                        ${ti.title}
+                                    </div>
+                                    <p class="card-text">${ti.description} ${currentPage.closest.cq:Page}</p>
+                                    <a href="${ti.titleLink}"
+                                       class="btn btn-simple btn-text-black pl-0">${'FIND OUT MORE' @ i18n} <i
+                                            class="t-icon-right black"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div data-sly-test="${model.siblings}">
+
+    </div>
+
+
+</section>
+
+<script type="text/javascript" defer>
+
+
+    //
+    // CROUSEL CODE
+    //
+    //init listener can only assign before the slick initialization
+
+    var carouselID = '#t-carousel-3';
+
+    $(carouselID + ' .t-carousel').on('init', function (event, slick) {
+        console.log('init', event, slick);
+        var indicator = $('.t-carousel-controls .indicator', $(this).parent());
+        indicator.html('1/' + slick.$slides.length);
+        if (slick.$slides.length <= 1 || slick.slideOffset === 0) {
+            console.log($('.t-carousel-controls', $(this).parent()));
+            $('.t-carousel-controls', $(this).parent()).attr("style", "display: none !important");
+        }
+    });
+    $(carouselID + ' .t-carousel').slick({
+                                             autoplay: false,
+                                             autoplaySpeed: 4000,
+                                             cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                                             mobileFirst: true,
+                                             responsive: [
+                                                 {
+                                                     breakpoint: 992,
+                                                     settings: {
+                                                         slidesToShow: 3,
+                                                         slidesToScroll: 1,
+                                                     }
+
+                                                 }
+                                             ]
+                                         });
+
+    $(carouselID + ' .t-carousel')
+        .on('afterChange', function (event, slick, currentSlide, nextSlide) {
+            var indicator = $('.t-carousel-controls .indicator');
+            indicator.html((currentSlide + 1) + '/' + slick.$slides.length);
+        });
+    $(carouselID + ' .t-carousel-controls .next').on('click', function () {
+        $(this).closest('.t-carousel-container').find('.t-carousel').slick('slickNext');
+    });
+    $(carouselID + ' .t-carousel-controls .prev').on('click', function () {
+        $(this).closest('.t-carousel-container').find('.t-carousel').slick('slickPrev');
+    });
+
+
+
+
+</script>
