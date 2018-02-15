@@ -74,5 +74,4 @@ public final class Constants {
 
     /** The Constant for percentage. */
     public static final String PERCENTAGE = "%";
-
 }

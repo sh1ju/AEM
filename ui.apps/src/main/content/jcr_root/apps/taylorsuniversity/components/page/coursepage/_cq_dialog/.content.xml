@@ -54,7 +54,7 @@
                                     <image
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Add the thumbnail image for course page1"
+                                        fieldDescription="Add the thumbnail image for course page"
                                         fieldLabel="Thumbnail Image"
                                         name="./thumbnailImage"
                                         rootPath="/content/dam/taylorsuniversity"/>
