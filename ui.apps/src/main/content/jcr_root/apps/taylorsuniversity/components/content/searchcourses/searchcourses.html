@@ -16,7 +16,8 @@
 	                    </div>
 	                    <button class="btn btn-simple btn-red btn-icon after-input px-4 ml-2"><i class="t-icon-right white"></i></button>
 	                </div>                    </div>
-	            <img class="d-none d-lg-block" src="${properties.searchCoursesIconReference @ context='uri'}" alt="" width="100" height="80">
+	            <img data-sly-test="${properties.searchCoursesIconReference}" 
+	            	class="d-none d-lg-block" src="${properties.searchCoursesIconReference @ context='uri'}" alt="" width="100" height="80">
 	        </div>
 	    </div>
 	    <div class="bg-solid-container bg-gray-2 p-4 p-lg-5 col-12 col-lg-6">
@@ -24,9 +25,14 @@
 	        <div class="content d-flex justify-content-between">
 	            <div class="d-flex flex-column justify-content-start align-items-start pr-2">
 	                ${properties.rightContentDescription}
-	                <a data-sly-test="${properties.rightContentLinkTextIconReference}" href="${properties.rightContentLink @ context='uri'}" class="btn btn-simple btn-text-red px-0">${properties.rightContentLinkText}<i class="t-icon-right"></i></a>
+	                <a data-sly-test="${properties.rightContentLink && properties.rightContentLinkText}" 
+	                	data-sly-use.linkHelper="${'com.taylorsuniversity.models.SightlyUtilsModel' @ linkTarget=properties.rightContentLink}" 
+	                		 target="${linkHelper.titleLinkType=='true'? '_self' : '_blank'}" 
+	                		 	href="${properties.rightContentLink @ context='uri', extension='html'}" 
+	                		 		class="btn btn-simple btn-text-red px-0">${properties.rightContentLinkText}<i class="t-icon-right"></i></a>
 	            </div>
-	            <img class="d-none d-lg-block" src="${properties.rightContentLinkTextIconReference @ context='uri'}" alt="" width="115" height="62">
+	            <img data-sly-test="${properties.rightContentLinkTextIconReference}" 
+	            	class="d-none d-lg-block" src="${properties.rightContentLinkTextIconReference @ context='uri'}" alt="" width="115" height="62">
 	        </div>
 	    </div>
 	</div>

@@ -70,7 +70,7 @@
 	                            <rightcontentlink
 	                                jcr:primaryType="nt:unstructured"
 	                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-	                                fieldLabel="Search Results Page Path"
+	                                fieldLabel="Link"
 	                                name="./rightContentLink"
 	                                rootPath="/content"/>
 	                            <rightcontentlinktext
@@ -84,7 +84,7 @@
 	                                allowUpload="{Boolean}false"
 	                                autoStart="{Boolean}false"
 	                                class="cq-droptarget"
-	                                fieldLabel="Link Icon"
+	                                fieldLabel="Icon"
 	                                fileNameParameter="./fileName"
 	                                fileReferenceParameter="./rightContentLinkTextIconReference"
 	                                mimeTypes="[image]"
