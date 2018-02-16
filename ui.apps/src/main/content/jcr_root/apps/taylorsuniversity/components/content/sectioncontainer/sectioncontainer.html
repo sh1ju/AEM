@@ -1,10 +1,7 @@
+<sly data-sly-test="${wcmmode.edit}">
+    <div class="cq-placeholder" data-emptytext="Container"></div>
+</sly>
 <section class="container-fluid" 
 	style="background-color: ${properties.backgroundColor @ context='styleString'};">
-	
-	<sly data-sly-test="${wcmmode.edit}">
-	    <div class="cq-placeholder" data-emptytext="${component.cellName}"></div>
-	</sly>
-
 	<div data-sly-resource="${'container' @ resourceType='wcm/foundation/components/responsivegrid'}"></div>
-
 </section>
