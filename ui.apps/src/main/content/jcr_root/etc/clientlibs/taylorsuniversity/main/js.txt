@@ -1,6 +1,5 @@
 #base=js
 
-taylors-accordion.js
 bundle.js
 taylors-header.js
 taylors-footer.js
