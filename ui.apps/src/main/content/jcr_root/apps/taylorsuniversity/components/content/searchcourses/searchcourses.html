@@ -1,5 +1,5 @@
-<sly data-sly-test="${wcmmode.edit}">
-    <div class="cq-placeholder" data-emptytext="${component.cellName}"></div>
+<sly data-sly-test="${!properties.searchCoursesTitleText && wcmmode.edit}">
+    <div class="cq-placeholder" data-emptytext="Search Courses"></div>
 </sly>
 <sly
 	data-sly-use.header="com.taylorsuniversity.models.HeaderComponentModel">
@@ -24,7 +24,7 @@
 	        <div class="content d-flex justify-content-between">
 	            <div class="d-flex flex-column justify-content-start align-items-start pr-2">
 	                ${properties.rightContentDescription}
-	                <a href="${properties.rightContentLink @ context='uri'}" class="btn btn-simple btn-text-red px-0">${properties.rightContentLinkText}<i class="t-icon-right"></i></a>
+	                <a data-sly-test="${properties.rightContentLinkTextIconReference}" href="${properties.rightContentLink @ context='uri'}" class="btn btn-simple btn-text-red px-0">${properties.rightContentLinkText}<i class="t-icon-right"></i></a>
 	            </div>
 	            <img class="d-none d-lg-block" src="${properties.rightContentLinkTextIconReference @ context='uri'}" alt="" width="115" height="62">
 	        </div>
