@@ -1,5 +1,0 @@
-#base=js
-jquery.accordion.js
-stickyfill.min.js
-jquery.waypoints.min.js
-custom-js.js

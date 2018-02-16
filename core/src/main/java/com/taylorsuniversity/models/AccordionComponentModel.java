@@ -48,7 +48,7 @@ public final class AccordionComponentModel {
         ResourceResolver resourceResolver = resource.getResourceResolver();
 
         if (resourceResolver != null) {
-           LOGGER.error("resource::" + resource.getPath());
+           LOGGER.error("resource::", resource.getPath());
            Node accordionNode = resourceResolver.resolve(resource.getPath()).adaptTo(Node.class);
            try {
                 if (accordionNode != null && accordionNode.hasNode("listItems")) {
@@ -67,7 +67,7 @@ public final class AccordionComponentModel {
                     }
                    }
             } catch (RepositoryException e) {
-                LOGGER.error("RepositoryException in AccordionComponentModel:" + e);
+                LOGGER.error("RepositoryException in AccordionComponentModel: {}", e);
             }
         }
         return submenuItems;

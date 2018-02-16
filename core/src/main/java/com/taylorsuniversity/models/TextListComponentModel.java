@@ -88,8 +88,8 @@ public class TextListComponentModel {
                 column2And3Bullet = listNodeCount / Integer.parseInt(columns);
                 column1Bullet = (listNodeCount % Integer.parseInt(columns))
                         + column2And3Bullet;
-                LOGGER.error("column2And3Bullet = " + column2And3Bullet
-                        + "; columns = " + columns + "; column1Bullet = " + column1Bullet);
+                LOGGER.error("column2And3Bullet:: {}", column2And3Bullet,
+                        "; columns:: {}", columns, "; column1Bullet:: {}", column1Bullet);
                 if (columns.equalsIgnoreCase("2")) {
                     get2ColumnsList();
                 }

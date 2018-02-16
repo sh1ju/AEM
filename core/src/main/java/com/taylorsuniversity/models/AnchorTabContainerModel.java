@@ -84,7 +84,7 @@ public class AnchorTabContainerModel {
 					}
 				}
 			} catch (RepositoryException e) {
-				LOGGER.error("RepositoryException in AnchorTabContainertModel:" + e);
+				LOGGER.error("RepositoryException in AnchorTabContainertModel: {}", e);
 			}
 		}
 		return anchorTabItems;

@@ -4,11 +4,10 @@
 <div data-sly-attribute.data-accordion-group="${!wcmmode.edit}">
     <sly data-sly-use.multiItems="com.taylorsuniversity.models.AccordionComponentModel">
         <sly data-sly-list.head="${multiItems.getSubmenuItems}">
-            <section class="accordion  ${wcmmode.edit ? 'open':'t-accordion' }" data-accordion>
+            <section class="accordion ${wcmmode.edit ? 'open':'t-accordion' }" data-accordion>
                 <div class="accordion-control" data-control>${head.accordiontitlest}</div>
-                ${}
                 <div data-sly-attribute.data-content="${!wcmmode.edit}">
-                    <sly data-sly-resource="${ 'accordionpar{0}' @ format=[headList.count], resourceType='foundation/components/parsys'}"/>
+                    <sly data-sly-resource="${ 'accordionpar{0}' @ format=[headList.count], resourceType='wcm/foundation/components/responsivegrid'}"/>
                 </div>
             </section>
         </sly>
