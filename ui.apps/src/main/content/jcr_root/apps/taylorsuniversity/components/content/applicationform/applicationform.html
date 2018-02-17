@@ -1,5 +1,5 @@
 <sly data-sly-test="${!properties.title && wcmmode.edit}">
-	<p class="cq-placeholder" data-emptytext="${component.cellName}"></p>
+	<p class="cq-placeholder" data-emptytext="${'Application Form' @ i18n}"></p>
 </sly>
 
 <div class="row t-px t-pt">
@@ -99,7 +99,7 @@
 						</div>
 					</div>
 					
-						<sly data-sly-use.cp="${'com.taylorsuniversity.models.SightlyUtilsModel'}">
+						<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
 							<div class="row">
 								<div class="col-12 col-lg">
 									<div class="form-group row pr-lg-4">
