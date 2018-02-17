@@ -66,11 +66,11 @@
 								<label for="state" class="col-form-label t-header-5">STATE
 									<span class="txt-primary">*</span>
 								</label> <select class="form-control" size name="state" required>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
+									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+										<sly data-sly-list.states="${cp.stateMap}">
+											<option value="${states}">${cp.stateMap[states]}</option>
+										</sly>
+									</sly>
 								</select>
 								<div class="invalid-feedback">This field is required.</div>
 							</div>
@@ -82,11 +82,11 @@
 								<label for="qualification" class="col-form-label t-header-5">ACADEMIC
 									QUALIFICATION <span class="txt-primary">*</span>
 								</label> <select class="form-control" size name="qualification" required>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
+									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+										<sly data-sly-list.academicQualification="${cp.academicQualificationsMap}">
+											<option value="${academicQualification}">${cp.academicQualificationsMap[academicQualification]}</option>
+										</sly>
+									</sly>
 								</select>
 								<div class="invalid-feedback">This field is required.</div>
 							</div>
@@ -232,11 +232,11 @@
 								<label for="nationality" class="col-form-label t-header-5">NATIONALITY
 									<span class="txt-primary">*</span>
 								</label> <select class="form-control" size name="nationality" required>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
+									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+										<sly data-sly-list.nationality="${cp.nationalityMap}">
+											<option value="${nationality}">${cp.nationalityMap[nationality]}</option>
+										</sly>
+									</sly>
 								</select>
 								<div class="invalid-feedback">This field is required.</div>
 							</div>
@@ -248,11 +248,11 @@
 								<label for="qualification" class="col-form-label t-header-5">ACADEMIC
 									QUALIFICATION <span class="txt-primary">*</span>
 								</label> <select class="form-control" size name="qualification" required>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
-									<option>OPTION</option>
+									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+										<sly data-sly-list.academicQualification="${cp.academicQualificationsMap}">
+											<option value="${academicQualification}">${cp.academicQualificationsMap[academicQualification]}</option>
+										</sly>
+									</sly>
 								</select>
 								<div class="invalid-feedback">This field is required.</div>
 							</div>
