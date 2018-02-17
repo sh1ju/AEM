@@ -3,4 +3,5 @@
 bundle.js
 taylors-header.js
 taylors-footer.js
+taylorsuniversity-featurecarousel.js
 taylorsuniversity-applicationform.js

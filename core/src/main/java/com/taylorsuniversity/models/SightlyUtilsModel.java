@@ -155,6 +155,7 @@ public final class SightlyUtilsModel {
 		LOGGER.debug("Link Title for Link Path: {}  is {} : ", linkTarget, linkTitle);
 		return linkTitle;
 	}
+	
 
 	/**
 	 * Helper method for link checker
