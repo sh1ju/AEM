@@ -1,5 +1,7 @@
 $('#malaysian-levelOfStudy').change(function() {
 
+    $("#malaysian-programmes").removeAttr("disabled");
+
     $('#malaysian-programmes').children('option').hide();
 
     $("#malaysian-programmes :selected").removeAttr("selected");
@@ -8,11 +10,14 @@ $('#malaysian-levelOfStudy').change(function() {
 
     $( "option[name='malaysian-" + levelOfStudy + "']" ).show();
 
-    if($( "option[name='malaysian-" + levelOfStudy + "']" ).size() > 1) {
+    if($( "option[name='malaysian-" + levelOfStudy + "']" ).size() > 0) {
 		$( "option[name='malaysian-" + levelOfStudy + "']:first" ).attr("selected", "selected");
+        $("#malaysian-programmes").val($("option[name='malaysian-" + levelOfStudy + "']:first").val());
+
     } else {
-        $( "option[name='malaysian-Select Programme']" ).show();
-		$( "option[name='malaysian-Select Programme']" ).attr("selected", "selected");
+        $('#malaysian-programmes').children('option').hide();
+        $("#malaysian-programmes :selected").removeAttr("selected");
+        $("#malaysian-programmes").prop('disabled', 'disabled');
     }
 
 });
@@ -21,23 +26,31 @@ $('#malaysian-levelOfStudy').change(function() {
 
 $(window).on("load", function () {
 
+    $("#malaysian-programmes").removeAttr("disabled");
+
 	$('#malaysian-programmes').children('option').hide();
+
+    $("#malaysian-programmes :selected").removeAttr("selected");
 
     var levelOfStudy = $('#malaysian-levelOfStudy').val();
 
     $( "option[name='malaysian-" + levelOfStudy + "']" ).show();
 
-    if($( "option[name='malaysian-" + levelOfStudy + "']" ).size() > 1) {
+    if($( "option[name='malaysian-" + levelOfStudy + "']" ).size() > 0) {
 		$( "option[name='malaysian-" + levelOfStudy + "']:first" ).attr("selected", "selected");
+        $("#malaysian-programmes").val($("option[name='malaysian-" + levelOfStudy + "']:first").val());
     } else {
-        $( "option[name='malaysian-Select Programme']" ).show();
-		$( "option[name='malaysian-Select Programme']" ).attr("selected", "selected");
+        $('#malaysian-programmes').children('option').hide();
+        $("#malaysian-programmes :selected").removeAttr("selected");
+        $("#malaysian-programmes").prop('disabled', 'disabled');
     }
 });
 
 
 
 $('#international-levelOfStudy').change(function() {
+
+    $("#international-programmes").removeAttr("disabled");
 
     $('#international-programmes').children('option').hide();
 
@@ -47,11 +60,13 @@ $('#international-levelOfStudy').change(function() {
 
     $( "option[name='international-" + levelOfStudy + "']" ).show();
 
-    if($( "option[name='international-" + levelOfStudy + "']" ).size() > 1) {
+    if($( "option[name='international-" + levelOfStudy + "']" ).size() > 0) {
 		$( "option[name='international-" + levelOfStudy + "']:first" ).attr("selected", "selected");
+        $("#international-programmes").val($("option[name='international-" + levelOfStudy + "']:first").val());
     } else {
-        $( "option[name='international-Select Programme']" ).show();
-		$( "option[name='international-Select Programme']" ).attr("selected", "selected");
+        $('#international-programmes').children('option').hide();
+        $("#international-programmes :selected").removeAttr("selected");
+        $("#international-programmes").prop('disabled', 'disabled');
     }
 
 });
@@ -60,17 +75,23 @@ $('#international-levelOfStudy').change(function() {
 
 $(window).on("load", function () {
 
+    $("#international-programmes").removeAttr("disabled");
+
 	$('#international-programmes').children('option').hide();
+
+    $("#international-programmes :selected").removeAttr("selected");
 
     var levelOfStudy = $('#international-levelOfStudy').val();
 
     $( "option[name='international-" + levelOfStudy + "']" ).show();
 
-    if($( "option[name='international-" + levelOfStudy + "']" ).size() > 1) {
+    if($( "option[name='international-" + levelOfStudy + "']" ).size() > 0) {
 		$( "option[name='international-" + levelOfStudy + "']:first" ).attr("selected", "selected");
+        $("#international-programmes").val($("option[name='international-" + levelOfStudy + "']:first").val());
     } else {
-        $( "option[name='international-Select Programme']" ).show();
-		$( "option[name='international-Select Programme']" ).attr("selected", "selected");
+        $('#international-programmes').children('option').hide();
+        $("#international-programmes :selected").removeAttr("selected");
+        $("#international-programmes").prop('disabled', 'disabled');
     }
 });
 
@@ -115,4 +136,4 @@ $(function() {
             $(this).next('[type="checkbox"]').prop('checked', true);
         }
     });
-})
+});

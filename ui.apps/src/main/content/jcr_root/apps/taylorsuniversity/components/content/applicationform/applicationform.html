@@ -137,7 +137,6 @@
 									PREFERENCE' @ i18n} <span class="txt-primary">*</span>
 								</label>
 								<select id="${formName}-programmes" class="form-control" size name="preference" value="0">
-									<option name="${formName}-Select Programme" value="Select Programme">${'Select Programme' @ i18n}</option>
 									<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
 										<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
 										 	<option name="${formName}-${levelOfStudy}" value="${item}">${item}</option>
