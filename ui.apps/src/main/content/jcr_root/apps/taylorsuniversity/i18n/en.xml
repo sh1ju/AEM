@@ -39,16 +39,8 @@
         jcr:primaryType="sling:MessageEntry"
         sling:key="sign_up"
         sling:message="Sign Up"/>
-    <switch_to_retail
-        jcr:primaryType="sling:MessageEntry"
-        sling:key="switch_to_retail"
-        sling:message="Switch to Retail"/>
-    <switch_to_wholesale
-        jcr:primaryType="sling:MessageEntry"
-        sling:key="switch_to_wholesale"
-        sling:message="Switch to Wholesale"/>
     <show_all_label
-            jcr:primaryType="sling:MessageEntry"
-            sling:key="accordion_label"
-            sling:message="Accordion"/>
+        jcr:primaryType="sling:MessageEntry"
+        sling:key="accordion_label"
+        sling:message="Accordion"/>
 </jcr:root>

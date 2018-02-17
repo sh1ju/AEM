@@ -14,6 +14,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +30,11 @@ public final class AccordionComponentModel {
      * The Constant LOG.
      */
     public static final Logger LOGGER = LoggerFactory.getLogger(AccordionComponentModel.class);
+
+    /** The Resolver. */
+    @Self
+    private SlingHttpServletRequest request;
+
     /**
      *
      */
@@ -45,7 +51,7 @@ public final class AccordionComponentModel {
      * @return list of modal beans
      */
     public List<AccordionModelBean> getSubmenuItems() {
-        ResourceResolver resourceResolver = resource.getResourceResolver();
+        ResourceResolver resourceResolver = request.getResourceResolver();
 
         if (resourceResolver != null) {
            LOGGER.error("resource::", resource.getPath());
