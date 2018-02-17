@@ -4,7 +4,7 @@
 
 <div class="row t-px t-pt">
 	<p>
-		Fields marked <span class="txt-primary">*</span> are mandatory fields.
+		${'Fields marked' @ i18n} <span class="txt-primary">*</span> ${'are mandatory fields' @ i18n}.
 	</p>
 </div>
 <div class="row">
@@ -12,17 +12,17 @@
 		<div class="row  t-pl">
 			<div class="col-12 col-lg-2 p-0">
 				<div class="t-header-5 pt-3">
-					I'AM <span class="txt-primary"> *</span> :
+					${'I AM' @ i18n} <span class="txt-primary"> *</span> :
 				</div>
 			</div>
 			<div class="col-12 col-lg p-0">
 				<div class="t-tabs underlined btn-group mb-3">
 					<button class="btn btn-simple btn-text-black pl-0 tab-item active"
-						data-tab="application-form-malaysian">MALAYSIAN</button>
+						data-tab="application-form-malaysian">${'MALAYSIAN' @ i18n}</button>
 					<div class="verticle-devider dark my-3 "></div>
 					<button class="btn btn-simple btn-text-black tab-item"
-						data-tab="application-form-international">INTERNATIONAL
-						STUDENTS</button>
+						data-tab="application-form-international">${'INTERNATIONAL
+						STUDENTS' @ i18n}</button>
 				</div>
 			</div>
 		</div>
@@ -32,37 +32,37 @@
                  <div class="row">
                      <div class="col-12 col-lg">
                          <div class="form-group row pr-lg-4">
-                             <label for="staticEmail" class="col-form-label t-header-5">NAME
+                             <label for="staticEmail" class="col-form-label t-header-5">${'NAME' @ i18n}
                                  <span class="txt-primary">*</span>
                              </label>
                              <input type="text" class="form-control" name="name" required>
-                             <div class="invalid-feedback">This field is required.</div>
+                             <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
                          </div>
                      </div>
                      <div class="col-12 col-lg pr-lg-4">
                          <div class="form-group row ">
-                             <label for="contact_number" class="col-form-label t-header-5">CONTACT NUMBER
+                             <label for="contact_number" class="col-form-label t-header-5">${'CONTACT NUMBER' @ i18n}
                                  <span class="txt-primary">*</span>
                              </label>
                              <input type="number" class="form-control" name="contact_number" required>
-                             <div class="invalid-feedback">This field is required.</div>
+                             <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
                          </div>
                      </div>
                  </div>
                  <div class="row">
                      <div class="col-12 col-lg">
                          <div class="form-group row pr-lg-4">
-                             <label for="email" class="col-form-label t-header-5">EMAIL
+                             <label for="email" class="col-form-label t-header-5">${'EMAIL' @ i18n}
                                  <span class="txt-primary">*</span>
                              </label>
                              <input id="email" type="email" class="form-control" name="email" required>
-                             <div class="invalid-feedback">This field is required.</div>
+                             <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
                          </div>
                      </div>
                      <sly data-sly-test="${formName == 'malaysian'}">
 	                     <div class="col-12 col-lg pr-lg-4">
 	                         <div class="form-group row ">
-	                             <label for="state" class="col-form-label t-header-5">STATE
+	                             <label for="state" class="col-form-label t-header-5">${'STATE' @ i18n}
 	                                 <span class="txt-primary">*</span>
 	                             </label>
 	                             <select class="form-control" size name="state" required>
@@ -72,14 +72,14 @@
 										</sly>
 									 </sly>
 	                             </select>
-	                             <div class="invalid-feedback">This field is required.</div>
+	                             <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
 	                         </div>
 	                     </div>
                      </sly>
                      <sly data-sly-test="${formName == 'international'}">
 	                     <div class="col-12 col-lg pr-lg-4">
 							<div class="form-group row ">
-								<label for="nationality" class="col-form-label t-header-5">NATIONALITY
+								<label for="nationality" class="col-form-label t-header-5">${'NATIONALITY' @ i18n}
 									<span class="txt-primary">*</span>
 								</label> <select class="form-control" size name="nationality" required>
 									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
@@ -88,7 +88,7 @@
 										</sly>
 									</sly>
 								</select>
-								<div class="invalid-feedback">This field is required.</div>
+								<div class="invalid-feedback">${'This field is required' @ i18n}.</div>
 							</div>
 						 </div>
 					 </sly>
@@ -96,7 +96,7 @@
                  <div class="row">
                      <div class="col-12 col-lg">
                          <div class="form-group row pr-lg-4">
-                             <label for="qualification" class="col-form-label t-header-5">ACADEMIC QUALIFICATION
+                             <label for="qualification" class="col-form-label t-header-5">${'ACADEMIC QUALIFICATION' @ i18n}
                                  <span class="txt-primary">*</span>
                              </label>
                              <select class="form-control" size name="qualification" required>
@@ -106,12 +106,12 @@
 									</sly>
 								 </sly>
                              </select>
-                             <div class="invalid-feedback">This field is required.</div>
+                             <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
                          </div>
                      </div>
                      <div class="col-12 col-lg pr-lg-4">
                          <div class="form-group row ">
-                             <label for="results" class="col-form-label t-header-5">RESULTS</label>
+                             <label for="results" class="col-form-label t-header-5">${'RESULTS' @ i18n}</label>
                              <input type="text" class="form-control" name="results">
                          </div>
                      </div>
@@ -120,31 +120,31 @@
 					<div class="row">
 						<div class="col-12 col-lg">
 							<div class="form-group row pr-lg-4">
-								<label for="level" class="col-form-label t-header-5">LEVEL
-									OF STUDY <span class="txt-primary">*</span>
+								<label for="level" class="col-form-label t-header-5">${'LEVEL
+									OF STUDY' @ i18n} <span class="txt-primary">*</span>
 								</label>
 								<select id="${formName}-levelOfStudy" class="form-control" size name="level" value="0">
 									 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
 									 	<option value="${levelOfStudy}">${levelOfStudy}</option>
 									 </sly>
 								</select>
-								<div class="invalid-feedback">This field is required.</div>
+								<div class="invalid-feedback">${'This field is required' @ i18n}.</div>
 							</div>
 						</div>
 						<div class="col-12 col-lg pr-lg-4">
 							<div class="form-group row ">
-								<label for="preference" class="col-form-label t-header-5">PROGRAMME
-									PREFERENCE <span class="txt-primary">*</span>
+								<label for="preference" class="col-form-label t-header-5">${'PROGRAMME
+									PREFERENCE' @ i18n} <span class="txt-primary">*</span>
 								</label>
 								<select id="${formName}-programmes" class="form-control" size name="preference" value="0">
-									<option name="${formName}-Select Programme" value="Select Programme">Select Programme</option>
+									<option name="${formName}-Select Programme" value="Select Programme">${'Select Programme' @ i18n}</option>
 									<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
 										<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
 										 	<option name="${formName}-${levelOfStudy}" value="${item}">${item}</option>
 										</sly>
 									</sly>
 								</select>
-								<div class="invalid-feedback">This field is required.</div>
+								<div class="invalid-feedback">${'This field is required' @ i18n}.</div>
 							</div>
 						</div>
 						<input type="hidden" name="interested_course" value="${cp.documentReferrer}"/>
@@ -153,23 +153,23 @@
                  <div class="row">
                      <div class="col-12 col-lg-6 pr-lg-4 pl-0">
                          <div class="form-group row">
-                             <label for="intake_month" class="col-12 col-form-label t-header-5">PREFERRED INTAKE</label>
+                             <label for="intake_month" class="col-12 col-form-label t-header-5">${'PREFERRED INTAKE' @ i18n}</label>
                              <div class="col-6">
                                  <select class="form-control" size name="intake_month">
-                                    <option value="1">JANUARY</option>
-									<option value="2">FEBRUARY</option>
-									<option value="3">MARCH</option>
-									<option value="4">APRIL</option>
-									<option value="5">MAY</option>
-									<option value="6">JUNE</option>
-									<option value="7">JULY</option>
-									<option value="8">AUGUST</option>
-									<option value="9">SEPTEMBER</option>
-									<option value="10">OCTOBER</option>
-									<option value="11">NOVEMBER</option>
-									<option value="12">DECEMBER</option>
+                                    <option value="1">${'JANUARY' @ i18n}</option>
+									<option value="2">${'FEBRUARY' @ i18n}</option>
+									<option value="3">${'MARCH' @ i18n}</option>
+									<option value="4">${'APRIL' @ i18n}</option>
+									<option value="5">${'MAY' @ i18n}</option>
+									<option value="6">${'JUNE' @ i18n}</option>
+									<option value="7">${'JULY' @ i18n}</option>
+									<option value="8">${'AUGUST' @ i18n}</option>
+									<option value="9">${'SEPTEMBER' @ i18n}</option>
+									<option value="10">${'OCTOBER' @ i18n}</option>
+									<option value="11">${'NOVEMBER' @ i18n}</option>
+									<option value="12">${'DECEMBER' @ i18n}</option>
                                  </select>
-                                 <div class="invalid-feedback">This field is required.</div>
+                                 <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
                              </div>
                              <div class="col-6">
                                  <select class="form-control" size name="intake_year">
@@ -179,7 +179,7 @@
 										</sly>
 									</sly>
                                  </select>
-                                 <div class="invalid-feedback">This field is required.</div>
+                                 <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
                              </div>
                          </div>
                      </div>
@@ -194,7 +194,7 @@
                          <label class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0" for="terms_agreed">
                          	${properties.agreementText @ context='html'}
                          </label>
-                         <div class="invalid-feedback">This field is required.</div>
+                         <div class="invalid-feedback">${'This field is required' @ i18n}.</div>
                              
                      </div>
                  </div>
@@ -202,7 +202,7 @@
                              <div id="recaptcha-application-form-malaysian" class="d-none"></div>
              
                      <button class="btn btn-simple btn-red recaptcha-element btn-standard-w"  data-sitekey="6LdHvj8UAAAAANxhryvj-yJvtloO5PUb2o7bg4rf" data-callback="onSubmitApplicationMalaysian">
-                         SUBMIT NOW
+                         ${'SUBMIT NOW' @ i18n}
                          <i class="t-icon-right white ml-2"></i>
                      </button>
                  </div>
