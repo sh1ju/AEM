@@ -84,6 +84,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
                                         fieldLabel="Link"
+                                        rootPath="/content"
                                         name="./scholarshiplink"/>
                                 </items>
                             </column>
