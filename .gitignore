@@ -1,0 +1,7 @@
+
+/taylorsuniversity-project.iml
+/.idea/
+*.iml
+aemdc-config.properties
+*/target/*
+*/target/**
