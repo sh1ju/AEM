@@ -43,13 +43,18 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldLabel="Level Of Study"
                                                 name="./levelOfStudy"
-                                                rootPath="/content/taylorsuniversity"/>
+                                                rootPath="/content/taylorsuniversity">
+                                                <datasource
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="taylorsuniversity/components/datasource"/>
+                                            </levelofstudy>
+
                                             <programme
                                                 cq:showOnCreate="{Boolean}true"
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldLabel="Programme"
-                                                name="./programe"
+                                                name="./programme"
                                                 rootPath="/content/taylorsuniversity"/>
                                         </items>
                                     </course>
