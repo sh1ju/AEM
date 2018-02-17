@@ -99,40 +99,40 @@
 						</div>
 					</div>
 					
-						<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
-							<div class="row">
-								<div class="col-12 col-lg">
-									<div class="form-group row pr-lg-4">
-										<label for="level" class="col-form-label t-header-5">LEVEL
-											OF STUDY <span class="txt-primary">*</span>
-										</label>
-										<select id="malaysian-levelOfStudy" class="form-control" size name="level" value="0">
-											 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
-											 	<option value="${levelOfStudy}">${levelOfStudy}</option>
-											 </sly>
-										</select>
-										<div class="invalid-feedback">This field is required.</div>
-									</div>
+					<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+						<div class="row">
+							<div class="col-12 col-lg">
+								<div class="form-group row pr-lg-4">
+									<label for="level" class="col-form-label t-header-5">LEVEL
+										OF STUDY <span class="txt-primary">*</span>
+									</label>
+									<select id="malaysian-levelOfStudy" class="form-control" size name="level" value="0">
+										 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+										 	<option value="${levelOfStudy}">${levelOfStudy}</option>
+										 </sly>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
 								</div>
-								<div class="col-12 col-lg pr-lg-4">
-									<div class="form-group row ">
-										<label for="preference" class="col-form-label t-header-5">PROGRAMME
-											PREFERENCE <span class="txt-primary">*</span>
-										</label>
-										<select id="malaysian-programmes" class="form-control" size name="preference" value="0">
-											<option name="Select Programme" value="Select Programme">Select Programme</option>
-											<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
-												<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
-												 	<option name="${levelOfStudy}" value="${item}">${item}</option>
-												</sly>
-											</sly>
-										</select>
-										<div class="invalid-feedback">This field is required.</div>
-									</div>
-								</div>
-								<input type="hidden" name="interestedCourse" value="${cp.documentReferrer}"/>
 							</div>
-						</sly>
+							<div class="col-12 col-lg pr-lg-4">
+								<div class="form-group row ">
+									<label for="preference" class="col-form-label t-header-5">PROGRAMME
+										PREFERENCE <span class="txt-primary">*</span>
+									</label>
+									<select id="malaysian-programmes" class="form-control" size name="preference" value="0">
+										<option name="malaysian-Select Programme" value="Select Programme">Select Programme</option>
+										<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+											<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
+											 	<option name="malaysian-${levelOfStudy}" value="${item}">${item}</option>
+											</sly>
+										</sly>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
+								</div>
+							</div>
+							<input type="hidden" name="interested_course" value="${cp.documentReferrer}"/>
+						</div>
+					</sly>
 					
 					<div class="row">
 						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
@@ -163,10 +163,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row d-none">
-						<!--- hidden -->
-						<input type="hidden" name="interested_course" value="HIDDEN_VALUE">
-					</div>
+
 					<div class="row">
 						<div class="form-group form-check">
 							<div class="t-custom-checkbox form-control">
@@ -268,6 +265,41 @@
 						</div>
 					</div>
 					
+					<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+						<div class="row">
+							<div class="col-12 col-lg">
+								<div class="form-group row pr-lg-4">
+									<label for="level" class="col-form-label t-header-5">LEVEL
+										OF STUDY <span class="txt-primary">*</span>
+									</label>
+									<select id="international-levelOfStudy" class="form-control" size name="level" value="0">
+										 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+										 	<option value="${levelOfStudy}">${levelOfStudy}</option>
+										 </sly>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg pr-lg-4">
+								<div class="form-group row ">
+									<label for="preference" class="col-form-label t-header-5">PROGRAMME
+										PREFERENCE <span class="txt-primary">*</span>
+									</label>
+									<select id="international-programmes" class="form-control" size name="preference" value="0">
+										<option name="international-Select Programme" value="Select Programme">Select Programme</option>
+										<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+											<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
+											 	<option name="international-${levelOfStudy}" value="${item}">${item}</option>
+											</sly>
+										</sly>
+									</select>
+									<div class="invalid-feedback">This field is required.</div>
+								</div>
+							</div>
+							<input type="hidden" name="interested_course" value="${cp.documentReferrer}"/>
+						</div>
+					</sly>
+					
 					<div class="row">
 						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
 							<div class="form-group row">
@@ -297,10 +329,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row d-none">
-						<!--- hidden -->
-						<input type="hidden" name="interested_course" value="HIDDEN_VALUE">
-					</div>
+
 					<div class="row">
 						<div class="form-group form-check">
 							<div class="t-custom-checkbox form-control">
