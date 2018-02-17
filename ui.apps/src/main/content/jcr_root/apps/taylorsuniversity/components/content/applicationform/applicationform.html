@@ -26,212 +26,58 @@
 				</div>
 			</div>
 		</div>
-		<div class="t-tab-content">
-			<div class="row  t-p pt-0 t-tab-content-item active"
-				data-tab-content="application-form-malaysian">
-				<!-- APPLICATION FORM MALAYSIA -->
-				<form class="col-12 t-form recaptcha-form "
-					id="application-form-malaysian" data-widget-id="widgetMalaysian"
-					novalidate>
-					<div class="row">
-						<div class="col-12 col-lg">
-							<div class="form-group row pr-lg-4">
-								<label for="staticEmail" class="col-form-label t-header-5">NAME
-									<span class="txt-primary">*</span>
-								</label> <input type="text" class="form-control" name="name" required>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg pr-lg-4">
-							<div class="form-group row ">
-								<label for="contact_number" class="col-form-label t-header-5">CONTACT
-									NUMBER <span class="txt-primary">*</span>
-								</label> <input type="number" class="form-control" name="contact_number"
-									required>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12 col-lg">
-							<div class="form-group row pr-lg-4">
-								<label for="email" class="col-form-label t-header-5">EMAIL
-									<span class="txt-primary">*</span>
-								</label> <input type="email" class="form-control" name="email" required>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg pr-lg-4">
-							<div class="form-group row ">
-								<label for="state" class="col-form-label t-header-5">STATE
-									<span class="txt-primary">*</span>
-								</label> <select class="form-control" size name="state" required>
-									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+		
+		<template data-sly-template.applicationForms="${@ formName}">
+             <form class="col-12 t-form recaptcha-form " id="application-form-malaysian" data-widget-id="widgetMalaysian" novalidate>
+                 <div class="row">
+                     <div class="col-12 col-lg">
+                         <div class="form-group row pr-lg-4">
+                             <label for="staticEmail" class="col-form-label t-header-5">NAME
+                                 <span class="txt-primary">*</span>
+                             </label>
+                             <input type="text" class="form-control" name="name" required>
+                             <div class="invalid-feedback">This field is required.</div>
+                         </div>
+                     </div>
+                     <div class="col-12 col-lg pr-lg-4">
+                         <div class="form-group row ">
+                             <label for="contact_number" class="col-form-label t-header-5">CONTACT NUMBER
+                                 <span class="txt-primary">*</span>
+                             </label>
+                             <input type="number" class="form-control" name="contact_number" required>
+                             <div class="invalid-feedback">This field is required.</div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="col-12 col-lg">
+                         <div class="form-group row pr-lg-4">
+                             <label for="email" class="col-form-label t-header-5">EMAIL
+                                 <span class="txt-primary">*</span>
+                             </label>
+                             <input id="email" type="email" class="form-control" name="email" required>
+                             <div class="invalid-feedback">This field is required.</div>
+                         </div>
+                     </div>
+                     <sly data-sly-test="${formName == 'malaysian'}">
+	                     <div class="col-12 col-lg pr-lg-4">
+	                         <div class="form-group row ">
+	                             <label for="state" class="col-form-label t-header-5">STATE
+	                                 <span class="txt-primary">*</span>
+	                             </label>
+	                             <select class="form-control" size name="state" required>
+	                                 <sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
 										<sly data-sly-list.states="${cp.stateMap}">
 											<option value="${states}">${cp.stateMap[states]}</option>
 										</sly>
-									</sly>
-								</select>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12 col-lg">
-							<div class="form-group row pr-lg-4">
-								<label for="qualification" class="col-form-label t-header-5">ACADEMIC
-									QUALIFICATION <span class="txt-primary">*</span>
-								</label> <select class="form-control" size name="qualification" required>
-									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
-										<sly data-sly-list.academicQualification="${cp.academicQualificationsMap}">
-											<option value="${academicQualification}">${cp.academicQualificationsMap[academicQualification]}</option>
-										</sly>
-									</sly>
-								</select>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg pr-lg-4">
-							<div class="form-group row ">
-								<label for="results" class="col-form-label t-header-5">RESULTS</label>
-								<input type="text" class="form-control" name="results">
-							</div>
-						</div>
-					</div>
-					
-					<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
-						<div class="row">
-							<div class="col-12 col-lg">
-								<div class="form-group row pr-lg-4">
-									<label for="level" class="col-form-label t-header-5">LEVEL
-										OF STUDY <span class="txt-primary">*</span>
-									</label>
-									<select id="malaysian-levelOfStudy" class="form-control" size name="level" value="0">
-										 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
-										 	<option value="${levelOfStudy}">${levelOfStudy}</option>
-										 </sly>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
-							</div>
-							<div class="col-12 col-lg pr-lg-4">
-								<div class="form-group row ">
-									<label for="preference" class="col-form-label t-header-5">PROGRAMME
-										PREFERENCE <span class="txt-primary">*</span>
-									</label>
-									<select id="malaysian-programmes" class="form-control" size name="preference" value="0">
-										<option name="malaysian-Select Programme" value="Select Programme">Select Programme</option>
-										<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
-											<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
-											 	<option name="malaysian-${levelOfStudy}" value="${item}">${item}</option>
-											</sly>
-										</sly>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
-							</div>
-							<input type="hidden" name="interested_course" value="${cp.documentReferrer}"/>
-						</div>
-					</sly>
-					
-					<div class="row">
-						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
-							<div class="form-group row">
-								<label for="intake_month"
-									class="col-12 col-form-label t-header-5">PREFERRED
-									INTAKE</label>
-								<div class="col-6">
-									<select class="form-control" size name="intake_month">
-										<option value="1">JANUARY</option>
-										<option value="2">FEBRUARY</option>
-										<option value="3">MARCH</option>
-										<option value="4">APRIL</option>
-										<option value="5">MAY</option>
-										<option value="6">JUNE</option>
-										<option value="7">JULY</option>
-										<option value="8">AUGUST</option>
-										<option value="9">SEPTEMBER</option>
-										<option value="10">OCTOBER</option>
-										<option value="11">NOVEMBER</option>
-										<option value="12">DECEMBER</option>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
-								<div class="col-6">
-									<select class="form-control" size name="intake_year">
-										<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
-											<sly data-sly-list.year="${cp.prevCurNextYears}">
-												<option value="${year}">${year}</option>
-											</sly>
-										</sly>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group form-check">
-							<div class="t-custom-checkbox form-control">
-								<i class="fa fa-check"></i>
-							</div>
-							<input type="checkbox" class="form-control" for="terms_agreed"
-								required> <label
-								class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0"
-								for="terms_agreed">${properties.agreementText @ context='html'}
-							</label>
-							<div class="invalid-feedback">This field is required.</div>
-
-						</div>
-					</div>
-					<div class="row t-pt">
-						<div id="recaptcha-application-form-malaysian" class="d-none"></div>
-
-						<button
-							class="btn btn-simple btn-red recaptcha-element btn-standard-w"
-							data-sitekey="6LdHvj8UAAAAANxhryvj-yJvtloO5PUb2o7bg4rf"
-							data-callback="onSubmitApplicationMalaysian">
-							SUBMIT NOW <i class="t-icon-right white ml-2"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-			<div class="row  t-p  pt-0 t-tab-content-item"
-				data-tab-content="application-form-international">
-				<!-- APPLICATION FORM INTERNATIONAL -->
-				<form class="col-12 t-form recaptcha-form "
-					id="application-form-international"
-					data-widget-id="widgetInternational" novalidate>
-					<div class="row">
-						<div class="col-12 col-lg">
-							<div class="form-group row pr-lg-4">
-								<label for="staticEmail" class="col-form-label t-header-5">NAME
-									<span class="txt-primary">*</span>
-								</label> <input type="text" class="form-control" name="name" required>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg pr-lg-4">
-							<div class="form-group row ">
-								<label for="contact_number" class="col-form-label t-header-5">CONTACT
-									NUMBER <span class="txt-primary">*</span>
-								</label> <input type="number" class="form-control" name="contact_number"
-									required>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12 col-lg">
-							<div class="form-group row pr-lg-4">
-								<label for="email" class="col-form-label t-header-5">EMAIL
-									<span class="txt-primary">*</span>
-								</label> <input type="email" class="form-control" name="email" required>
-								<div class="invalid-feedback">This field is required.</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg pr-lg-4">
+									 </sly>
+	                             </select>
+	                             <div class="invalid-feedback">This field is required.</div>
+	                         </div>
+	                     </div>
+                     </sly>
+                     <sly data-sly-test="${formName == 'international'}">
+	                     <div class="col-12 col-lg pr-lg-4">
 							<div class="form-group row ">
 								<label for="nationality" class="col-form-label t-header-5">NATIONALITY
 									<span class="txt-primary">*</span>
@@ -244,127 +90,131 @@
 								</select>
 								<div class="invalid-feedback">This field is required.</div>
 							</div>
-						</div>
-					</div>
+						 </div>
+					 </sly>
+                 </div>
+                 <div class="row">
+                     <div class="col-12 col-lg">
+                         <div class="form-group row pr-lg-4">
+                             <label for="qualification" class="col-form-label t-header-5">ACADEMIC QUALIFICATION
+                                 <span class="txt-primary">*</span>
+                             </label>
+                             <select class="form-control" size name="qualification" required>
+                                 <sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+									<sly data-sly-list.academicQualification="${cp.academicQualificationsMap}">
+										<option value="${academicQualification}">${cp.academicQualificationsMap[academicQualification]}</option>
+									</sly>
+								 </sly>
+                             </select>
+                             <div class="invalid-feedback">This field is required.</div>
+                         </div>
+                     </div>
+                     <div class="col-12 col-lg pr-lg-4">
+                         <div class="form-group row ">
+                             <label for="results" class="col-form-label t-header-5">RESULTS</label>
+                             <input type="text" class="form-control" name="results">
+                         </div>
+                     </div>
+                 </div>
+                 <sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
 					<div class="row">
 						<div class="col-12 col-lg">
 							<div class="form-group row pr-lg-4">
-								<label for="qualification" class="col-form-label t-header-5">ACADEMIC
-									QUALIFICATION <span class="txt-primary">*</span>
-								</label> <select class="form-control" size name="qualification" required>
-									<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
-										<sly data-sly-list.academicQualification="${cp.academicQualificationsMap}">
-											<option value="${academicQualification}">${cp.academicQualificationsMap[academicQualification]}</option>
-										</sly>
-									</sly>
+								<label for="level" class="col-form-label t-header-5">LEVEL
+									OF STUDY <span class="txt-primary">*</span>
+								</label>
+								<select id="${formName}-levelOfStudy" class="form-control" size name="level" value="0">
+									 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+									 	<option value="${levelOfStudy}">${levelOfStudy}</option>
+									 </sly>
 								</select>
 								<div class="invalid-feedback">This field is required.</div>
 							</div>
 						</div>
 						<div class="col-12 col-lg pr-lg-4">
 							<div class="form-group row ">
-								<label for="results" class="col-form-label t-header-5">RESULTS</label>
-								<input type="text" class="form-control" name="results">
-							</div>
-						</div>
-					</div>
-					
-					<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
-						<div class="row">
-							<div class="col-12 col-lg">
-								<div class="form-group row pr-lg-4">
-									<label for="level" class="col-form-label t-header-5">LEVEL
-										OF STUDY <span class="txt-primary">*</span>
-									</label>
-									<select id="international-levelOfStudy" class="form-control" size name="level" value="0">
-										 <sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
-										 	<option value="${levelOfStudy}">${levelOfStudy}</option>
-										 </sly>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
-							</div>
-							<div class="col-12 col-lg pr-lg-4">
-								<div class="form-group row ">
-									<label for="preference" class="col-form-label t-header-5">PROGRAMME
-										PREFERENCE <span class="txt-primary">*</span>
-									</label>
-									<select id="international-programmes" class="form-control" size name="preference" value="0">
-										<option name="international-Select Programme" value="Select Programme">Select Programme</option>
-										<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
-											<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
-											 	<option name="international-${levelOfStudy}" value="${item}">${item}</option>
-											</sly>
+								<label for="preference" class="col-form-label t-header-5">PROGRAMME
+									PREFERENCE <span class="txt-primary">*</span>
+								</label>
+								<select id="${formName}-programmes" class="form-control" size name="preference" value="0">
+									<option name="${formName}-Select Programme" value="Select Programme">Select Programme</option>
+									<sly data-sly-list.levelOfStudy="${cp.courseAndProgrameMap}">
+										<sly data-sly-list="${cp.courseAndProgrameMap[levelOfStudy]}">
+										 	<option name="${formName}-${levelOfStudy}" value="${item}">${item}</option>
 										</sly>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
+									</sly>
+								</select>
+								<div class="invalid-feedback">This field is required.</div>
 							</div>
-							<input type="hidden" name="interested_course" value="${cp.documentReferrer}"/>
 						</div>
-					</sly>
-					
-					<div class="row">
-						<div class="col-12 col-lg-6 pr-lg-4 pl-0">
-							<div class="form-group row">
-								<label for="intake_month"
-									class="col-12 col-form-label t-header-5">PREFERRED
-									INTAKE</label>
-								<div class="col-6">
-									<select class="form-control" size name="intake_month">
-										<option value="1">JANUARY</option>
-										<option value="2">FEBRUARY</option>
-										<option value="3">MARCH</option>
-										<option value="4">APRIL</option>
-										<option value="5">MAY</option>
-										<option value="6">JUNE</option>
-										<option value="7">JULY</option>
-										<option value="8">AUGUST</option>
-										<option value="9">SEPTEMBER</option>
-										<option value="10">OCTOBER</option>
-										<option value="11">NOVEMBER</option>
-										<option value="12">DECEMBER</option>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
-								<div class="col-6">
-									<select class="form-control" size name="intake_year">
-										<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
-											<sly data-sly-list.year="${cp.prevCurNextYears}">
-												<option value="${year}">${year}</option>
-											</sly>
+						<input type="hidden" name="interested_course" value="${cp.documentReferrer}"/>
+					</div>
+				 </sly>
+                 <div class="row">
+                     <div class="col-12 col-lg-6 pr-lg-4 pl-0">
+                         <div class="form-group row">
+                             <label for="intake_month" class="col-12 col-form-label t-header-5">PREFERRED INTAKE</label>
+                             <div class="col-6">
+                                 <select class="form-control" size name="intake_month">
+                                    <option value="1">JANUARY</option>
+									<option value="2">FEBRUARY</option>
+									<option value="3">MARCH</option>
+									<option value="4">APRIL</option>
+									<option value="5">MAY</option>
+									<option value="6">JUNE</option>
+									<option value="7">JULY</option>
+									<option value="8">AUGUST</option>
+									<option value="9">SEPTEMBER</option>
+									<option value="10">OCTOBER</option>
+									<option value="11">NOVEMBER</option>
+									<option value="12">DECEMBER</option>
+                                 </select>
+                                 <div class="invalid-feedback">This field is required.</div>
+                             </div>
+                             <div class="col-6">
+                                 <select class="form-control" size name="intake_year">
+                                     <sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+										<sly data-sly-list.year="${cp.prevCurNextYears}">
+											<option value="${year}">${year}</option>
 										</sly>
-									</select>
-									<div class="invalid-feedback">This field is required.</div>
-								</div>
-							</div>
-						</div>
-					</div>
+									</sly>
+                                 </select>
+                                 <div class="invalid-feedback">This field is required.</div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
 
-					<div class="row">
-						<div class="form-group form-check">
-							<div class="t-custom-checkbox form-control">
-								<i class="fa fa-check"></i>
-							</div>
-							<input type="checkbox" class="form-control" for="terms_agreed"
-								required> <label
-								class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0"
-								for="terms_agreed">${properties.agreementText @ context='html'}
-							</label>
-							<div class="invalid-feedback">This field is required.</div>
-
-						</div>
-					</div>
-					<div class="row t-pt">
-						<div id="recaptcha-application-form-international" class="d-none"></div>
-						<button id="application-form-submit"
-							class="btn btn-simple btn-red recaptcha-element btn-standard-w"
-							data-sitekey="6LdHvj8UAAAAANxhryvj-yJvtloO5PUb2o7bg4rf"
-							data-callback="onSubmitApplicationInternational">
-							SUBMIT NOW <i class="t-icon-right white ml-2"></i>
-						</button>
-					</div>
-				</form>
+                 <div class="row">
+                     <div class="form-group form-check">
+                         <div class="t-custom-checkbox form-control">
+                             <i class="fa fa-check"></i>
+                         </div>
+                         <input type="checkbox" class="form-control" for="terms_agreed" required>
+                         <label class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0" for="terms_agreed">
+                         	${properties.agreementText @ context='html'}
+                         </label>
+                         <div class="invalid-feedback">This field is required.</div>
+                             
+                     </div>
+                 </div>
+                 <div class="row t-pt">
+                             <div id="recaptcha-application-form-malaysian" class="d-none"></div>
+             
+                     <button class="btn btn-simple btn-red recaptcha-element btn-standard-w"  data-sitekey="6LdHvj8UAAAAANxhryvj-yJvtloO5PUb2o7bg4rf" data-callback="onSubmitApplicationMalaysian">
+                         SUBMIT NOW
+                         <i class="t-icon-right white ml-2"></i>
+                     </button>
+                 </div>
+             </form>
+		</template>
+		
+		<div class="t-tab-content">
+			<div class="row  t-p pt-0 t-tab-content-item active" data-tab-content="application-form-malaysian">
+				<sly data-sly-call="${applicationForms @ formName='malaysian'}"></sly>
+			</div>
+			<div class="row  t-p  pt-0 t-tab-content-item" data-tab-content="application-form-international">
+				<sly data-sly-call="${applicationForms @ formName='international'}"></sly>
 			</div>
 		</div>
 	</div>
