@@ -5,6 +5,7 @@ package com.taylorsuniversity.models;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -261,4 +262,21 @@ public final class ApplicationFormComponentModel {
 		LOGGER.debug("Academic Qualifications Map is : {}", academicQualificationsMap);
 		return academicQualificationsMap;
 	}
+
+	/**
+     * Gets the list of previous, current & next year.
+     *
+     * @return the list of previous, current & next year
+     **/
+    public List<String> getPrevCurNextYears() {
+    	List<String> years = new ArrayList<>();
+        Calendar cal = Calendar.getInstance();
+        LOGGER.debug("Previous Year is : {} ", cal.get(Calendar.YEAR) - 1);
+        years.add(Integer.toString(cal.get(Calendar.YEAR) - 1));
+        LOGGER.debug("Current Year is : {} ", cal.get(Calendar.YEAR));
+        years.add(Integer.toString(cal.get(Calendar.YEAR)));
+        LOGGER.debug("Next Year is : {} ", cal.get(Calendar.YEAR) + 1);
+        years.add(Integer.toString(cal.get(Calendar.YEAR) + 1));
+        return years;
+    }
 }

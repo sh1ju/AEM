@@ -87,3 +87,32 @@ $(tabContainerId + '.t-tab-container .t-tabs > .tab-item').on('click', function(
     $('.t-tab-content > .t-tab-content-item[data-tab-content="'+ tab +'"]', container).addClass('active');
 
 });
+
+
+$('#malaysian_email').on('input', function() {
+	var input=$(this);
+	var re = /^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+	var is_email=re.test(input.val());
+	if(is_email) {
+		input.removeClass("invalid").addClass("valid");
+	}
+	else {
+		input.removeClass("valid").addClass("invalid");
+	}
+});
+
+$(function() {
+    //initial
+    $('.t-custom-checkbox:not(.checked) + [type="checkbox"]').prop('checked', false);
+    $('.t-custom-checkbox.checked + [type="checkbox"]').prop('checked', true);
+    //event handle
+    $('.t-custom-checkbox').on('click', function() {
+        if ($(this).hasClass('checked')) {
+            $(this).removeClass('checked');
+            $(this).next('[type="checkbox"]').prop('checked', false);
+        } else {
+            $(this).addClass('checked');
+            $(this).next('[type="checkbox"]').prop('checked', true);
+        }
+    });
+})

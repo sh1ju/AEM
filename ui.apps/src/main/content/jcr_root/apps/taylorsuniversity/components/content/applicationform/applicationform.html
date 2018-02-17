@@ -1,4 +1,4 @@
-<sly data-sly-test="${!properties.title && wcmmode.edit}">
+<sly data-sly-test="${!properties.agreementText && wcmmode.edit}">
 	<p class="cq-placeholder" data-emptytext="${'Application Form' @ i18n}"></p>
 </sly>
 
@@ -142,21 +142,28 @@
 									INTAKE</label>
 								<div class="col-6">
 									<select class="form-control" size name="intake_month">
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
+										<option value="1">JANUARY</option>
+										<option value="2">FEBRUARY</option>
+										<option value="3">MARCH</option>
+										<option value="4">APRIL</option>
+										<option value="5">MAY</option>
+										<option value="6">JUNE</option>
+										<option value="7">JULY</option>
+										<option value="8">AUGUST</option>
+										<option value="9">SEPTEMBER</option>
+										<option value="10">OCTOBER</option>
+										<option value="11">NOVEMBER</option>
+										<option value="12">DECEMBER</option>
 									</select>
 									<div class="invalid-feedback">This field is required.</div>
 								</div>
 								<div class="col-6">
 									<select class="form-control" size name="intake_year">
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
+										<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+											<sly data-sly-list.year="${cp.prevCurNextYears}">
+												<option value="${year}">${year}</option>
+											</sly>
+										</sly>
 									</select>
 									<div class="invalid-feedback">This field is required.</div>
 								</div>
@@ -172,10 +179,7 @@
 							<input type="checkbox" class="form-control" for="terms_agreed"
 								required> <label
 								class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0"
-								for="terms_agreed">*Yes, I understand that Taylor's
-								University will protect my details as per the <u> <a
-									href="#" class="txt-black">privacy policy</a>
-							</u>.
+								for="terms_agreed">${properties.agreementText @ context='html'}
 							</label>
 							<div class="invalid-feedback">This field is required.</div>
 
@@ -308,21 +312,28 @@
 									INTAKE</label>
 								<div class="col-6">
 									<select class="form-control" size name="intake_month">
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
+										<option value="1">JANUARY</option>
+										<option value="2">FEBRUARY</option>
+										<option value="3">MARCH</option>
+										<option value="4">APRIL</option>
+										<option value="5">MAY</option>
+										<option value="6">JUNE</option>
+										<option value="7">JULY</option>
+										<option value="8">AUGUST</option>
+										<option value="9">SEPTEMBER</option>
+										<option value="10">OCTOBER</option>
+										<option value="11">NOVEMBER</option>
+										<option value="12">DECEMBER</option>
 									</select>
 									<div class="invalid-feedback">This field is required.</div>
 								</div>
 								<div class="col-6">
 									<select class="form-control" size name="intake_year">
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
-										<option>OPTION</option>
+										<sly data-sly-use.cp="${'com.taylorsuniversity.models.ApplicationFormComponentModel'}">
+											<sly data-sly-list.year="${cp.prevCurNextYears}">
+												<option value="${year}">${year}</option>
+											</sly>
+										</sly>
 									</select>
 									<div class="invalid-feedback">This field is required.</div>
 								</div>
@@ -338,10 +349,7 @@
 							<input type="checkbox" class="form-control" for="terms_agreed"
 								required> <label
 								class="form-check-label pl-0 pt-2 pl-lg-2 pt-lg-0"
-								for="terms_agreed">*I agree to the Taylor's <u><a
-									href="#" class="txt-black">terms & conditions</a></u> and <u> <a
-									href="#" class="txt-black">privacy policy</a>
-							</u>.
+								for="terms_agreed">${properties.agreementText @ context='html'}
 							</label>
 							<div class="invalid-feedback">This field is required.</div>
 
